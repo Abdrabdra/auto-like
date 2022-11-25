@@ -22,10 +22,10 @@ const ProfileInfo = () => {
         </Avatar>
         <Stack>
           <Typography sx={{ fontSize: "20px", fontWeight: 500 }}>
-            Инсар Еркимбеков
+            Инкар Еркимбеков
           </Typography>
           <Typography sx={{ color: "secondary.900", fontWeight: 600 }}>
-            + 7 707 188 18 34
+            + 7 707 188 18 35
           </Typography>
         </Stack>
       </Stack>
