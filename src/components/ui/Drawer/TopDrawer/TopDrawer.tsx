@@ -24,8 +24,8 @@ const TopDrawer = () => {
       sx={{
         top: 0,
         bottom: "auto",
-        height: "125px",
         justifyContent: "flex-end",
+        paddingTop: "12px",
         paddingBottom: "12px",
         backgroundColor: "secondary.200",
         borderBottomLeftRadius: "20px",
