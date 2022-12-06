@@ -51,6 +51,7 @@ const MainDrawer = () => {
             backgroundColor:
               path === "/app/chat/one/:chatId" ? "common.white" : "transparent",
             border: "none",
+            display: { md: "none" },
           },
         }}
       >
