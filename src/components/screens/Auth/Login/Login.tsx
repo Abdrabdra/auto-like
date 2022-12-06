@@ -14,7 +14,7 @@ import { useFormik } from "formik";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import AuthBg from "../../../../assets/images/Auth/auth_bg.png";
+import AuthBg from "@assets/images/Auth/auth_bg.png";
 
 import { useTypedSelector } from "../../../../store";
 import { loginSchema } from "../../../../utils/schema/validation";

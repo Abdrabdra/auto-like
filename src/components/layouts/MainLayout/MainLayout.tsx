@@ -8,7 +8,7 @@ const MainLayout = () => {
   return (
     <>
       <TopDrawer />
-      <Box sx={{ paddingTop: "145px", paddingBottom: "85px" }}>
+      <Box sx={{ paddingTop: "100px", paddingBottom: "85px" }}>
         <Outlet />
       </Box>
       <MainDrawer />

@@ -1,6 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { IRegistration } from "@types/IRegistration";
+import { ILogin } from "@types/ILogin";
 import { AuthService } from "../../../service/auth/auth.service";
-import { ILogin } from "../../../types/ILogin";
 
 export const login = createAsyncThunk(
   "auth/login",
@@ -8,6 +9,18 @@ export const login = createAsyncThunk(
     try {
       const response = await AuthService.login(creds);
       localStorage.setItem("access_token", response.data.access_token);
+      return response.data;
+    } catch (e) {
+      return rejectWithValue(e);
+    }
+  }
+);
+
+export const registration = createAsyncThunk(
+  "auth/registration",
+  async function (creds: IRegistration, { rejectWithValue }) {
+    try {
+      const response = await AuthService.registration(creds);
       return response.data;
     } catch (e) {
       return rejectWithValue(e);
