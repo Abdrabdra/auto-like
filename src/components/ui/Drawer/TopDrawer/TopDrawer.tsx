@@ -1,59 +1,71 @@
-import { FC, useEffect, useState } from "react";
-import { AppBar, Box, Container } from "@mui/material";
-import { matchPath, useLocation } from "react-router-dom";
+import { useEffect, useRef, useState } from 'react'
+import { AppBar, Box, Container, useMediaQuery } from '@mui/material'
+import { useLocation } from 'react-router-dom'
 
-import TopOneHomeDrawer from "./TopOneHomeDrawer";
-import TopLikeDrawer from "./TopLikeDrawer";
-import TopHomeDrawer from "./TopHomeDrawer";
-import useCheckPath from "../DrawerUtils/CheckPath";
-import TopPostDrawer from "./TopPostDrawer";
+import TopOneHomeDrawer from './TopOneHomeDrawer'
+import TopLikeDrawer from './TopLikeDrawer'
+import TopHomeDrawer from './TopHomeDrawer'
+import useCheckPath from '../DrawerUtils/CheckPath'
+import TopPostDrawer from './TopPostDrawer'
+import TopMediumDrawer from './TopMediumDrawer'
 
 const TopDrawer = () => {
-  const location = useLocation();
-  const [path, setPath] = useState<String | null>(null);
+	const location = useLocation()
+	const [path, setPath] = useState<String | null>(null)
 
-  const matchedPath: string | null | undefined = useCheckPath();
-  useEffect(() => {
-    matchedPath != null ? setPath(matchedPath) : setPath("/app/other");
-  }, [location]);
+	const matchedPath: string | null | undefined = useCheckPath()
+	useEffect(() => {
+		matchedPath != null ? setPath(matchedPath) : setPath('/app/other')
+	}, [location])
 
-  return (
-    <AppBar
-      position="fixed"
-      color="primary"
-      sx={{
-        top: 0,
-        bottom: "auto",
-        justifyContent: "flex-end",
-        paddingTop: "12px",
-        paddingBottom: "12px",
-        backgroundColor: "secondary.200",
-        borderBottomLeftRadius: "20px",
-        borderBottomRightRadius: "20px",
-      }}
-    >
-      <Container>
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            gap: "10px",
-          }}
-        >
-          {path === "/app/home/one/:announceId" ||
-          path === "/app/chat/one/:chatId" ? (
-            <TopOneHomeDrawer path={path} />
-          ) : path === "/app/home" ? (
-            <TopHomeDrawer />
-          ) : path === "/app/post" ? (
-            <TopPostDrawer />
-          ) : (
-            <TopLikeDrawer />
-          )}
-        </Box>
-      </Container>
-    </AppBar>
-  );
-};
+	const isMedium = useMediaQuery('(min-width:1200px)')
 
-export default TopDrawer;
+	const ref = useRef<any>()
+
+	useEffect(() => {
+		console.log(ref.current)
+	}, [])
+
+	console.log(ref)
+
+	return (
+		<AppBar
+			position='fixed'
+			color='primary'
+			sx={{
+				top: 0,
+				bottom: 'auto',
+				justifyContent: 'flex-end',
+				paddingTop: isMedium ? '20px' : '12px',
+				paddingBottom: isMedium ? '20px' : '12px',
+				backgroundColor: 'secondary.200',
+				borderBottomLeftRadius: '20px',
+				borderBottomRightRadius: '20px'
+			}}
+		>
+			<Container ref={ref}>
+				<Box
+					sx={{
+						display: 'flex',
+						alignItems: 'center',
+						gap: '10px'
+					}}
+				>
+					{isMedium ? <TopMediumDrawer /> : path === '/app/home/one/:announceId' ||
+					path === '/app/chat/one/:chatId' ? (
+						<TopOneHomeDrawer path={path} />
+					) : path === '/app/home' ? (
+						<TopHomeDrawer />
+					) : path === '/app/post' ? (
+						<TopPostDrawer />
+					) : (
+						<TopLikeDrawer />
+					)}
+
+				</Box>
+			</Container>
+		</AppBar>
+	)
+}
+
+export default TopDrawer
