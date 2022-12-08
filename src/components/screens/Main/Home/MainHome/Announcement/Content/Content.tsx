@@ -8,8 +8,6 @@ import { IAnnouncement } from '@store/rtk-api/announcement-rtk/announcement.type
 const Content = () => {
 	const { data, isLoading, isError } = useGetAnnouncementsQuery('')
 
-	console.log(data)
-
 	return (
 		<Box>
 			<Typography variant='h4' my={1}>

@@ -1,8 +1,9 @@
-import { Box, Stack, Typography } from '@mui/material'
+import { Box, Icon, Stack, Typography } from '@mui/material'
 import { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import numberWithSpaces from '@utils/numberWithSpaces'
+import PhotoCameraIcon from '@mui/icons-material/PhotoCamera'
 
 import LikeButton from './LikeButton'
 import Tags from './Tags'
@@ -16,14 +17,10 @@ const Main: FC<Props> = ({ car }) => {
 	const {
 		id,
 		price,
-		createdAt,
-		views,
 		model,
-		transmission,
 		avatar,
 		year,
 		mileage,
-		steeringWheel,
 		volume,
 		state,
 		marka,
@@ -55,10 +52,24 @@ const Main: FC<Props> = ({ car }) => {
 					backgroundColor: 'secondary.200',
 					borderRadius: '10px',
 					width: '120px',
-					height: '110px'
+					height: '110px',
+					position: 'relative'
 				}}
 			>
-				{/* <<img alt="car image" />> */}
+				<Stack spacing={1} direction={'row'} alignItems={'center'}
+							 sx={{
+								 color: 'grey.100',
+								 position: 'absolute',
+								 top: '4px',
+								 left: '4px',
+								 padding: '4px 8px',
+								 backgroundColor: 'secondary.300',
+								 borderRadius: '8px'
+							 }}>
+					<Icon component={PhotoCameraIcon} sx={{ fontSize: 15 }} />
+					<Typography sx={{ fontSize: '12px', fontWeight: 500, lineHeight: '14px' }}>{countImages}</Typography>
+				</Stack>
+				{avatar && <img src={avatar} alt='car image' />}
 			</Box>
 			<Stack justifyContent='center' sx={{ flex: '1' }}>
 				<Box
@@ -78,7 +89,7 @@ const Main: FC<Props> = ({ car }) => {
 							г. {city}
 						</Typography>
 					</Stack>
-					<LikeButton />
+					<LikeButton profilelike={profilelike} id={id} />
 				</Box>
 				<Tags tags={tags} />
 			</Stack>

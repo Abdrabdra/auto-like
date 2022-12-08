@@ -1,3 +1,5 @@
+import { TypeofEntityEnum } from '@types/Announcement/announcement.enum'
+
 export interface IAnnouncements {
 	data: IAnnouncement[],
 	count: number
@@ -23,3 +25,9 @@ export interface IAnnouncement {
 	countImages: string,
 	profilelike: string
 }
+
+export interface ILikeAnnouncement {
+	announcementId: number,
+	kind: TypeofEntityEnum
+}
+

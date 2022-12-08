@@ -9,8 +9,6 @@ import { toMonthName } from '@utils/toMonthName'
 const InfoStats: FC<InfoStatsProps> = ({ views, publishDate }) => {
 	const date = new Date(publishDate)
 
-	console.log(date.getDate(), toMonthName(date))
-
 	return (
 		<Stack
 			direction='row'

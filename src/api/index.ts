@@ -9,7 +9,9 @@ export const $api = axios.create({
 
 $api.interceptors.request.use((config) => {
 	if (config.headers) {
-		config.headers.authorization = `Bearer ${localStorage.getItem('token')}`
+		config.headers.authorization = `Bearer ${localStorage.getItem('access_token')}`
 		return config
 	}
 })
+
+export const $image_api = 'http://localhost:3000/'
