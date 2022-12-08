@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { AppBar, Box, Container, useMediaQuery } from '@mui/material'
 import { useLocation } from 'react-router-dom'
 
@@ -19,15 +19,7 @@ const TopDrawer = () => {
 	}, [location])
 
 	const isMedium = useMediaQuery('(min-width:1200px)')
-
-	const ref = useRef<any>()
-
-	useEffect(() => {
-		console.log(ref.current)
-	}, [])
-
-	console.log(ref)
-
+	
 	return (
 		<AppBar
 			position='fixed'
@@ -43,7 +35,7 @@ const TopDrawer = () => {
 				borderBottomRightRadius: '20px'
 			}}
 		>
-			<Container ref={ref}>
+			<Container>
 				<Box
 					sx={{
 						display: 'flex',

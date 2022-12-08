@@ -1,30 +1,30 @@
 //library
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import { TypedUseSelectorHook, useSelector } from "react-redux";
+import { combineReducers, configureStore } from '@reduxjs/toolkit'
+import { TypedUseSelectorHook, useSelector } from 'react-redux'
 
 //reducer
-import authReducer from "./reducers/auth/auth.slice";
-import stepperReducer from "./reducers/stepper/stepper.slice";
+import authReducer from './reducers/auth/auth.slice'
+import stepperReducer from './reducers/stepper/stepper.slice'
 
 //rtk
-import homeApi from "./rtk-api/home-rtk/homeApi";
-import userApi from "./rtk-api/user-rtk/userApi";
+import announcementApi from './rtk-api/announcement-rtk/announcementApi'
+import userApi from './rtk-api/user-rtk/userApi'
 
 const rootReducer = combineReducers({
-  auth: authReducer,
-  stepper: stepperReducer,
+	auth: authReducer,
+	stepper: stepperReducer,
 
-  [homeApi.reducerPath]: homeApi.reducer,
-  [userApi.reducerPath]: userApi.reducer,
-});
+	[announcementApi.reducerPath]: announcementApi.reducer,
+	[userApi.reducerPath]: userApi.reducer
+})
 
 export const store = configureStore({
-  reducer: rootReducer,
+	reducer: rootReducer,
 
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(homeApi.middleware, userApi.middleware),
-});
+	middleware: (getDefaultMiddleware) =>
+		getDefaultMiddleware().concat(announcementApi.middleware, userApi.middleware)
+})
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
-export const useTypedSelector: TypedUseSelectorHook<RootState> = useSelector;
+export const useTypedSelector: TypedUseSelectorHook<RootState> = useSelector

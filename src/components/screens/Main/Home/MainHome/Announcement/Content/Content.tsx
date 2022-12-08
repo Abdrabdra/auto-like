@@ -1,97 +1,37 @@
-import InfoStats from "@components/modules/InfoStat/InfoStat";
-import { Box, Stack, Typography } from "@mui/material";
-import { useNavigate } from "react-router-dom";
-
-import Main from "./Main/Main";
-
-const cars = [
-  {
-    id: 0,
-    image: "",
-    title: "Lexus LF LC 500",
-    price: 20000000,
-    city: "Алматы",
-    publishDate: "7 октября",
-    views: 1280,
-    tags: { releaseDate: "2017", condition: "С пробегом", mileage: "5000" },
-  },
-  {
-    id: 1,
-    image: "",
-    title: "Lexus LF LC 500",
-    price: 20000000,
-    city: "Алматы",
-    publishDate: "7 октября",
-    views: 1280,
-    tags: { releaseDate: "2017", condition: "С пробегом", mileage: "5000" },
-  },
-  {
-    id: 2,
-    image: "",
-    title: "Lexus LF LC 500",
-    price: 20000000,
-    city: "Алматы",
-    publishDate: "7 октября",
-    views: 1280,
-    tags: { releaseDate: "2017", condition: "С пробегом", mileage: "5000" },
-  },
-  {
-    id: 3,
-    image: "",
-    title: "Lexus LF LC 500",
-    price: 20000000,
-    city: "Алматы",
-    publishDate: "7 октября",
-    views: 1280,
-    tags: { releaseDate: "2017", condition: "С пробегом", mileage: "5000" },
-  },
-  {
-    id: 4,
-    image: "",
-    title: "Lexus LF LC 500",
-    price: 20000000,
-    city: "Алматы",
-    publishDate: "7 октября",
-    views: 1280,
-    tags: { releaseDate: "2017", condition: "С пробегом", mileage: "5000" },
-  },
-];
+import { Box, Stack, Typography } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
+import { useGetAnnouncementsQuery } from '@store/rtk-api/announcement-rtk/announcementEndpoints'
+import InfoStats from '@components/modules/InfoStat/InfoStat'
+import Main from './Main/Main'
+import { IAnnouncement } from '@store/rtk-api/announcement-rtk/announcement.type'
 
 const Content = () => {
-  const navigate = useNavigate();
+	const { data, isLoading, isError } = useGetAnnouncementsQuery('')
 
-  const handleNavigate = (id: number) => {
-    navigate(`/app/home/one/${id}`);
-  };
+	console.log(data)
 
-  return (
-    <Box>
-      <Typography variant="h4" my={1}>
-        Объявления
-      </Typography>
-      <Stack spacing={1.5}>
-        {cars.map((car, index) => (
-          <Box
-            key={index}
-            onClick={() => handleNavigate(car.id)}
-            sx={{
-              height: "146px",
-              backgroundColor: "common.white",
-              borderRadius: "10px",
-            }}
-          >
-            <Main
-              title={car.title}
-              city={car.city}
-              price={car.price}
-              tags={car.tags}
-            />
-            <InfoStats views={car.views} publishDate={car.publishDate} />
-          </Box>
-        ))}
-      </Stack>
-    </Box>
-  );
-};
+	return (
+		<Box>
+			<Typography variant='h4' my={1}>
+				Объявления
+			</Typography>
+			<Stack spacing={1.5}>
+				{data && data.data.map((car) => (
+					<Box
+						key={car.id}
+						sx={{
+							height: '146px',
+							backgroundColor: 'common.white',
+							borderRadius: '10px'
+						}}
+					>
+						<Main car={car as IAnnouncement} />
+						<InfoStats views={car.views} publishDate={car.createdAt} />
+					</Box>
+				))}
+			</Stack>
+		</Box>
+	)
+}
 
-export default Content;
+export default Content

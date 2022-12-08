@@ -1,4 +1,4 @@
 export interface InfoStatsProps {
-  views: number;
-  publishDate: string;
+	views: number;
+	publishDate: Date;
 }
