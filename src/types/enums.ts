@@ -21,3 +21,10 @@ export enum TypeofEntityEnum {
 	MOTOTECHNICS = 'MOTOTECHNICS',
 	BOAT = 'BOAT'
 }
+
+export enum Status {
+  NEW = 'new',
+  ACCEPTED = 'accepted',
+  DELETED = 'deleted',
+  DENIED = 'denied'
+}

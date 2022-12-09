@@ -1,8 +1,9 @@
 import { Box, Stack, Typography } from "@mui/material"
+
 import { useGetAnnouncementsQuery } from "@store/rtk-api/announcement-rtk/announcementEndpoints"
+
 import InfoStats from "@components/modules/InfoStat/InfoStat"
 import Main from "./Main/Main"
-import { IAnnouncement } from "@store/rtk-api/announcement-rtk/announcement.type"
 
 const Content = () => {
 	const { data } = useGetAnnouncementsQuery("")
@@ -23,7 +24,7 @@ const Content = () => {
 								borderRadius: "10px"
 							}}
 						>
-							<Main car={car as IAnnouncement} />
+							<Main car={car} />
 							<InfoStats views={car.views} publishDate={car.createdAt} />
 						</Box>
 					))}

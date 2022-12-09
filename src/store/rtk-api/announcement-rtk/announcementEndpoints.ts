@@ -1,23 +1,27 @@
-import { IAnnouncements, ILikeAnnouncement } from './announcement.type'
-import announcementApi from './announcementApi'
+import announcementApi from "./announcementApi"
+import {
+	IAnnouncementsResponse,
+	ILikeAnnouncement
+} from "types/Announcement/Announcement.type"
 
 export const announcementEndpoints = announcementApi.injectEndpoints({
 	endpoints: (builder) => ({
-		getAnnouncements: builder.query<IAnnouncements, string>({
+		getAnnouncements: builder.query<IAnnouncementsResponse, string>({
 			query: () => ({
 				url: `/announcement`
 			}),
-			providesTags: ['announcements']
+			providesTags: ["announcements"]
 		}),
 		likeAnnouncement: builder.mutation<string, ILikeAnnouncement>({
 			query: (body) => ({
 				url: `/like`,
-				method: 'POST',
+				method: "POST",
 				body
 			}),
-			invalidatesTags: ['announcements']
+			invalidatesTags: ["announcements"]
 		})
 	})
 })
 
-export const { useGetAnnouncementsQuery, useLikeAnnouncementMutation } = announcementEndpoints
+export const { useGetAnnouncementsQuery, useLikeAnnouncementMutation } =
+	announcementEndpoints
