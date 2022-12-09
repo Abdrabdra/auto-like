@@ -1,6 +1,0 @@
-export enum TypeofEntityEnum {
-	ANNOUNCEMENT = 'ANNOUNCEMENT',
-	SPARE = 'SPARE',
-	MOTOTECHNICS = 'MOTOTECHNICS',
-	BOAT = 'BOAT'
-}

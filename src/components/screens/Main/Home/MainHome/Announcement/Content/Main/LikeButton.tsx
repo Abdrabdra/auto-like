@@ -5,7 +5,7 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder"
 import FavoriteIcon from "@mui/icons-material/Favorite"
 
 import { useLikeAnnouncementMutation } from "@store/rtk-api/announcement-rtk/announcementEndpoints"
-import { TypeofEntityEnum } from "types/Announcement/announcement.enum"
+import { TypeofEntityEnum } from "types/enums"
 
 interface Props {
 	profilelike: string
