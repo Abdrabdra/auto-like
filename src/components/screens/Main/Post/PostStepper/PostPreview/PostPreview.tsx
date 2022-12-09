@@ -6,16 +6,15 @@ import AbsoluteBox from "@components/modules/AbsoluteBox";
 import SubmitButton from "@components/ui/Button/SubmitButton";
 import {
   incrementStep,
-  setDefaultState,
 } from "@store/reducers/stepper/stepper.slice";
-import { RootState, useTypedSelector } from "@store/index";
+// import { RootState, useTypedSelector } from "@store/index";
 
 const PostPreview = () => {
   const dispatch = useDispatch();
 
-  const stateBrand = useTypedSelector(
-    (state: RootState) => state.stepper.form.selectedBrand
-  );
+  // const stateBrand = useTypedSelector(
+  //   (state: RootState) => state.stepper.form.selectedBrand
+  // );
 
   const handleClick = () => {
     dispatch(incrementStep());

@@ -1,4 +1,3 @@
-import { Grid } from "@mui/material";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Login from "../../components/screens/Auth/Login";
 import Registration from "../../components/screens/Auth/Registration";

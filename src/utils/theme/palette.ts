@@ -1,4 +1,3 @@
-import { alpha } from "@mui/material/styles";
 
 export type ColorSchema =
   | "primary"

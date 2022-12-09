@@ -1,5 +1,4 @@
 import { Theme } from "@mui/material/styles";
-import { NONAME } from "dns";
 
 export default function Input(theme: Theme) {
   return {

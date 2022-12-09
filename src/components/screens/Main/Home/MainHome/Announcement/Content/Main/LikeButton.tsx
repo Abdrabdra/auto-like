@@ -1,14 +1,14 @@
-import { Icon, IconButton } from '@mui/material'
-import { FC, useEffect, useState } from 'react'
+import { Icon, IconButton } from "@mui/material"
+import { FC, useEffect, useState } from "react"
 
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
-import FavoriteIcon from '@mui/icons-material/Favorite'
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder"
+import FavoriteIcon from "@mui/icons-material/Favorite"
 
-import { useLikeAnnouncementMutation } from '@store/rtk-api/announcement-rtk/announcementEndpoints'
-import { TypeofEntityEnum } from '@types/Announcement/announcement.enum'
+import { useLikeAnnouncementMutation } from "@store/rtk-api/announcement-rtk/announcementEndpoints"
+import { TypeofEntityEnum } from "types/Announcement/announcement.enum"
 
 interface Props {
-	profilelike: string;
+	profilelike: string
 	id: number
 }
 
@@ -19,8 +19,7 @@ const LikeButton: FC<Props> = ({ profilelike, id }) => {
 		setIconClick(profilelike)
 	}, [profilelike])
 
-	const [like, { isLoading }] = useLikeAnnouncementMutation()
-
+	const [like] = useLikeAnnouncementMutation()
 
 	const handleIconClick = () => {
 		like({ announcementId: id, kind: TypeofEntityEnum.ANNOUNCEMENT })
@@ -30,17 +29,15 @@ const LikeButton: FC<Props> = ({ profilelike, id }) => {
 		<IconButton
 			onClick={handleIconClick}
 			sx={{
-				width: '32px',
-				height: '32px',
-				minWidth: '32px',
-				borderRadius: '5px',
-				color: 'primary.main',
-				backgroundColor: 'secondary.300'
+				width: "32px",
+				height: "32px",
+				minWidth: "32px",
+				borderRadius: "5px",
+				color: "primary.main",
+				backgroundColor: "secondary.300"
 			}}
 		>
-			<Icon
-				component={iconClick === '0' ? FavoriteBorderIcon : FavoriteIcon}
-			/>
+			<Icon component={iconClick === "0" ? FavoriteBorderIcon : FavoriteIcon} />
 		</IconButton>
 	)
 }

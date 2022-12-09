@@ -1,19 +1,26 @@
 // library
-import React, { useEffect, useRef } from 'react'
-import { Box, Button, CircularProgress, Container, Stack, Typography } from '@mui/material'
-import { useFormik } from 'formik'
-import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import React, { useEffect, useRef } from "react"
+import {
+	Box,
+	Button,
+	CircularProgress,
+	Container,
+	Stack,
+	Typography
+} from "@mui/material"
+import { useFormik } from "formik"
+import { useDispatch } from "react-redux"
+import { useNavigate } from "react-router-dom"
 
-import { registration } from '@store/reducers/auth/auth.action'
-import { IRegistration } from '../../../../types/IRegistration'
+import { registration } from "@store/reducers/auth/auth.action"
+import { IRegistration } from "../../../../types/IRegistration"
 
-import AuthBg from '@assets/images/Auth/auth_bg.png'
+import AuthBg from "@assets/images/Auth/auth_bg.png"
 
-import { useTypedSelector } from '../../../../store'
-import { StyledNewInput } from '../../../ui/Input'
-import { ActionsEnum } from '../../../../store/enum'
-import { loginSchema } from '../../../../utils/schema/validation'
+import { useTypedSelector } from "../../../../store"
+import { StyledNewInput } from "../../../ui/Input"
+import { ActionsEnum } from "../../../../store/enum"
+import { loginSchema } from "../../../../utils/schema/validation"
 
 const Registration: React.FC = () => {
 	const navigate = useNavigate()
@@ -23,13 +30,13 @@ const Registration: React.FC = () => {
 	}
 
 	const dispatch = useDispatch()
-	const { isAuth, error, status } = useTypedSelector((state) => state.auth)
+	const { status } = useTypedSelector((state) => state.auth)
 
 	const formik = useFormik({
 		initialValues: {
-			name: '',
-			phone: '',
-			password: ''
+			name: "",
+			phone: "",
+			password: ""
 		},
 		onSubmit: async (values) => {
 			// @ts-ignore
@@ -51,32 +58,32 @@ const Registration: React.FC = () => {
 		<Box>
 			<Box
 				sx={{
-					backgroundColor: 'secondary.100',
-					borderBottomLeftRadius: '70px',
-					borderBottomRightRadius: '70px'
+					backgroundColor: "secondary.100",
+					borderBottomLeftRadius: "70px",
+					borderBottomRightRadius: "70px"
 				}}
 			>
-				<Typography variant='h6' align='center' sx={{ color: 'common.white' }}>
+				<Typography variant="h6" align="center" sx={{ color: "common.white" }}>
 					Auto Like
 				</Typography>
-				<Box sx={{ display: 'flex', justifyContent: 'center' }}>
-					<img src={AuthBg} alt={'Auth Background'} />
+				<Box sx={{ display: "flex", justifyContent: "center" }}>
+					<img src={AuthBg} alt={"Auth Background"} />
 				</Box>
 			</Box>
 			<Container>
-				<Stack sx={{ padding: '20px' }}>
-					<Typography align='center'>Регистрация в taxtaxi.KZ</Typography>
+				<Stack sx={{ padding: "20px" }}>
+					<Typography align="center">Регистрация в taxtaxi.KZ</Typography>
 					<form onSubmit={handleSubmit}>
 						<>
 							<Stack>
 								<Typography>Имя</Typography>
 								<StyledNewInput
 									ref={inputRef}
-									name='name'
+									name="name"
 									value={name}
 									required
 									onChange={handleChange}
-									placeholder='Имя'
+									placeholder="Имя"
 								/>
 								{errors.name && <Typography>{errors.name}</Typography>}
 							</Stack>
@@ -84,44 +91,44 @@ const Registration: React.FC = () => {
 								<Typography>Номер телефона</Typography>
 								<StyledNewInput
 									ref={inputRef}
-									name='phone'
+									name="phone"
 									value={phone}
 									required
 									onChange={handleChange}
-									placeholder='+7 (_ _ _) _ _ _ - _ _ - _ _'
+									placeholder="+7 (_ _ _) _ _ _ - _ _ - _ _"
 								/>
 								{errors.phone && <Typography>{errors.phone}</Typography>}
 							</Stack>
 							<Stack>
 								<Typography>Пароль</Typography>
 								<StyledNewInput
-									id='my-input'
-									aria-describedby='my-helper-text'
-									name='password'
-									type='password'
+									id="my-input"
+									aria-describedby="my-helper-text"
+									name="password"
+									type="password"
 									value={password}
 									onChange={handleChange}
-									placeholder='Введите пароль'
-									autoComplete=''
+									placeholder="Введите пароль"
+									autoComplete=""
 								/>
 								{errors.password && <Typography>{errors.password}</Typography>}
 							</Stack>
 							<Button
-								variant='contained'
-								color='primary'
+								variant="contained"
+								color="primary"
 								disabled={status === ActionsEnum.LOADING}
 								startIcon={
 									status === ActionsEnum.LOADING && (
-										<CircularProgress sx={{ color: '#FFF' }} />
+										<CircularProgress sx={{ color: "#FFF" }} />
 									)
 								}
-								type='submit'
+								type="submit"
 							>
 								Регистрироваться
 							</Button>
 
 							<Typography>
-								Есть аккаунт?{' '}
+								Есть аккаунт?{" "}
 								<Button onClick={() => handleClick()}>Войти</Button>
 							</Typography>
 						</>

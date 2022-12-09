@@ -1,7 +1,6 @@
-import { Button, ButtonProps } from "@mui/material";
+import { Button } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { RootState, useTypedSelector } from "@store/index";
-import { FC } from "react";
 
 interface SubmitButtonProps {
   type?: "button" | "submit" | "reset" | undefined;

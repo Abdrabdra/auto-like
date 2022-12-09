@@ -1,17 +1,24 @@
-import { Box, Grid, Typography } from '@mui/material'
+import { Box, Typography } from "@mui/material"
 
 const OneTag = ({ children }: any) => {
 	return (
-		<Box
+		<Typography
+			variant={"overline"}
 			sx={{
-				backgroundColor: 'secondary.300',
-				padding: '4px 8px 4px 8px',
-				borderRadius: '5px',
-				color: 'grey.100'
+				width: "100%",
+				fontWeight: 500,
+				backgroundColor: "secondary.300",
+				padding: "4px 8px 4px 8px",
+				borderRadius: "5px",
+				color: "grey.100",
+				display: "inline-block",
+				whiteSpace: "nowrap",
+				overflow: "hidden !important",
+				textOverflow: "ellipsis"
 			}}
 		>
-			<Typography sx={{ fontWeight: 500 }}>{children}</Typography>
-		</Box>
+			{children}
+		</Typography>
 	)
 }
 

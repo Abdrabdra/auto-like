@@ -1,14 +1,12 @@
 import * as React from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { Box, Stepper, Button, Typography, Stack } from "@mui/material";
+import { Box, Stepper, Stack } from "@mui/material";
 
 import { RootState, useTypedSelector } from "@store/index";
 import {
-  decrementStep,
-  incrementStep,
-  resetStep,
-  setStep,
+  // decrementStep,
+  // incrementStep,
+  // resetStep,
   setStepTitle,
 } from "@store/reducers/stepper/stepper.slice";
 
@@ -26,31 +24,29 @@ import PostSelectCondition from "./PostSelectCondition";
 import PostSelectPrice from "./PostSelectPrice";
 import PostSelectPicture from "./PostSelectPicture";
 import PostSelectContacts from "./PostSelectContacts";
-import { OneHome } from "../../Home";
 import PostPreview from "./PostPreview";
 import PostVerification from "./PostVerification";
 
 const PostStepper = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const activeStep = useTypedSelector((state: RootState) => state.stepper.step);
 
-  const isStepOptional = (step: number) => {
-    return step === 20;
-  };
-  const handleNavigateMainPage = () => {
-    navigate("/app/home");
-  };
-  const handleNext = () => {
-    dispatch(incrementStep());
-  };
-  const handleBack = () => {
-    dispatch(decrementStep());
-  };
-  const handleReset = () => {
-    dispatch(resetStep());
-  };
+  // const isStepOptional = (step: number) => {
+  //   return step === 20;
+  // };
+  // const handleNavigateMainPage = () => {
+  //   navigate("/app/home");
+  // };
+  // const handleNext = () => {
+  //   dispatch(incrementStep());
+  // };
+  // const handleBack = () => {
+  //   dispatch(decrementStep());
+  // };
+  // const handleReset = () => {
+  //   dispatch(resetStep());
+  // };
 
   React.useEffect(() => {
     dispatch(setStepTitle(STEP_TITLES[activeStep]));

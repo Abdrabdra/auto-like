@@ -1,25 +1,20 @@
-import InfoStats from '@components/modules/InfoStat/InfoStat'
-import { Box, Container, Stack } from '@mui/material'
-import { useParams } from 'react-router-dom'
+import { Box, Container, Stack } from "@mui/material"
 import {
 	Description,
 	DoubleTab,
 	ImageBox,
 	TagBox,
 	TitleBox
-} from './BodyOneHome'
+} from "./BodyOneHome"
 
 const OneHome = () => {
-	const params = useParams()
-	const { announceId } = params
-
 	return (
 		<Box>
 			<Container>
 				<Stack spacing={1}>
 					<ImageBox />
 					<TagBox />
-					<TitleBox title='Toyota Alphard' price={15000} />
+					<TitleBox title="Toyota Alphard" price={15000} />
 					<DoubleTab />
 					<Description />
 					{/*<InfoStats views={770} publishDate={'7'} />*/}

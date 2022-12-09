@@ -32,7 +32,6 @@ const MainDrawer = () => {
 		matchedPath != null ? setPath(matchedPath) : setPath('/app/home')
 	}, [location])
 
-	const [open, setOpen] = React.useState(false)
 
 	return (
 		<>

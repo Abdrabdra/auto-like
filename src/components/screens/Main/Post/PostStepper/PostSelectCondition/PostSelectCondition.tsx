@@ -1,15 +1,11 @@
 import { Box, Stack, Tab, Tabs } from "@mui/material";
 
 import { useDispatch } from "react-redux";
-import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
-import SearchIcon from "@mui/icons-material/Search";
 
-import { selectMarks } from "./PostSelectCondition.constants";
 import {
   incrementStep,
   setFormSelectedCondition,
 } from "@store/reducers/stepper/stepper.slice";
-import { RootState, useTypedSelector } from "@store/index";
 import {
   a11yProps,
   TabPanel,
@@ -22,9 +18,9 @@ import SubmitButton from "@components/ui/Button/SubmitButton";
 
 const PostSelectCondition = () => {
   const dispatch = useDispatch();
-  const selectedMark = useTypedSelector(
-    (state: RootState) => state.stepper.form.selectedMark
-  );
+  // const selectedMark = useTypedSelector(
+  //   (state: RootState) => state.stepper.form.selectedMark
+  // );
 
   const handleClick = (value: string) => {
     setTimeout(() => {

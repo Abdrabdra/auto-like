@@ -1,13 +1,10 @@
 import {
   Box,
-  Container,
   IconButton,
-  Input,
   Stack,
   TextField,
 } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
-import { AccountCircle } from "@mui/icons-material";
 
 const OneChatDrawer = () => {
   return (

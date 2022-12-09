@@ -1,5 +1,5 @@
 import Like from "@components/screens/Main/Like";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 const LikePage = () => {
   return (

@@ -1,25 +1,14 @@
 import {
   Box,
-  Button,
-  FormControl,
-  Input,
-  InputAdornment,
-  OutlinedInput,
   Stack,
-  TextField,
-  Typography,
 } from "@mui/material";
 
-import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
-import SearchIcon from "@mui/icons-material/Search";
 import { useDispatch } from "react-redux";
 
 import { RootState, useTypedSelector } from "@store/index";
 import {
   incrementStep,
-  setFormSelectedMark,
   setFormSelectedPicture,
-  setFormSelectedPrice,
 } from "@store/reducers/stepper/stepper.slice";
 
 import { Form, Formik } from "formik";

@@ -1,28 +1,59 @@
-import { FC } from 'react'
-import { Box, Stack, Typography } from '@mui/material'
-import { Pagination, Navigation } from 'swiper'
-import { Swiper, SwiperSlide } from 'swiper/react'
+import { FC } from "react"
 
-import 'swiper/css'
-import 'swiper/css/bundle'
-import OneTag from './OneTag'
-import numberWithSpaces from '@utils/numberWithSpaces'
+import OneTag from "./OneTag"
+import numberWithSpaces from "@utils/numberWithSpaces"
+
+import { Swiper, SwiperSlide } from "swiper/react"
+
+import "swiper/css"
+import "swiper/css/free-mode"
+import "./Tags.style.scss"
+
+import { FreeMode } from "swiper"
+import { Box, useMediaQuery } from "@mui/material"
 
 interface Props {
-	tags: { year: number; state: string; mileage: number; body: string; volume: number };
+	tags: {
+		year: number
+		state: string
+		mileage: number
+		body: string
+		volume: number
+	}
 }
 
 const Tags: FC<Props> = ({ tags }) => {
 	const { year, state, mileage, body, volume } = tags
 
+	const is400 = useMediaQuery("(min-width: 400px)")
+	const is550 = useMediaQuery("(min-width: 550px)")
+
 	return (
-		<Stack direction='row' spacing={1}>
-			<OneTag tags>{year}</OneTag>
-			<OneTag tags>{state}</OneTag>
-			<OneTag tags>{numberWithSpaces(mileage)}км</OneTag>
-			<OneTag tags>{body}</OneTag>
-			<OneTag tags>{volume}л</OneTag>
-		</Stack>
+		<Box>
+			<Swiper
+				slidesPerView={is550 ? 5 : is400 ? 4 : 3}
+				spaceBetween={4}
+				freeMode={true}
+				modules={[FreeMode]}
+				className="mySwiper"
+			>
+				<SwiperSlide>
+					<OneTag tags>{year}</OneTag>
+				</SwiperSlide>
+				<SwiperSlide>
+					<OneTag tags>{state}</OneTag>
+				</SwiperSlide>
+				<SwiperSlide>
+					<OneTag tags>{numberWithSpaces(mileage)}км</OneTag>
+				</SwiperSlide>
+				<SwiperSlide>
+					<OneTag tags>{body}</OneTag>
+				</SwiperSlide>
+				<SwiperSlide>
+					<OneTag tags>{volume}л</OneTag>
+				</SwiperSlide>
+			</Swiper>
+		</Box>
 	)
 }
 

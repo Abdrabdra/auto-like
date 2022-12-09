@@ -1,7 +1,5 @@
-import { NoEncryptionTwoTone } from "@mui/icons-material";
 import {
   InputBase,
-  InputBaseProps,
   TextField,
   TextFieldProps,
 } from "@mui/material";

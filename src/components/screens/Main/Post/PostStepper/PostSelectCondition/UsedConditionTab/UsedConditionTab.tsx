@@ -1,12 +1,9 @@
 import {
   Box,
   Checkbox,
-  FormControl,
   FormControlLabel,
   FormGroup,
-  Input,
   InputAdornment,
-  InputLabel,
   OutlinedInput,
   Stack,
   Typography,

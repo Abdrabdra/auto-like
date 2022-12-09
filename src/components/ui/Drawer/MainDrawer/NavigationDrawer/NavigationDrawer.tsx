@@ -3,10 +3,8 @@ import {
   Button,
   Icon,
   Paper,
-  SvgIconTypeMap,
   Typography,
 } from "@mui/material";
-import { OverridableComponent } from "@mui/material/OverridableComponent";
 import { FC } from "react";
 import { NavLink } from "react-router-dom";
 import AbsoluteElements from "./AbsoluteElements";

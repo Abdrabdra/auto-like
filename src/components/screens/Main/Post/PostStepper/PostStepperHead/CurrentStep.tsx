@@ -1,7 +1,4 @@
 import { Box } from "@mui/material";
-import { FC } from "react";
-import { useDispatch } from "react-redux";
-import { RootState, useTypedSelector } from "store";
 
 const CurrentStep = () => {
   return (

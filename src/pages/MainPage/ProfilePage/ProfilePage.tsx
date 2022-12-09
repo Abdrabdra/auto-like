@@ -1,5 +1,5 @@
 import { Profile } from "@components/screens/Main";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 const ProfilePage = () => {
   return (

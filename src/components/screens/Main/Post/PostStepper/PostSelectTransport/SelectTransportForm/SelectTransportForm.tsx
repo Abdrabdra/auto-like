@@ -1,20 +1,16 @@
 import SubmitButton from "@components/ui/Button/SubmitButton";
 import {
-  Button,
   Divider,
   FormControl,
   FormControlLabel,
   Radio,
   Box,
   RadioGroup,
-  Stack,
-  FormLabel,
 } from "@mui/material";
-import { Form, Formik, useFormik } from "formik";
-import { FC, useEffect, useState } from "react";
+import { Form, Formik } from "formik";
+import { FC } from "react";
 import { useDispatch } from "react-redux";
 
-import { RootState, useTypedSelector } from "@store/index";
 
 import {
   incrementStep,

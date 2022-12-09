@@ -7,7 +7,6 @@ import ArrowBackIosNewRoundedIcon from "@mui/icons-material/ArrowBackIosNewRound
 import {
   decrementStep,
   setDefaultState,
-  setStep,
 } from "@store/reducers/stepper/stepper.slice";
 import { RootState, useTypedSelector } from "@store/index";
 

@@ -1,13 +1,8 @@
-import { Box, Button, Icon, Input, Stack } from "@mui/material";
+import {  Button, Icon, Input, Stack } from "@mui/material";
 import TuneOutlinedIcon from "@mui/icons-material/TuneOutlined";
-import { useNavigate } from "react-router-dom";
 
 import * as React from "react";
 import Dialog from "@mui/material/Dialog";
-import ListItemText from "@mui/material/ListItemText";
-import ListItem from "@mui/material/ListItem";
-import List from "@mui/material/List";
-import Divider from "@mui/material/Divider";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
@@ -27,11 +22,6 @@ const Transition = React.forwardRef(function Transition(
 });
 
 const TopHomeDrawer = () => {
-  const navigate = useNavigate();
-
-  const handleClick = () => {
-    navigate("/app/home/filter");
-  };
 
   const [open, setOpen] = React.useState(false);
 

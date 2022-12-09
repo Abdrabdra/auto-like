@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Box, Stack, Typography } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import numberWithSpaces from "@utils/numberWithSpaces";
 import { RootState, useTypedSelector } from "@store/index";
 

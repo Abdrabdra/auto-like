@@ -1,7 +1,5 @@
 import { Box } from "@mui/material";
-import { FC, useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { RootState, useTypedSelector } from "store";
+import { FC } from "react";
 
 interface Props {
   step: number;

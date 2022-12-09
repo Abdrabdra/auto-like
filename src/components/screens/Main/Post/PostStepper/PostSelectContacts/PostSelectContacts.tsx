@@ -1,17 +1,10 @@
 import {
   Box,
-  Button,
-  FormControl,
-  Input,
-  InputAdornment,
   OutlinedInput,
   Stack,
-  TextField,
   Typography,
 } from "@mui/material";
 
-import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
-import SearchIcon from "@mui/icons-material/Search";
 import { useDispatch } from "react-redux";
 
 import { RootState, useTypedSelector } from "@store/index";
@@ -24,7 +17,6 @@ import {
 import { Form, Formik } from "formik";
 import AbsoluteBox from "@components/modules/AbsoluteBox";
 import SubmitButton from "@components/ui/Button/SubmitButton";
-import { useEffect, useState } from "react";
 
 const PostSelectContacts = () => {
   const dispatch = useDispatch();

@@ -26,7 +26,6 @@ const Main: FC<Props> = ({ car }) => {
 		marka,
 		city,
 		body,
-		like,
 		countImages,
 		profilelike
 	} = car
@@ -69,7 +68,7 @@ const Main: FC<Props> = ({ car }) => {
 					<Icon component={PhotoCameraIcon} sx={{ fontSize: 15 }} />
 					<Typography sx={{ fontSize: '12px', fontWeight: 500, lineHeight: '14px' }}>{countImages}</Typography>
 				</Stack>
-				{avatar && <img src={avatar} alt='car image' />}
+				{avatar && <img src={avatar} alt='Car avatar' />}
 			</Box>
 			<Stack justifyContent='center' sx={{ flex: '1' }}>
 				<Box

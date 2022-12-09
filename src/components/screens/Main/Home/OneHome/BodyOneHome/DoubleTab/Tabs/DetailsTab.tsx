@@ -99,7 +99,7 @@ const DetailsTab = () => {
                 {row.value}
               </Typography>
             </Box>
-            {len != index + 1 && <Divider />}
+            {len !== index + 1 && <Divider />}
           </Stack>
         ))}
       </Stack>

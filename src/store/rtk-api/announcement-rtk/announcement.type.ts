@@ -1,4 +1,4 @@
-import { TypeofEntityEnum } from '@types/Announcement/announcement.enum'
+import { TypeofEntityEnum } from './../../../types/Announcement/announcement.enum';
 
 export interface IAnnouncements {
 	data: IAnnouncement[],
