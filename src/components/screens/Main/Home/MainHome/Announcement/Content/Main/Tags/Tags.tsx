@@ -31,7 +31,7 @@ const Tags: FC<Props> = ({ tags }) => {
 	return (
 		<Box>
 			<Swiper
-				slidesPerView={is550 ? 5 : is400 ? 4 : 3}
+				slidesPerView={is550 ? 5 : is400 ? 3.5 : 2.5}
 				spaceBetween={4}
 				freeMode={true}
 				modules={[FreeMode]}
