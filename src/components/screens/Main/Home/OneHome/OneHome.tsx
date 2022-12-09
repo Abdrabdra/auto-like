@@ -1,4 +1,7 @@
 import { Box, Container, Stack } from "@mui/material"
+import { useGetOneAnnouncementQuery } from "@store/rtk-api/announcement-rtk/announcementEndpoints"
+import { useParams } from "react-router-dom"
+
 import {
 	Description,
 	DoubleTab,
@@ -8,6 +11,12 @@ import {
 } from "./BodyOneHome"
 
 const OneHome = () => {
+	const { announceId } = useParams()
+
+	const { data, isLoading } = useGetOneAnnouncementQuery(
+		announceId ? announceId : ""
+	)
+
 	return (
 		<Box>
 			<Container>
