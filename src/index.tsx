@@ -1,9 +1,10 @@
 import ReactDOM from "react-dom/client"
 import { Provider } from "react-redux"
 import { BrowserRouter } from "react-router-dom"
+import { PersistGate } from "redux-persist/integration/react"
 
 import App from "./App"
-import { store } from "./store"
+import { store, persistor } from "./store"
 import ThemeProvider from "./utils/theme"
 
 import "./assets/styles/style.scss"
@@ -14,7 +15,9 @@ root.render(
 	<Provider store={store}>
 		<BrowserRouter>
 			<ThemeProvider>
-				<App />
+				<PersistGate loading={null} persistor={persistor}>
+					<App />
+				</PersistGate>
 			</ThemeProvider>
 		</BrowserRouter>
 	</Provider>
