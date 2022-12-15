@@ -1,5 +1,6 @@
-import { Button, Stack } from "@mui/material"
+import { Button, Icon, Stack } from "@mui/material"
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder"
+import FavoriteIcon from "@mui/icons-material/Favorite"
 import { useState } from "react"
 
 const TagBox = () => {
@@ -32,7 +33,11 @@ const TagBox = () => {
 				</Button>
 			</Stack>
 			<Button
-				startIcon={<FavoriteBorderIcon />}
+				// startIcon={
+				// 	<Icon
+				// 		component={iconClick === "0" ? FavoriteBorderIcon : FavoriteIcon}
+				// 	/>
+				// }
 				onClick={handleClick}
 				sx={{
 					backgroundColor: "secondary.300",

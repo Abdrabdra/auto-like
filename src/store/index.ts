@@ -23,11 +23,17 @@ import userApi from "./rtk-api/user-rtk/userApi"
 
 const persistConfig = {
 	key: "root",
-	storage
+	storage,
+	whitelist: ["whitelist"]
+}
+
+const whitelistPersistConfig = {
+	key: "whitelist",
+	storage: storage
 }
 
 const rootReducer = combineReducers({
-	auth: authReducer,
+	auth: persistReducer(whitelistPersistConfig, authReducer),
 	stepper: stepperReducer,
 
 	[announcementApi.reducerPath]: announcementApi.reducer,
