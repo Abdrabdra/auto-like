@@ -44,7 +44,7 @@ const Tags: FC<Props> = ({ tags }) => {
 					<OneTag tags>{state}</OneTag>
 				</SwiperSlide>
 				<SwiperSlide>
-					<OneTag tags>{numberWithSpaces(mileage)}км</OneTag>
+					<OneTag tags>{numberWithSpaces(mileage ? mileage : 0)}км</OneTag>
 				</SwiperSlide>
 				<SwiperSlide>
 					<OneTag tags>{body}</OneTag>
