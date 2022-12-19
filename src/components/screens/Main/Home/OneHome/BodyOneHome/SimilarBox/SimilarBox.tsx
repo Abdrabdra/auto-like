@@ -39,8 +39,8 @@ const SimilarBox = () => {
 				spaceBetween={12}
 				className="SimilarSwiper"
 			>
-				{data.map((row) => (
-					<SwiperSlide>
+				{data.map((row, index) => (
+					<SwiperSlide key={index}>
 						<OneSimilar />
 					</SwiperSlide>
 				))}

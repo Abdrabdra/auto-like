@@ -1,18 +1,20 @@
 import { Box, Divider, Stack, Typography } from "@mui/material"
+import numberWithSpaces from "@utils/numberWithSpaces"
+import { StatementEnum, WheelEnum } from "types/enums"
 
-const DetailsTab = () => {
+const DetailsTab = ({ details }: any) => {
 	const stateData = [
-		{ title: "Город" },
-		{ title: "Поколение" },
-		{ title: "Кузов" },
-		{ title: "Объем двигателя" },
-		{ title: "Пробег" },
-		{ title: "Коробка передач" },
-		{ title: "Привод" },
-		{ title: "Руль" },
-		{ title: "Цвет" },
-		{ title: "Растаможен в КЗ" },
-		{ title: "Состояние" }
+		{ title: "Город", value: details.city },
+		{ title: "Поколение", value: details.generation },
+		{ title: "Кузов", value: details.body },
+		{ title: "Объем двигателя", value: details.volume },
+		{ title: "Пробег", value: details.mileage },
+		{ title: "Коробка передач", value: details.transmission },
+		{ title: "Привод", value: details.driveUnit },
+		{ title: "Руль", value: details.steeringWheel },
+		{ title: "Цвет", value: details.color },
+		{ title: "Растаможен в КЗ", value: details.customsClearance },
+		{ title: "Состояние", value: details.state }
 	]
 
 	return (
@@ -45,7 +47,25 @@ const DetailsTab = () => {
 									fontWeight: 500
 								}}
 							>
-								фыв
+								{index === 3
+									? `${row.value}л`
+									: index === 4
+									? `${numberWithSpaces(row.value)}км`
+									: index === 7
+									? row.value === WheelEnum.LEFT
+										? "Слева"
+										: "Справа"
+									: index === 9
+									? row.value
+										? "Да"
+										: "Нет"
+									: index === 10
+									? row.value === StatementEnum.EMERGENCY
+										? "Аварийная"
+										: row.value === StatementEnum.NEW
+										? "Новое"
+										: "Б/У"
+									: row.value}
 							</Typography>
 						</Box>
 						{stateData.length !== index + 1 && <Divider />}

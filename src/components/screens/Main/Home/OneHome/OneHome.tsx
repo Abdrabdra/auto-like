@@ -20,6 +20,25 @@ const OneHome = () => {
 		announceId ? announceId : ""
 	)
 
+	// need to fix generation, transmission, color. Waiting changes from back
+	const details = data && {
+		city: data.a.city.title ? data.a.city.title : "",
+		generation: "Поколение",
+		body: data.a.body.title ? data.a.body.title : "",
+		volume: data.a.about?.volume ? data.a.about.volume : "",
+		mileage: data.a.about?.mileage ? data.a.about.mileage : "",
+		transmission: "Коробка Передач",
+		driveUnit: data.a.about?.driveUnit ? data.a.about.driveUnit : "",
+		steeringWheel: data.a.about?.steeringWheel
+			? data.a.about.steeringWheel
+			: "",
+		color: "Цвет",
+		customsClearance: data.a.about?.customsClearance
+			? data.a.about.customsClearance
+			: "",
+		state: data.a.about?.state ? data.a.about.state : ""
+	}
+
 	return (
 		<Box>
 			<Container>
@@ -33,7 +52,7 @@ const OneHome = () => {
 							title={`${data.a.marka.title} ${data.a.model.title}`}
 							price={data.a.price}
 						/>
-						<DoubleTab />
+						<DoubleTab details={details} />
 						<Description />
 						<OptionBox />
 						<SimilarBox />
