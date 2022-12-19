@@ -10,6 +10,7 @@ import {
 	TitleBox
 } from "./BodyOneHome"
 import OptionBox from "./BodyOneHome/OptionBox"
+import SimilarBox from "./BodyOneHome/SimilarBox"
 
 const OneHome = () => {
 	const { announceId } = useParams()
@@ -51,7 +52,7 @@ const OneHome = () => {
 						<DoubleTab />
 						<Description />
 						<OptionBox />
-						
+						<SimilarBox />
 					</Stack>
 				) : null}
 			</Container>
