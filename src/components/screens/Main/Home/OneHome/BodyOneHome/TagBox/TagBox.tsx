@@ -33,11 +33,12 @@ const TagBox = () => {
 				</Button>
 			</Stack>
 			<Button
-				// startIcon={
-				// 	<Icon
-				// 		component={iconClick === "0" ? FavoriteBorderIcon : FavoriteIcon}
-				// 	/>
-				// }
+				startIcon={
+					<Icon component={FavoriteBorderIcon} />
+					// <Icon
+					// 	component={iconClick === "0" ? FavoriteBorderIcon : FavoriteIcon}
+					// />
+				}
 				onClick={handleClick}
 				sx={{
 					backgroundColor: "secondary.300",

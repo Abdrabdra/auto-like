@@ -1,4 +1,4 @@
-import { Box, Container, Stack } from "@mui/material"
+import { Box, Container, Skeleton, Stack, Typography } from "@mui/material"
 import { useGetOneAnnouncementQuery } from "@store/rtk-api/announcement-rtk/announcementEndpoints"
 import { useParams } from "react-router-dom"
 
@@ -9,6 +9,7 @@ import {
 	TagBox,
 	TitleBox
 } from "./BodyOneHome"
+import OptionBox from "./BodyOneHome/OptionBox"
 
 const OneHome = () => {
 	const { announceId } = useParams()
@@ -20,14 +21,39 @@ const OneHome = () => {
 	return (
 		<Box>
 			<Container>
-				<Stack spacing={1}>
-					<ImageBox />
-					<TagBox />
-					<TitleBox title="Toyota Alphard" price={15000} />
-					<DoubleTab />
-					<Description />
-					{/*<InfoStats views={770} publishDate={'7'} />*/}
-				</Stack>
+				{isLoading ? (
+					<Stack spacing={1}>
+						<Skeleton
+							animation={"wave"}
+							variant={"rectangular"}
+							width={"100%"}
+							height={200}
+							sx={{
+								borderRadius: "20px"
+							}}
+						/>
+						<Skeleton />
+						<Stack>
+							<Skeleton animation={"wave"} width="50%" sx={{ pt: 1 }} />
+							<Skeleton animation={"wave"} width="35%" sx={{ pt: 1 }} />
+						</Stack>
+						<Skeleton animation={"wave"} height={287} />
+						<Skeleton animation={"wave"} height={137} />
+					</Stack>
+				) : data ? (
+					<Stack spacing={1}>
+						<ImageBox />
+						<TagBox />
+						<TitleBox
+							title={`${data.a.marka.title} ${data.a.model.title}`}
+							price={data.a.price}
+						/>
+						<DoubleTab />
+						<Description />
+						<OptionBox />
+						
+					</Stack>
+				) : null}
 			</Container>
 		</Box>
 	)
