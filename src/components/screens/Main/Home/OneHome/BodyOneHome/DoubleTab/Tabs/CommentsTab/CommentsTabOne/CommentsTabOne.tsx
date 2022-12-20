@@ -1,10 +1,12 @@
 import { FC, useState } from "react"
 import { Box, Button, IconButton, Stack, Typography } from "@mui/material"
 
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder"
 import { IOneComment } from "types/Comment/OneComment"
 import { useGetCommentsQuery } from "@store/rtk-api/comments-rtk/commentEndpoints"
 import CommentsTabOneSkeleton from "./CommentsTabOneSkeleton"
+
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder"
+import CloseIcon from "@mui/icons-material/Close"
 
 interface Props {
 	row: IOneComment
@@ -70,6 +72,7 @@ const CommentsTabOne: FC<Props> = ({ row }) => {
 			{Number(subCount) ? (
 				<Button
 					onClick={handleClick}
+					endIcon={isOpen && <CloseIcon />}
 					sx={{
 						justifyContent: "flex-start",
 						width: "146px",
@@ -85,7 +88,13 @@ const CommentsTabOne: FC<Props> = ({ row }) => {
 			) : null}
 
 			{isOpen && (
-				<Box sx={{ paddingLeft: "50px", paddingBottom: "10px" }}>
+				<Box
+					sx={{
+						paddingLeft: "50px",
+						paddingBottom: "10px",
+						paddingTop: "5px"
+					}}
+				>
 					{isLoading ? (
 						<CommentsTabOneSkeleton />
 					) : isSuccess ? (
