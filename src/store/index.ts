@@ -19,6 +19,7 @@ import stepperReducer from "./reducers/stepper/stepper.slice"
 
 //rtk
 import announcementApi from "./rtk-api/announcement-rtk/announcementApi"
+import commentApi from "./rtk-api/comments-rtk/commentApi"
 import userApi from "./rtk-api/user-rtk/userApi"
 
 const persistConfig = {
@@ -37,6 +38,7 @@ const rootReducer = combineReducers({
 	stepper: stepperReducer,
 
 	[announcementApi.reducerPath]: announcementApi.reducer,
+	[commentApi.reducerPath]: commentApi.reducer,
 	[userApi.reducerPath]: userApi.reducer
 })
 
@@ -50,7 +52,11 @@ export const store = configureStore({
 			serializableCheck: {
 				ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
 			}
-		}).concat(announcementApi.middleware, userApi.middleware)
+		}).concat(
+			announcementApi.middleware,
+			commentApi.middleware,
+			userApi.middleware
+		)
 })
 
 export const persistor = persistStore(store)

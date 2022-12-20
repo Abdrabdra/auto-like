@@ -52,8 +52,11 @@ const OneHome = () => {
 							title={`${data.a.marka.title} ${data.a.model.title}`}
 							price={data.a.price}
 						/>
-						<DoubleTab details={details} />
-						<Description />
+						<DoubleTab
+							commentsCount={data.count.commentsCount}
+							details={details}
+						/>
+						<Description description={data.a.description} />
 						<OptionBox />
 						<SimilarBox />
 					</Stack>

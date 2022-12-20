@@ -4,7 +4,12 @@ import { Box, Stack, Tab, Tabs } from "@mui/material"
 import { a11yProps, TabPanel } from "./TabConfig"
 import { CommentsTab, DetailsTab } from "./Tabs"
 
-const DoubleTab = ({ details }: any) => {
+interface Props {
+	details: any
+	commentsCount: number
+}
+
+const DoubleTab: React.FC<Props> = ({ details, commentsCount }) => {
 	const [value, setValue] = React.useState(0)
 
 	const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -16,7 +21,11 @@ const DoubleTab = ({ details }: any) => {
 			<Box sx={{ borderBottom: 1, borderColor: "divider" }}>
 				<Tabs value={value} onChange={handleChange} aria-label="basic tabs">
 					<Tab label="Детали" {...a11yProps(0)} sx={{ flex: "1" }} />
-					<Tab label="Комментарии (176)" {...a11yProps(1)} sx={{ flex: "1" }} />
+					<Tab
+						label={`Комментарии (${commentsCount})`}
+						{...a11yProps(1)}
+						sx={{ flex: "1" }}
+					/>
 				</Tabs>
 			</Box>
 			<Box>
@@ -24,7 +33,7 @@ const DoubleTab = ({ details }: any) => {
 					<DetailsTab details={details} />
 				</TabPanel>
 				<TabPanel value={value} index={1}>
-					<CommentsTab />
+					<CommentsTab commentsCount={commentsCount} />
 				</TabPanel>
 			</Box>
 		</Stack>
