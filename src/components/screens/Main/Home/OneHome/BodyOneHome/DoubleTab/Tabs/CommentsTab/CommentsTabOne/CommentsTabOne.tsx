@@ -24,7 +24,9 @@ const CommentsTabOne: FC<Props> = ({ row }) => {
 		parentId: id
 	}
 
-	const { data, isLoading, isSuccess } = useGetCommentsQuery(queryParams)
+	const { data, isLoading, isSuccess } = useGetCommentsQuery(queryParams, {
+		skip: Number(subCount) > 0 && isOpen ? false : true
+	})
 
 	return (
 		<Stack spacing={0.5}>
@@ -87,7 +89,7 @@ const CommentsTabOne: FC<Props> = ({ row }) => {
 				</Button>
 			) : null}
 
-			{isOpen && (
+			{isOpen ? (
 				<Box
 					sx={{
 						paddingLeft: "50px",
@@ -105,7 +107,7 @@ const CommentsTabOne: FC<Props> = ({ row }) => {
 						</Stack>
 					) : null}
 				</Box>
-			)}
+			) : null}
 		</Stack>
 	)
 }

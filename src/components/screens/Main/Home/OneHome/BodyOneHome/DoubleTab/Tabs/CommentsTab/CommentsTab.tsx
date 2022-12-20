@@ -13,6 +13,7 @@ import { useGetCommentsQuery } from "@store/rtk-api/comments-rtk/commentEndpoint
 
 import CommentsTabSkeleton from "./CommentsTabSkeleton"
 import CommentsTabOne from "./CommentsTabOne"
+import CommentsTabCreate from "./CommentsTabCreate"
 
 interface Props {
 	commentsCount: number
@@ -45,7 +46,14 @@ const CommentsTab: FC<Props> = ({ commentsCount }) => {
 			) : isLoading ? (
 				<CommentsTabSkeleton />
 			) : isSuccess ? (
-				data.data.map((row) => <CommentsTabOne key={row.id} row={row} />)
+				<Stack>
+					<CommentsTabCreate />
+					<Stack spacing={4}>
+						{data.data.map((row) => (
+							<CommentsTabOne key={row.id} row={row} />
+						))}
+					</Stack>
+				</Stack>
 			) : (
 				<Stack>Error</Stack>
 			)}
