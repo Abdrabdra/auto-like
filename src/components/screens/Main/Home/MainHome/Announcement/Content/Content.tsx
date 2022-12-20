@@ -4,9 +4,10 @@ import { useGetAnnouncementsQuery } from "@store/rtk-api/announcement-rtk/announ
 
 import InfoStats from "@components/modules/InfoStat/InfoStat"
 import Main from "./Main/Main"
+import ContentSkeleton from "./ContentSkeleton"
 
 const Content = () => {
-	const { data } = useGetAnnouncementsQuery("")
+	const { data, isLoading, isSuccess } = useGetAnnouncementsQuery("")
 
 	return (
 		<Box>
@@ -14,8 +15,10 @@ const Content = () => {
 				Объявления
 			</Typography>
 			<Stack spacing={1.5}>
-				{data &&
-					data.data.map((car) => (
+				{isLoading ? (
+					<ContentSkeleton />
+				) : isSuccess ? (
+					data?.data.map((car) => (
 						<Box
 							key={car.id}
 							sx={{
@@ -27,7 +30,10 @@ const Content = () => {
 							<Main car={car} />
 							<InfoStats views={car.views} publishDate={car.createdAt} />
 						</Box>
-					))}
+					))
+				) : (
+					"Ошибка при загрузки"
+				)}
 			</Stack>
 		</Box>
 	)
