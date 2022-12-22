@@ -25,7 +25,8 @@ function App() {
 					element={isAuth ? <Navigate to="/app" /> : <Auth />}
 				/>
 				<Route path="error" element={<Error />} />
-				<Route path="*" element={<Navigate to={"/error"} />} />
+				{/* <Route path="*" element={} /> */}
+				{/* <Route path="*" element={<Navigate to={"/error"} />} /> */}
 			</Routes>
 		</>
 	)
