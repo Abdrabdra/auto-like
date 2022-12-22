@@ -1,6 +1,6 @@
 import { Container, Stack } from "@mui/material"
 import ProfileInfo from "./ProfileInfo"
-import ProfileMyAnnounce from "./ProfileMyAnnounce"
+import ProfileAnnouncements from "./ProfileAnnouncements"
 import ProfileSettings from "./ProfileSettings"
 import ProfileStatistics from "./ProfileStatistics"
 
@@ -16,7 +16,7 @@ const Profile = () => {
 						<ProfileSettings />
 					</Stack>
 
-					<ProfileMyAnnounce />
+					<ProfileAnnouncements />
 				</Stack>
 			</Container>
 		</Stack>

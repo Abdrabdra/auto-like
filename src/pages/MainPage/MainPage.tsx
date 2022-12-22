@@ -1,3 +1,5 @@
+import SuspenseLoader from "@components/modules/SuspenseLoader"
+import { CircularProgress } from "@mui/material"
 import React from "react"
 import { Navigate, Route, Routes } from "react-router-dom"
 
@@ -17,7 +19,7 @@ const MainPage = () => {
 				<Route
 					path="home/*"
 					element={
-						<React.Suspense fallback={<div>Загрузка...</div>}>
+						<React.Suspense fallback={<SuspenseLoader />}>
 							<HomePage />
 						</React.Suspense>
 					}
@@ -25,7 +27,7 @@ const MainPage = () => {
 				<Route
 					path="like/*"
 					element={
-						<React.Suspense fallback={<div>Загрузка...</div>}>
+						<React.Suspense fallback={<SuspenseLoader />}>
 							<LikePage />
 						</React.Suspense>
 					}
@@ -33,7 +35,7 @@ const MainPage = () => {
 				<Route
 					path="post/*"
 					element={
-						<React.Suspense fallback={<div>Загрузка...</div>}>
+						<React.Suspense fallback={<SuspenseLoader />}>
 							<PostPage />
 						</React.Suspense>
 					}
@@ -41,7 +43,7 @@ const MainPage = () => {
 				<Route
 					path="chat/*"
 					element={
-						<React.Suspense fallback={<div>Загрузка...</div>}>
+						<React.Suspense fallback={<SuspenseLoader />}>
 							<ChatPage />
 						</React.Suspense>
 					}
@@ -49,7 +51,7 @@ const MainPage = () => {
 				<Route
 					path="profile/*"
 					element={
-						<React.Suspense fallback={<div>Загрузка...</div>}>
+						<React.Suspense fallback={<SuspenseLoader />}>
 							<ProfilePage />
 						</React.Suspense>
 					}
