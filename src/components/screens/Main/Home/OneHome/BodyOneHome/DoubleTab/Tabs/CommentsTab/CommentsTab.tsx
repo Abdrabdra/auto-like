@@ -46,8 +46,9 @@ const CommentsTab: FC<Props> = ({ commentsCount }) => {
 			) : isLoading ? (
 				<CommentsTabSkeleton />
 			) : isSuccess ? (
-				<Stack>
+				<Stack spacing={2}>
 					<CommentsTabCreate />
+
 					<Stack spacing={4}>
 						{data.data.map((row) => (
 							<CommentsTabOne key={row.id} row={row} />

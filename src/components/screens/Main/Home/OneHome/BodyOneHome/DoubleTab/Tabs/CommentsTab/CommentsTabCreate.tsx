@@ -6,6 +6,8 @@ import { TypeofEntityEnum } from "types/enums"
 import { ICreateCommentRequest } from "types/Comment/Comment"
 
 import { useCreateCommentMutation } from "@store/rtk-api/comments-rtk/commentEndpoints"
+import { StyledMainInput } from "@components/ui/Input"
+import { MainButton } from "@components/ui/Button"
 
 const CommentsTabCreate = () => {
 	const { announceId } = useParams()
@@ -25,34 +27,28 @@ const CommentsTabCreate = () => {
 				backgroundColor: "common.white"
 			}}
 		>
-			<Stack
-				sx={{
-					backgroundColor: "grey.200",
-					borderRadius: "12px",
-					padding: "12px",
-					minHeight: "55px"
+			<Formik
+				initialValues={{ text: "" }}
+				onSubmit={(values, actions) => {
+					body && create({ ...body, ...values })
 				}}
 			>
-				<Formik
-					initialValues={{ text: "" }}
-					onSubmit={(values, actions) => {
-						body && create({ ...body, ...values })
-					}}
-				>
-					{({ handleSubmit, handleChange, errors, values }) => (
-						<form onSubmit={handleSubmit}>
-							<input
+				{({ handleSubmit, handleChange, errors, values }) => (
+					<form onSubmit={handleSubmit}>
+						<Stack spacing={1}>
+							<StyledMainInput
 								type="text"
 								onChange={handleChange}
 								value={values.text}
 								name="text"
+								label={"Напишите комментарий"}
 							/>
-							{errors.text && <div id="feedback">{errors.text}</div>}
-							<button type="submit">Submit</button>
-						</form>
-					)}
-				</Formik>
-			</Stack>
+							{/* {errors.text && <div id="feedback">{errors.text}</div>} */}
+							<MainButton type="submit">Отправить</MainButton>
+						</Stack>
+					</form>
+				)}
+			</Formik>
 		</Stack>
 	)
 }

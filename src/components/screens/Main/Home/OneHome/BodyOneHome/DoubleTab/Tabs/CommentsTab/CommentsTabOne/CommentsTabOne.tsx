@@ -25,7 +25,7 @@ const CommentsTabOne: FC<Props> = ({ row }) => {
 	}
 
 	const { data, isLoading, isSuccess } = useGetCommentsQuery(queryParams, {
-		skip: Number(subCount) > 0 && isOpen ? false : true
+		skip: isOpen ? false : true
 	})
 
 	return (
@@ -34,7 +34,7 @@ const CommentsTabOne: FC<Props> = ({ row }) => {
 				key={id}
 				spacing={1}
 				sx={{
-					height: "122px",
+					// height: "122px",
 					padding: "16px",
 					borderRadius: "12px",
 					backgroundColor: "common.white"
@@ -56,7 +56,15 @@ const CommentsTabOne: FC<Props> = ({ row }) => {
 						<FavoriteBorderIcon />
 					</IconButton>
 				</Stack>
-				<Typography sx={{ color: "secondary.900" }}>{text}</Typography>
+				<Typography
+					sx={{
+						color: "secondary.900",
+						width: "100%",
+						wordWrap: "break-word"
+					}}
+				>
+					{text}
+				</Typography>
 				<Box sx={{ width: "100%", display: "flex", justifyContent: "end" }}>
 					<Button
 						sx={{

@@ -3,104 +3,73 @@ import { styled } from "@mui/material/styles";
 import { NavLink } from "react-router-dom";
 import { alpha } from "@mui/material";
 
-export const MainButton = styled((props: ButtonProps) => (
-  <Button variant="outlined" fullWidth {...props} />
-))(({ theme }) => ({
-  height: "50px",
-  backgroundColor: "#2398AB",
-  borderRadius: "5px",
-  fontSize: "20px",
-  fontWeight: 600,
-  color: "#FFF",
-  textTransform: "capitalize",
-  justifyContent: "center",
-  alignItems: "center",
 
-  transition: theme.transitions.create([
-    "border-color",
-    "background-color",
-    "box-shadow",
-  ]),
+// export const MainButtons = styled((props: ButtonProps) => (
+//   <Button fullWidth {...props} />
+// ))(({ theme }) => ({
+//   height: "50px",
+//   backgroundColor: "#2398AB",
+//   borderRadius: "5px",
+//   fontSize: "20px",
+//   fontWeight: 600,
+//   color: "#FFF",
+//   textTransform: "capitalize",
+//   justifyContent: "center",
+//   alignItems: "center",
 
-  "&:focus, &:hover": {
-    boxShadow: `${alpha(theme.palette.primary.main, 0.9)} 0 0 0 0.2rem`,
-    borderColor: theme.palette.primary.main,
-    color: "#2398AB",
-    backgroundColor: theme.palette.primary.light,
-  },
+//   transition: theme.transitions.create([
+//     "border-color",
+//     "background-color",
+//     "box-shadow",
+//   ]),
 
-  ".Mui-disabled": {
-    color: "#fff",
-    backgroundColor: "#fff",
-  },
-}));
+//   "&:focus, &:hover": {
+//     boxShadow: `${alpha(theme.palette.primary.main, 0.9)} 0 0 0 0.2rem`,
+//     borderColor: theme.palette.primary.main,
+//     color: "#2398AB",
+//     backgroundColor: theme.palette.primary.light,
+//   },
 
-export const MainButtons = styled((props: ButtonProps) => (
-  <Button fullWidth {...props} />
-))(({ theme }) => ({
-  height: "50px",
-  backgroundColor: "#2398AB",
-  borderRadius: "5px",
-  fontSize: "20px",
-  fontWeight: 600,
-  color: "#FFF",
-  textTransform: "capitalize",
-  justifyContent: "center",
-  alignItems: "center",
+//   ".Mui-disabled": {
+//     color: "#fff",
+//     backgroundColor: "#fff",
+//   },
+// }));
 
-  transition: theme.transitions.create([
-    "border-color",
-    "background-color",
-    "box-shadow",
-  ]),
+// // OLD BUTTONS
+// export const SecondaryButton = styled((props: ButtonProps) => (
+//   <Button fullWidth {...props} />
+// ))(({ theme }) => ({
+//   height: "50px",
+//   backgroundColor: "#E4FFF9",
+//   borderRadius: "5px",
+//   fontSize: "20px",
+//   fontWeight: 600,
+//   color: "#2398AB",
+//   justifyContent: "flex-start",
+//   paddingLeft: "25px",
+//   textTransform: "capitalize",
 
-  "&:focus, &:hover": {
-    boxShadow: `${alpha(theme.palette.primary.main, 0.9)} 0 0 0 0.2rem`,
-    borderColor: theme.palette.primary.main,
-    color: "#2398AB",
-    backgroundColor: theme.palette.primary.light,
-  },
+//   "&:hover": {
+//     color: "#FFF",
+//     backgroundColor: "#2398AB",
+//   },
+// }));
 
-  ".Mui-disabled": {
-    color: "#fff",
-    backgroundColor: "#fff",
-  },
-}));
+// export const WarningButton = styled((props: ButtonProps) => (
+//   <Button fullWidth {...props} />
+// ))(({ theme }) => ({
+//   height: "50px",
+//   backgroundColor: "#FFEFEF",
+//   borderRadius: "5px",
+//   fontSize: "20px",
+//   fontWeight: 400,
+//   color: "#FD4444",
+//   justifyContent: "flex-start",
+//   textTransform: "capitalize",
 
-// OLD BUTTONS
-export const SecondaryButton = styled((props: ButtonProps) => (
-  <Button fullWidth {...props} />
-))(({ theme }) => ({
-  height: "50px",
-  backgroundColor: "#E4FFF9",
-  borderRadius: "5px",
-  fontSize: "20px",
-  fontWeight: 600,
-  color: "#2398AB",
-  justifyContent: "flex-start",
-  paddingLeft: "25px",
-  textTransform: "capitalize",
-
-  "&:hover": {
-    color: "#FFF",
-    backgroundColor: "#2398AB",
-  },
-}));
-
-export const WarningButton = styled((props: ButtonProps) => (
-  <Button fullWidth {...props} />
-))(({ theme }) => ({
-  height: "50px",
-  backgroundColor: "#FFEFEF",
-  borderRadius: "5px",
-  fontSize: "20px",
-  fontWeight: 400,
-  color: "#FD4444",
-  justifyContent: "flex-start",
-  textTransform: "capitalize",
-
-  "&:hover": {
-    color: "#FFF",
-    backgroundColor: "#FD4444",
-  },
-}));
+//   "&:hover": {
+//     color: "#FFF",
+//     backgroundColor: "#FD4444",
+//   },
+// }));
