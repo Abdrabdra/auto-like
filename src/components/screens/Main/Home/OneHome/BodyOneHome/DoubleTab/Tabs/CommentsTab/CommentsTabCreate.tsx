@@ -3,18 +3,23 @@ import { Stack } from "@mui/material"
 import { useParams } from "react-router-dom"
 
 import { TypeofEntityEnum } from "types/enums"
-import { ICreateCommentRequest } from "types/Comment/Comment"
 
 import { useCreateCommentMutation } from "@store/rtk-api/comments-rtk/commentEndpoints"
 import { StyledMainInput } from "@components/ui/Input"
 import { MainButton } from "@components/ui/Button"
+import { FC } from "react"
 
-const CommentsTabCreate = () => {
+interface Props {
+	parentCommentId?: number
+}
+
+const CommentsTabCreate: FC<Props> = ({ parentCommentId }) => {
 	const { announceId } = useParams()
 	const [create] = useCreateCommentMutation()
 
 	const body = announceId && {
 		announcementId: Number(announceId),
+		parentCommentId: parentCommentId ? parentCommentId : undefined,
 		text: "",
 		kind: TypeofEntityEnum.ANNOUNCEMENT
 	}
@@ -29,7 +34,7 @@ const CommentsTabCreate = () => {
 		>
 			<Formik
 				initialValues={{ text: "" }}
-				onSubmit={(values, actions) => {
+				onSubmit={(values) => {
 					body && create({ ...body, ...values })
 				}}
 			>
@@ -43,7 +48,6 @@ const CommentsTabCreate = () => {
 								name="text"
 								label={"Напишите комментарий"}
 							/>
-							{/* {errors.text && <div id="feedback">{errors.text}</div>} */}
 							<MainButton type="submit">Отправить</MainButton>
 						</Stack>
 					</form>

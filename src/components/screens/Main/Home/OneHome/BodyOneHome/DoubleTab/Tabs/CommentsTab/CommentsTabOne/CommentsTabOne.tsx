@@ -7,6 +7,7 @@ import CommentsTabOneSkeleton from "./CommentsTabOneSkeleton"
 
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder"
 import CloseIcon from "@mui/icons-material/Close"
+import CommentsTabCreate from "../CommentsTabCreate"
 
 interface Props {
 	row: IOneComment
@@ -15,9 +16,13 @@ interface Props {
 const CommentsTabOne: FC<Props> = ({ row }) => {
 	const { id, text, subCount } = row
 	const [isOpen, setIsOpen] = useState(false)
+	const [isReplyClick, setIsReplyClick] = useState(false)
 
 	const handleClick = () => {
 		setIsOpen(!isOpen)
+	}
+	const handleReplyClick = () => {
+		setIsReplyClick(!isReplyClick)
 	}
 
 	const queryParams = {
@@ -65,19 +70,24 @@ const CommentsTabOne: FC<Props> = ({ row }) => {
 				>
 					{text}
 				</Typography>
-				<Box sx={{ width: "100%", display: "flex", justifyContent: "end" }}>
-					<Button
-						sx={{
-							width: "60px",
-							height: "20px",
-							fontSize: "14px",
-							fontWeight: 500,
-							textDecoration: "underline"
-						}}
-					>
-						Ответить
-					</Button>
-				</Box>
+				{!isReplyClick && (
+					<Box sx={{ width: "100%", display: "flex", justifyContent: "end" }}>
+						<Button
+							onClick={handleReplyClick}
+							sx={{
+								width: "60px",
+								height: "20px",
+								fontSize: "14px",
+								fontWeight: 500,
+								textDecoration: "underline"
+							}}
+						>
+							Ответить
+						</Button>
+					</Box>
+				)}
+
+				{isReplyClick && <CommentsTabCreate parentCommentId={id} />}
 			</Stack>
 			{Number(subCount) ? (
 				<Button
