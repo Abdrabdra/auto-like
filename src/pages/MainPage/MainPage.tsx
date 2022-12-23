@@ -1,15 +1,14 @@
-import SuspenseLoader from "@components/modules/SuspenseLoader"
-import { CircularProgress } from "@mui/material"
 import React from "react"
 import { Navigate, Route, Routes } from "react-router-dom"
 
 import { MainLayout } from "../../components/layouts"
+import SuspenseLoader from "@components/modules/SuspenseLoader"
 
-const ChatPage = React.lazy(() => import("./ChatPage"))
 const HomePage = React.lazy(() => import("./HomePage"))
-const PostPage = React.lazy(() => import("./PostPage"))
-const ProfilePage = React.lazy(() => import("./ProfilePage"))
 const LikePage = React.lazy(() => import("./LikePage"))
+const PostPage = React.lazy(() => import("./PostPage"))
+const ChatPage = React.lazy(() => import("./ChatPage"))
+const ProfilePage = React.lazy(() => import("./ProfilePage"))
 
 const MainPage = () => {
 	return (
