@@ -6,11 +6,13 @@ import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArro
 
 const data = [
 	{
+		id: 0,
 		title: "Lexus LF LC 500",
 		views: 200,
 		messages: 12
 	},
 	{
+		id: 1,
 		title: "Lexus LF LC 500",
 		views: 200,
 		messages: 12
@@ -45,6 +47,7 @@ const ProfileAnnouncements = () => (
 			<Stack spacing={1.5}>
 				{data.map((row) => (
 					<Stack
+						key={row.id}
 						direction="row"
 						spacing={2}
 						alignItems="center"

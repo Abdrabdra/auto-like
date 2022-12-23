@@ -1,14 +1,17 @@
+import { Link } from "react-router-dom"
 import { Avatar, IconButton, Stack, Typography } from "@mui/material"
-import PersonIcon from "@mui/icons-material/Person"
 
+import PersonIcon from "@mui/icons-material/Person"
 import ImageIcon from "@mui/icons-material/Image"
 import FavoriteIcon from "@mui/icons-material/Favorite"
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight"
-import { Link } from "react-router-dom"
 
 const ProfileInfo = () => {
 	return (
-		<Link to="/app/profile/edit" style={{ color: "#000", textDecoration: "none" }}>
+		<Link
+			to="/app/profile/edit"
+			style={{ color: "#000", textDecoration: "none" }}
+		>
 			<Stack
 				spacing={2}
 				p={2.5}

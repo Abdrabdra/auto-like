@@ -4,17 +4,17 @@ import { StatementEnum, WheelEnum } from "types/enums"
 
 const DetailsTab = ({ details }: any) => {
 	const stateData = [
-		{ title: "Город", value: details.city },
-		{ title: "Поколение", value: details.generation },
-		{ title: "Кузов", value: details.body },
-		{ title: "Объем двигателя", value: details.volume },
-		{ title: "Пробег", value: details.mileage },
-		{ title: "Коробка передач", value: details.transmission },
-		{ title: "Привод", value: details.driveUnit },
-		{ title: "Руль", value: details.steeringWheel },
-		{ title: "Цвет", value: details.color },
-		{ title: "Растаможен в КЗ", value: details.customsClearance },
-		{ title: "Состояние", value: details.state }
+		{ id: 0, title: "Город", value: details.city },
+		{ id: 1, title: "Поколение", value: details.generation },
+		{ id: 2, title: "Кузов", value: details.body },
+		{ id: 3, title: "Объем двигателя", value: details.volume },
+		{ id: 4, title: "Пробег", value: details.mileage },
+		{ id: 5, title: "Коробка передач", value: details.transmission },
+		{ id: 6, title: "Привод", value: details.driveUnit },
+		{ id: 7, title: "Руль", value: details.steeringWheel },
+		{ id: 8, title: "Цвет", value: details.color },
+		{ id: 9, title: "Растаможен в КЗ", value: details.customsClearance },
+		{ id: 10, title: "Состояние", value: details.state }
 	]
 
 	return (
@@ -26,9 +26,9 @@ const DetailsTab = ({ details }: any) => {
 			}}
 		>
 			<Stack>
-				{stateData.map((row, index) => (
-					<Stack spacing={1} sx={{ paddingTop: "0.5rem" }}>
-						<Box sx={{ display: "flex" }} key={index}>
+				{stateData.map((row) => (
+					<Stack key={row.id} spacing={1} sx={{ paddingTop: "0.5rem" }}>
+						<Box sx={{ display: "flex" }}>
 							<Typography
 								sx={{
 									flex: "1",
@@ -47,19 +47,19 @@ const DetailsTab = ({ details }: any) => {
 									fontWeight: 500
 								}}
 							>
-								{index === 3
+								{row.id === 3
 									? `${row.value}л`
-									: index === 4
+									: row.id === 4
 									? `${numberWithSpaces(row.value)}км`
-									: index === 7
+									: row.id === 7
 									? row.value === WheelEnum.LEFT
 										? "Слева"
 										: "Справа"
-									: index === 9
+									: row.id === 9
 									? row.value
 										? "Да"
 										: "Нет"
-									: index === 10
+									: row.id === 10
 									? row.value === StatementEnum.EMERGENCY
 										? "Аварийная"
 										: row.value === StatementEnum.NEW
@@ -68,7 +68,7 @@ const DetailsTab = ({ details }: any) => {
 									: row.value}
 							</Typography>
 						</Box>
-						{stateData.length !== index + 1 && <Divider />}
+						{stateData.length !== row.id + 1 && <Divider />}
 					</Stack>
 				))}
 			</Stack>

@@ -5,6 +5,7 @@ const CommentsTabSkeleton = () => {
 		<Stack spacing={2}>
 			{[1, 2, 3].map((row) => (
 				<Stack
+					key={row}
 					sx={{
 						height: "122px",
 						padding: "16px",

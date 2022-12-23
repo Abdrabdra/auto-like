@@ -1,7 +1,9 @@
 import { Stack } from "@mui/material"
 
 const ProfileInfoEdit = () => {
-	return <Stack>ProfileInfoEdit</Stack>
+	return <Stack>
+		asd
+	</Stack>
 }
 
 export default ProfileInfoEdit
