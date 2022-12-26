@@ -20,6 +20,7 @@ import stepperReducer from "./reducers/stepper/stepper.slice"
 //rtk
 import announcementApi from "./rtk-api/announcement-rtk/announcementApi"
 import commentApi from "./rtk-api/comments-rtk/commentApi"
+import markaApi from "./rtk-api/marka-rtk/markaApi"
 import userApi from "./rtk-api/user-rtk/userApi"
 
 const persistConfig = {
@@ -39,6 +40,7 @@ const rootReducer = combineReducers({
 
 	[announcementApi.reducerPath]: announcementApi.reducer,
 	[commentApi.reducerPath]: commentApi.reducer,
+	[markaApi.reducerPath]: markaApi.reducer,
 	[userApi.reducerPath]: userApi.reducer
 })
 
@@ -55,6 +57,7 @@ export const store = configureStore({
 		}).concat(
 			announcementApi.middleware,
 			commentApi.middleware,
+			markaApi.middleware,
 			userApi.middleware
 		)
 })

@@ -1,5 +1,5 @@
 import React from "react"
-import { Container, Stack } from "@mui/material"
+import { CircularProgress, Container, Stack } from "@mui/material"
 
 const PostStepper = React.lazy(() => import("./PostStepper"))
 
