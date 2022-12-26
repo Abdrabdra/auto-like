@@ -1,8 +1,10 @@
 import markaApi from "./markaApi"
 
+import { IGetMarkaResponse } from "types/Marka/MarkaResponse"
+
 export const markaEndpoints = markaApi.injectEndpoints({
 	endpoints: (builder) => ({
-		getMarka: builder.query<any, object>({
+		getMarka: builder.query<IGetMarkaResponse, object>({
 			query: (arg) => {
 				return {
 					url: `/marka`,
