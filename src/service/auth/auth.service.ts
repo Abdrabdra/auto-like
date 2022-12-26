@@ -1,8 +1,8 @@
-import axios, { AxiosResponse } from 'axios'
-import { ILogin, ILoginResponse } from '../../types/ILogin'
-import { IRegistration } from '../../types/IRegistration'
+import { AxiosResponse } from "axios"
+import { ILogin, ILoginResponse } from "../../types/ILogin"
+import { IRegistration } from "../../types/IRegistration"
 
-import { $api, DEV_API } from '../../api'
+import { $api, DEV_API } from "../../api"
 
 export class AuthService {
 	static async login(creds: ILogin): Promise<AxiosResponse<string>> {
@@ -16,11 +16,11 @@ export class AuthService {
 	}
 
 	static async refresh(): Promise<AxiosResponse<ILoginResponse>> {
-		return axios.get<ILoginResponse>(`${DEV_API}auth/refresh`)
+		return $api.get<ILoginResponse>(`${DEV_API}auth/refresh`)
 	}
 
 	static async logout(): Promise<AxiosResponse<ILoginResponse>> {
-		return axios.get(`${DEV_API}auth/logout`)
+		return $api.get(`auth/logout`)
 	}
 
 	// static async logout(): Promise<AxiosResponse<ILoginResponse>> {

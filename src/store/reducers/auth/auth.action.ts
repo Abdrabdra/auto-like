@@ -1,14 +1,14 @@
-import { createAsyncThunk } from '@reduxjs/toolkit'
-import { AuthService } from '../../../service/auth/auth.service'
-import { ILogin } from '../../../types/ILogin'
-import { IRegistration } from '../../../types/IRegistration'
+import { createAsyncThunk } from "@reduxjs/toolkit"
+import { AuthService } from "../../../service/auth/auth.service"
+import { ILogin } from "../../../types/ILogin"
+import { IRegistration } from "../../../types/IRegistration"
 
 export const login = createAsyncThunk(
-	'auth/login',
-	async function(creds: ILogin, { rejectWithValue }) {
+	"auth/login",
+	async function (creds: ILogin, { rejectWithValue }) {
 		try {
 			const response = await AuthService.login(creds)
-			localStorage.setItem('access_token', response.data)
+			localStorage.setItem("access_token", response.data)
 			return response.data
 		} catch (e) {
 			return rejectWithValue(e)
@@ -17,8 +17,8 @@ export const login = createAsyncThunk(
 )
 
 export const registration = createAsyncThunk(
-	'auth/registration',
-	async function(creds: IRegistration, { rejectWithValue }) {
+	"auth/registration",
+	async function (creds: IRegistration, { rejectWithValue }) {
 		try {
 			const response = await AuthService.registration(creds)
 			return response.data
@@ -29,18 +29,19 @@ export const registration = createAsyncThunk(
 )
 
 export const logout = createAsyncThunk<any>(
-	'auth/logout',
-	async function(_, { rejectWithValue }) {
+	"auth/logout",
+	async function (_, { rejectWithValue }) {
 		try {
 			const response = await AuthService.logout()
-			localStorage.removeItem('access_token')
+			localStorage.removeItem("access_token")
+
+			console.log(response.data)
 			return response.data
 		} catch (e) {
 			return rejectWithValue(e)
 		}
 	}
 )
-
 
 // export const refresh = createAsyncThunk<any>(
 //     "auth/refresh",
@@ -69,4 +70,3 @@ export const logout = createAsyncThunk<any>(
 //     }
 //   }
 // );
-
