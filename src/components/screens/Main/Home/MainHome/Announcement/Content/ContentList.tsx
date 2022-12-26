@@ -9,9 +9,10 @@ import InfoStats from "@components/modules/InfoStat/InfoStat"
 
 interface Props {
 	forArchive?: boolean
+	forMyAnnouncements?: boolean
 }
 
-const ContentList: FC<Props> = ({ forArchive }) => {
+const ContentList: FC<Props> = ({ forArchive, forMyAnnouncements }) => {
 	const queryParams = {
 		orderByLikesASC: forArchive ? true : undefined
 	}
