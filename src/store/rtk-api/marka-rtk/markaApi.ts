@@ -4,6 +4,6 @@ import { baseQuery } from "../rtkApi"
 export default createApi({
 	reducerPath: "markaApi",
 	baseQuery: baseQuery,
-	tagTypes: ["marka"],
+	tagTypes: ["marka", "model"],
 	endpoints: () => ({})
 })

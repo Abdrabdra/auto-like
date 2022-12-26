@@ -12,6 +12,15 @@ export const markaEndpoints = markaApi.injectEndpoints({
 				}
 			},
 			providesTags: ["marka"]
+		}),
+		getModel: builder.query<IGetMarkaResponse, object>({
+			query: (arg) => {
+				return {
+					url: `/model`,
+					params: { ...arg }
+				}
+			},
+			providesTags: ["model"]
 		})
 		// likeAnnouncement: builder.mutation<string, ILikeAnnouncement>({
 		// 	query: (body) => ({
@@ -24,4 +33,4 @@ export const markaEndpoints = markaApi.injectEndpoints({
 	})
 })
 
-export const { useGetMarkaQuery } = markaEndpoints
+export const { useGetMarkaQuery, useGetModelQuery } = markaEndpoints

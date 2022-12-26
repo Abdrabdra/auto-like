@@ -1,17 +1,10 @@
+import { useState } from "react"
 import { Box, InputAdornment, Stack } from "@mui/material"
 
 import SearchIcon from "@mui/icons-material/Search"
 
-import { useDispatch } from "react-redux"
-import {
-	incrementStep,
-	setFormSelectedBrand
-} from "@store/reducers/stepper/stepper.slice"
-import { RootState, useTypedSelector } from "@store/index"
-
 import { StyledMainInput } from "@components/ui/Input"
 import BrandList from "./BrandList"
-import { useState } from "react"
 
 const PostSelectBrand = () => {
 	const [searchValue, setSearchValue] = useState("")
