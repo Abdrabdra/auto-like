@@ -16,7 +16,6 @@ const HomePage = () => {
 				<Route index element={<MainHome />} />
 				<Route path="one" element={<Navigate to="/" />} />
 				<Route path="one/:announceId" element={<OneHome />} />
-				{/* <Route path="filter" element={<Filter />} /> */}
 
 				<Route path="*" element={<MainHome />} />
 			</Route>

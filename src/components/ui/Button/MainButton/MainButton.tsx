@@ -2,16 +2,29 @@ import { Button, ButtonProps } from "@mui/material"
 import { styled } from "@mui/material/styles"
 import { alpha } from "@mui/material"
 
-const MainButton = styled((props: ButtonProps) => (
-	<Button variant="outlined" fullWidth {...props} />
+export type CustomButtonProps = {
+	bgcolor?: string
+	bradius?: string
+	fsize?: string
+	color?: string
+} & ButtonProps
+
+const MainButton = styled((props: CustomButtonProps) => (
+	<Button
+		variant="outlined"
+		fullWidth
+		{...props}
+		sx={{
+			backgroundColor: props.bgcolor ? props.bgcolor : "secondary.300",
+			borderRadius: props.bradius ? props.bradius : "10px",
+			fontSize: props.fsize ? props.fsize : "16px",
+			color: props.color ? props.color : "#FFF"
+		}}
+	/>
 ))(({ theme }) => ({
 	height: "50px",
-	backgroundColor: theme.palette.secondary[300],
-	borderRadius: "10px",
-	fontSize: "16px",
 	lineHeight: "20px",
 	fontWeight: 600,
-	color: "#FFF",
 	textTransform: "capitalize",
 	justifyContent: "center",
 	alignItems: "center",

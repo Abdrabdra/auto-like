@@ -1,24 +1,12 @@
+import React from "react"
 import { Container, Stack } from "@mui/material"
-
-import ProfileInfo from "./ProfileInfo"
-import ProfileAnnouncements from "./ProfileAnnouncements"
-import ProfileSettings from "./ProfileSettings"
-import ProfileStatistics from "./ProfileStatistics"
+import ProfileContent from "./ProfileContent"
 
 const Profile = () => {
 	return (
 		<Stack>
 			<Container>
-				<Stack spacing={2.5}>
-					<ProfileInfo />
-
-					<Stack direction="row" spacing={2.5}>
-						<ProfileStatistics />
-						<ProfileSettings />
-					</Stack>
-
-					<ProfileAnnouncements />
-				</Stack>
+				<ProfileContent />
 			</Container>
 		</Stack>
 	)

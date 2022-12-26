@@ -1,26 +1,45 @@
 import { TextField, TextFieldProps } from "@mui/material"
 import { styled } from "@mui/material/styles"
 
-export const StyledMainInput = styled((props: TextFieldProps) => (
-	<TextField variant="outlined" fullWidth hiddenLabel {...props} />
+export type CustomTextFieldProps = {
+	bgcolor?: string
+	bradius?: string
+	color?: string
+} & TextFieldProps
+
+export const StyledMainInput = styled((props: CustomTextFieldProps) => (
+	<TextField
+		variant="outlined"
+		fullWidth
+		hiddenLabel
+		{...props}
+		sx={{
+			"& .MuiOutlinedInput-root": {
+				backgroundColor: props.bgcolor ? props.bgcolor : "common.white",
+				borderRadius: props.bradius ? props.bradius : "10px",
+				color: props.color ? props.color : "common.black"
+			}
+		}}
+	/>
 ))(({ theme }) => ({
 	// backgroundColor: "#E4FFF9",
 
 	"& .MuiOutlinedInput-root": {
 		height: "50px",
 		border: "none",
-		borderRadius: "12px",
-		color: theme.palette.primary,
-		backgroundColor: theme.palette.grey[200],
 
 		"& fieldset": {
 			borderColor: "transparent"
 		},
 		"&:hover fieldset": {
-			borderColor: "transparent"
+			borderColor: theme.palette.primary.main
 		},
-		"&.Mui-focused fieldset": {
-			borderColor: "transparent"
+		// "&.Mui-focused fieldset": {
+		// 	borderColor: "transparent"
+		// },
+
+		"&.Mui-focused .MuiInputLabel-root": {
+			color: "red"
 		}
 	},
 

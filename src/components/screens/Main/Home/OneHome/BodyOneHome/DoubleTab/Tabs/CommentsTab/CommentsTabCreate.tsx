@@ -42,6 +42,7 @@ const CommentsTabCreate: FC<Props> = ({ parentCommentId }) => {
 					<form onSubmit={handleSubmit}>
 						<Stack spacing={1}>
 							<StyledMainInput
+								bgcolor="grey.200"
 								type="text"
 								onChange={handleChange}
 								value={values.text}
