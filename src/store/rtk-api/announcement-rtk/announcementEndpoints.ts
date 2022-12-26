@@ -7,10 +7,13 @@ import { IOneAnnouncementResponse } from "types/Announcement/OneAnnouncement.typ
 
 export const announcementEndpoints = announcementApi.injectEndpoints({
 	endpoints: (builder) => ({
-		getAnnouncements: builder.query<IAnnouncementsResponse, string>({
-			query: () => ({
-				url: `/announcement`
-			}),
+		getAnnouncements: builder.query<IAnnouncementsResponse, object>({
+			query: (arg) => {
+				return {
+					url: `/announcement`,
+					params: { ...arg }
+				}
+			},
 			providesTags: ["announcements"]
 		}),
 		likeAnnouncement: builder.mutation<string, ILikeAnnouncement>({
