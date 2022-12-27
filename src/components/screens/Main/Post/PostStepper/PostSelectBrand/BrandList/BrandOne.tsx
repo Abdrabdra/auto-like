@@ -7,7 +7,7 @@ import { IMarka } from "types/Marka/Marka"
 interface Props {
 	data: IMarka
 	handleSelect: (id: number) => void
-	selectedBrand?: number
+	selectedBrand?: number | string
 }
 
 const BrandOne: FC<Props> = ({ data, handleSelect, selectedBrand }) => {

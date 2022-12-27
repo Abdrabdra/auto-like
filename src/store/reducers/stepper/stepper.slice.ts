@@ -8,7 +8,7 @@ interface IInitState {
 		selectedTransport: string
 		selectedBrand?: number
 		selectedMark?: number
-		selectedManufacture: string
+		selectedManufacture?: number
 		selectedCase: string
 		selectedGeneration: string
 		selectedEngine: string
@@ -29,7 +29,7 @@ const initialState: IInitState = {
 		selectedTransport: "",
 		selectedBrand: undefined,
 		selectedMark: undefined,
-		selectedManufacture: "",
+		selectedManufacture: undefined,
 		selectedCase: "",
 		selectedGeneration: "",
 		selectedEngine: "",
@@ -66,7 +66,7 @@ const stepperReducer = createSlice({
 			state.form.selectedTransport = ""
 			state.form.selectedBrand = undefined
 			state.form.selectedMark = undefined
-			state.form.selectedManufacture = ""
+			state.form.selectedManufacture = undefined
 			state.form.selectedCase = ""
 			state.form.selectedGeneration = ""
 			state.form.selectedEngine = ""
