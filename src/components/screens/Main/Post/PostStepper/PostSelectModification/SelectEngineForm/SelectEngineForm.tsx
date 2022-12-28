@@ -12,12 +12,17 @@ import { setFormSelectedEngine } from "@store/reducers/stepper/stepper.slice"
 import { SelectFormProps } from "../PostSelectModification.types"
 
 import { ENGINE } from "./Engine.consts"
+import { useTypedSelector } from "@store/index"
 
 const name = "selectedEngine"
 
 const SelectEngineForm = ({}) => {
 	const dispatch = useDispatch()
-	const [value, setValue] = useState("")
+	const selectedEngine = useTypedSelector(
+		(state) => state.stepper.form.selectedEngine
+	)
+
+	const [value, setValue] = useState(selectedEngine)
 
 	return (
 		<FormControl component="fieldset" sx={{ width: "100%" }}>

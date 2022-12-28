@@ -11,10 +11,15 @@ import { useDispatch } from "react-redux"
 import { setFormSelectedGear } from "@store/reducers/stepper/stepper.slice"
 import { Gear } from "./Gear.consts"
 import { DriveIUnitEnum } from "types/enums"
+import { useTypedSelector } from "@store/index"
 
 const SelectGearForm = () => {
 	const dispatch = useDispatch()
-	const [value, setValue] = useState("")
+	const selectedGear = useTypedSelector(
+		(state) => state.stepper.form.selectedGear
+	)
+
+	const [value, setValue] = useState(selectedGear)
 
 	return (
 		<FormControl component="fieldset" sx={{ width: "100%" }}>

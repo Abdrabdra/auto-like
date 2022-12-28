@@ -1,65 +1,65 @@
 import {
-  Box,
-  Checkbox,
-  FormControlLabel,
-  FormGroup,
-  InputAdornment,
-  OutlinedInput,
-  Stack,
-  Typography,
-} from "@mui/material";
-import { conditionData } from "./UsedConditionTab.constants";
+	Box,
+	InputAdornment,
+	OutlinedInput,
+	Stack,
+	Typography
+} from "@mui/material"
+import { useTypedSelector } from "@store/index"
+import { setFormSelectedMileage } from "@store/reducers/stepper/stepper.slice"
+import { useState } from "react"
+import { useDispatch } from "react-redux"
+import ConditionBoxes from "./ConditionBoxes"
 
 const UsedConditionTab = () => {
-  return (
-    <Stack spacing={1.25}>
-      <Stack
-        spacing={1}
-        sx={{
-          backgroundColor: "common.white",
-          borderRadius: "10px",
-          padding: "14px 15px 14px 20px",
-        }}
-      >
-        <Typography>Пробег</Typography>
-        <OutlinedInput
-          placeholder="Поиск"
-          endAdornment={
-            <InputAdornment position="end">
-              <Box p={2} sx={{ color: "common.black" }}>
-                km
-              </Box>
-            </InputAdornment>
-          }
-          sx={{
-            flex: 1,
-            paddingLeft: "18px",
-            backgroundColor: "common.white",
-            borderRadius: "10px",
-            input: {
-              paddingLeft: "0",
-            },
-          }}
-        />
-      </Stack>
-      {conditionData.map((row, index) => (
-        <Box
-          sx={{
-            padding: "14px 15px 14px 20px",
-            borderRadius: "10px",
-            backgroundColor: "common.white",
-          }}
-        >
-          <FormGroup key={index}>
-            <FormControlLabel
-              control={<Checkbox defaultChecked />}
-              label={row.value}
-            />
-          </FormGroup>
-        </Box>
-      ))}
-    </Stack>
-  );
-};
+	const dispatch = useDispatch()
+	const selectedMileage = useTypedSelector(
+		(state) => state.stepper.form.selectedMileage
+	)
 
-export default UsedConditionTab;
+	const [mileage, setMileage] = useState(selectedMileage)
+	const handleMileageChange = (e: any) => {
+		setMileage(e.target.value)
+		dispatch(setFormSelectedMileage(e.target.value))
+	}
+
+	return (
+		<Stack spacing={1.25}>
+			<Stack
+				spacing={1}
+				sx={{
+					backgroundColor: "common.white",
+					borderRadius: "10px",
+					padding: "14px 15px 14px 20px"
+				}}
+			>
+				<Typography>Пробег</Typography>
+				<OutlinedInput
+					placeholder="Поиск"
+					value={mileage}
+					onChange={(e) => handleMileageChange(e)}
+					endAdornment={
+						<InputAdornment position="end">
+							<Box p={2} sx={{ color: "common.black" }}>
+								km
+							</Box>
+						</InputAdornment>
+					}
+					sx={{
+						flex: 1,
+						paddingLeft: "18px",
+						backgroundColor: "common.white",
+						borderRadius: "10px",
+						input: {
+							paddingLeft: "0"
+						}
+					}}
+				/>
+			</Stack>
+
+			<ConditionBoxes />
+		</Stack>
+	)
+}
+
+export default UsedConditionTab

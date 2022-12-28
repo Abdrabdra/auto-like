@@ -11,17 +11,22 @@ import { useDispatch } from "react-redux"
 import { setFormSteeringWheel } from "@store/reducers/stepper/stepper.slice"
 import { Wheel } from "./Wheel.consts"
 import { WheelEnum } from "types/enums"
+import { useTypedSelector } from "@store/index"
 
 const SelectWheelForm = () => {
 	const dispatch = useDispatch()
-	const [value, setValue] = useState("")
+	const selectedWheel = useTypedSelector(
+		(state) => state.stepper.form.steeringWheel
+	)
+
+	const [value, setValue] = useState(selectedWheel)
 
 	return (
 		<FormControl component="fieldset" sx={{ width: "100%" }}>
 			<RadioGroup
 				value={value}
 				onChange={(event) => {
-					setValue(event.currentTarget.value)
+					setValue(event.currentTarget.value as WheelEnum)
 					dispatch(setFormSteeringWheel(event.currentTarget.value))
 				}}
 			>

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { WheelEnum } from "types/enums"
+import { StatementEnum, WheelEnum } from "types/enums"
 
 interface IInitState {
 	step: number
@@ -12,14 +12,18 @@ interface IInitState {
 		selectedManufacture?: number // годВыпуска - year
 		selectedCase?: string // кузов - bodyTypeId
 		selectedGeneration?: string // поколение - generationId
-		selectedEngine?: string // двигатель (бензин, дизель)
+		selectedEngine?: string // двигатель (бензин, дизель) - transmissionId ?????????
 		selectedGear?: string // привод - driveUnit
-		selectedCondition?: string //
+
+		selectedMileage?: number // пробег - mileage
+		selectedCustomsClearance?: boolean // Растоможка - customsClearance
+		selectedCondition?: StatementEnum // состояние (новое, б/у) - state
+
 		selectedPrice?: number //
 		selectedPicture?: any //
 		selectedContactName?: string //
 		selectedContactNumber?: string //
-		steeringWheel?: WheelEnum
+		steeringWheel?: WheelEnum // левоРуль(право) - steeringWheel
 	}
 }
 
@@ -36,12 +40,14 @@ const initialState: IInitState = {
 		selectedGeneration: undefined,
 		selectedEngine: undefined,
 		selectedGear: undefined,
-		selectedCondition: undefined,
+		selectedCondition: StatementEnum.BOO,
 		selectedPrice: undefined,
 		selectedPicture: undefined,
 		selectedContactName: undefined,
 		selectedContactNumber: undefined,
-		steeringWheel: undefined
+		steeringWheel: undefined,
+		selectedMileage: undefined,
+		selectedCustomsClearance: undefined
 	}
 }
 
@@ -74,12 +80,14 @@ const stepperReducer = createSlice({
 			state.form.selectedGeneration = undefined
 			state.form.selectedEngine = undefined
 			state.form.selectedGear = undefined
-			state.form.selectedCondition = undefined
+			state.form.selectedCondition = StatementEnum.BOO
 			state.form.selectedPrice = undefined
 			state.form.selectedPicture = undefined
 			state.form.selectedContactName = undefined
 			state.form.selectedContactNumber = undefined
 			state.form.steeringWheel = undefined
+			state.form.selectedMileage = undefined
+			state.form.selectedCustomsClearance = undefined
 		},
 		setFormSelectedTransport: (state, { payload }) => {
 			state.form.selectedTransport = payload
@@ -122,6 +130,12 @@ const stepperReducer = createSlice({
 		},
 		setFormSteeringWheel: (state, { payload }) => {
 			state.form.steeringWheel = payload
+		},
+		setFormSelectedMileage: (state, { payload }) => {
+			state.form.selectedMileage = payload
+		},
+		setFormSelectedCustomsClearance: (state, { payload }) => {
+			state.form.selectedCustomsClearance = payload
 		}
 	}
 })
@@ -147,7 +161,9 @@ export const {
 	setFormSelectedPicture,
 	setFormSelectedContactName,
 	setFormSelectedContactNumber,
-	setFormSteeringWheel
+	setFormSteeringWheel,
+	setFormSelectedMileage,
+	setFormSelectedCustomsClearance
 } = stepperReducer.actions
 
 export default stepperReducer.reducer
