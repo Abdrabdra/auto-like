@@ -1,83 +1,56 @@
-import SubmitButton from "@components/ui/Button/SubmitButton";
 import {
-  Divider,
-  FormControl,
-  FormControlLabel,
-  Radio,
-  Box,
-  RadioGroup,
-} from "@mui/material";
-import { Form, Formik } from "formik";
-import { FC } from "react";
-import { useDispatch } from "react-redux";
+	Divider,
+	FormControl,
+	FormControlLabel,
+	Radio,
+	RadioGroup
+} from "@mui/material"
+import { useState } from "react"
+import { useDispatch } from "react-redux"
 
+import { setFormSelectedGear } from "@store/reducers/stepper/stepper.slice"
+import { Gear } from "./Gear.consts"
+import { DriveIUnitEnum } from "types/enums"
 
-import {
-  incrementStep,
-  setFormSelectedGear,
-} from "@store/reducers/stepper/stepper.slice";
-import { SelectFormProps } from "../PostSelectModification.types";
+const SelectGearForm = () => {
+	const dispatch = useDispatch()
+	const [value, setValue] = useState("")
 
-import AbsoluteBox from "@components/modules/AbsoluteBox";
-
-enum Options {
-  Option1 = "Передний",
-  Option2 = "Задний",
+	return (
+		<FormControl component="fieldset" sx={{ width: "100%" }}>
+			<RadioGroup
+				value={value}
+				onChange={(event) => {
+					setValue(event.currentTarget.value)
+					dispatch(setFormSelectedGear(event.currentTarget.value))
+				}}
+			>
+				<FormControlLabel
+					value={DriveIUnitEnum.FRONTWHEEL}
+					control={<Radio required />}
+					label={Gear.FRONT}
+					labelPlacement="start"
+					sx={{ display: "flex", justifyContent: "space-between" }}
+				/>
+				<Divider sx={{ width: "250px", marginLeft: "16px" }} />
+				<FormControlLabel
+					value={DriveIUnitEnum.REAR}
+					control={<Radio required />}
+					label={Gear.REAR}
+					labelPlacement="start"
+					sx={{ display: "flex", justifyContent: "space-between" }}
+				/>
+				<Divider sx={{ width: "250px", marginLeft: "16px" }} />
+				<FormControlLabel
+					value={DriveIUnitEnum.FOURWHELL}
+					control={<Radio required />}
+					label={Gear.FOURWHELL}
+					labelPlacement="start"
+					sx={{ display: "flex", justifyContent: "space-between" }}
+				/>
+			</RadioGroup>
+		</FormControl>
+	)
 }
-const name = "selectedGear";
 
-const SelectGearForm: FC<SelectFormProps> = ({ expanded }) => {
-  const dispatch = useDispatch();
-
-  return (
-    <Formik
-      initialValues={{
-        selectedGear: Options.Option1.toString(),
-      }}
-      onSubmit={(values) => {
-        setTimeout(() => {
-          dispatch(setFormSelectedGear(values.selectedGear));
-          console.log(values.selectedGear);
-          dispatch(incrementStep());
-        }, 250);
-      }}
-    >
-      {({ values, setFieldValue, isValid }) => (
-        <Form>
-          <FormControl component="fieldset" sx={{ width: "100%" }}>
-            <RadioGroup
-              name={name}
-              value={values.selectedGear.toString()}
-              onChange={(event) => {
-                setFieldValue(name, event.currentTarget.value);
-              }}
-            >
-              <FormControlLabel
-                value={Options.Option1}
-                control={<Radio required />}
-                label={Options.Option1}
-                labelPlacement="start"
-                sx={{ display: "flex", justifyContent: "space-between" }}
-              />
-              <Divider sx={{ width: "250px", marginLeft: "16px" }} />
-              <FormControlLabel
-                value={Options.Option2}
-                control={<Radio required />}
-                label={Options.Option2}
-                labelPlacement="start"
-                sx={{ display: "flex", justifyContent: "space-between" }}
-              />
-            </RadioGroup>
-          </FormControl>
-          <Box sx={{ display: expanded === "panel2" ? "initial" : "none" }}>
-            <AbsoluteBox>
-              <SubmitButton type="submit" />
-            </AbsoluteBox>
-          </Box>
-        </Form>
-      )}
-    </Formik>
-  );
-};
-
-export default SelectGearForm;
+export default SelectGearForm

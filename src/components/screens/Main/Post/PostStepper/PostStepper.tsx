@@ -1,6 +1,6 @@
 import * as React from "react"
 import { useDispatch } from "react-redux"
-import { Box, Stepper, Stack } from "@mui/material"
+import { Box, Stepper, Stack, CircularProgress } from "@mui/material"
 
 import { RootState, useTypedSelector } from "@store/index"
 import {
@@ -66,7 +66,17 @@ const PostStepper = () => {
 					<PostStepperHead />
 				</Stepper>
 				<Box sx={{ paddingTop: "10px" }}>
-					<>
+					<React.Suspense
+						fallback={
+							<Stack
+								justifyContent={"center"}
+								alignItems="center"
+								sx={{ height: "50vh" }}
+							>
+								<CircularProgress color="primary" />
+							</Stack>
+						}
+					>
 						{activeStep === 0 ? (
 							<PostSelectTransport />
 						) : activeStep === 1 ? (
@@ -104,7 +114,7 @@ const PostStepper = () => {
 						) : (
 							<Box>Almas EVR</Box>
 						)}
-					</>
+					</React.Suspense>
 				</Box>
 			</Box>
 		</Stack>

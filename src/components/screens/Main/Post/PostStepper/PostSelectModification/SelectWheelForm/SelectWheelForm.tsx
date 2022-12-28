@@ -5,42 +5,38 @@ import {
 	Radio,
 	RadioGroup
 } from "@mui/material"
-import { useState } from "react"
+import { FC, useState } from "react"
 import { useDispatch } from "react-redux"
 
-import { setFormSelectedEngine } from "@store/reducers/stepper/stepper.slice"
-import { SelectFormProps } from "../PostSelectModification.types"
+import { setFormSteeringWheel } from "@store/reducers/stepper/stepper.slice"
+import { Wheel } from "./Wheel.consts"
+import { WheelEnum } from "types/enums"
 
-import { ENGINE } from "./Engine.consts"
-
-const name = "selectedEngine"
-
-const SelectEngineForm = ({}) => {
+const SelectWheelForm = () => {
 	const dispatch = useDispatch()
 	const [value, setValue] = useState("")
 
 	return (
 		<FormControl component="fieldset" sx={{ width: "100%" }}>
 			<RadioGroup
-				name={name}
 				value={value}
 				onChange={(event) => {
 					setValue(event.currentTarget.value)
-					dispatch(setFormSelectedEngine(event.currentTarget.value))
+					dispatch(setFormSteeringWheel(event.currentTarget.value))
 				}}
 			>
 				<FormControlLabel
-					value={ENGINE.PETROL}
+					value={WheelEnum.LEFT}
 					control={<Radio required />}
-					label={ENGINE.PETROL}
+					label={Wheel.LEFT}
 					labelPlacement="start"
 					sx={{ display: "flex", justifyContent: "space-between" }}
 				/>
 				<Divider sx={{ width: "250px", marginLeft: "16px" }} />
 				<FormControlLabel
-					value={ENGINE.DIESEL}
+					value={WheelEnum.RIGHT}
 					control={<Radio required />}
-					label={ENGINE.DIESEL}
+					label={Wheel.RIGHT}
 					labelPlacement="start"
 					sx={{ display: "flex", justifyContent: "space-between" }}
 				/>
@@ -49,4 +45,4 @@ const SelectEngineForm = ({}) => {
 	)
 }
 
-export default SelectEngineForm
+export default SelectWheelForm

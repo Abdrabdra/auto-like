@@ -2,15 +2,21 @@ import { FC } from "react"
 import { Button, Stack, Typography } from "@mui/material"
 
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight"
-import { IMarka } from "types/Marka/Marka"
+import { IGeneration, IMarka } from "types/Marka/Marka"
 
 interface Props {
 	data: IMarka
 	handleSelect: (id: number) => void
 	selectedBrand?: number | string
+	generationData?: IGeneration
 }
 
-const BrandOne: FC<Props> = ({ data, handleSelect, selectedBrand }) => {
+const BrandOne: FC<Props> = ({
+	data,
+	handleSelect,
+	selectedBrand,
+	generationData
+}) => {
 	const { id, title } = data
 
 	return (
@@ -38,7 +44,9 @@ const BrandOne: FC<Props> = ({ data, handleSelect, selectedBrand }) => {
 						fontWeight: 600
 					}}
 				>
-					{title}
+					{generationData
+						? `${generationData.createdFrom}-${generationData.createdTo} поколение (${generationData.title})`
+						: title}
 				</Typography>
 				<KeyboardArrowRightIcon sx={{ color: "common.black" }} />
 			</Stack>

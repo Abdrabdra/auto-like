@@ -1,23 +1,25 @@
 import { createSlice } from "@reduxjs/toolkit"
+import { WheelEnum } from "types/enums"
 
 interface IInitState {
 	step: number
 	stepTitle: string
 
 	form: {
-		selectedTransport: string
-		selectedBrand?: number
-		selectedMark?: number
-		selectedManufacture?: number
-		selectedCase: string
-		selectedGeneration: string
-		selectedEngine: string
-		selectedGear: string
-		selectedCondition: string
-		selectedPrice: number
-		selectedPicture: any
-		selectedContactName: string
-		selectedContactNumber: string
+		selectedTransport?: string // вид объявления, машина, лодка, мото, запчасти
+		selectedBrand?: number // марка - markaId
+		selectedMark?: number // модель - modelId
+		selectedManufacture?: number // годВыпуска - year
+		selectedCase?: string // кузов - bodyTypeId
+		selectedGeneration?: string // поколение - generationId
+		selectedEngine?: string // двигатель (бензин, дизель)
+		selectedGear?: string // привод - driveUnit
+		selectedCondition?: string //
+		selectedPrice?: number //
+		selectedPicture?: any //
+		selectedContactName?: string //
+		selectedContactNumber?: string //
+		steeringWheel?: WheelEnum
 	}
 }
 
@@ -26,19 +28,20 @@ const initialState: IInitState = {
 	stepTitle: "",
 
 	form: {
-		selectedTransport: "",
+		selectedTransport: undefined,
 		selectedBrand: undefined,
 		selectedMark: undefined,
 		selectedManufacture: undefined,
-		selectedCase: "",
-		selectedGeneration: "",
-		selectedEngine: "",
-		selectedGear: "",
-		selectedCondition: "",
-		selectedPrice: 0,
-		selectedPicture: "",
-		selectedContactName: "",
-		selectedContactNumber: ""
+		selectedCase: undefined,
+		selectedGeneration: undefined,
+		selectedEngine: undefined,
+		selectedGear: undefined,
+		selectedCondition: undefined,
+		selectedPrice: undefined,
+		selectedPicture: undefined,
+		selectedContactName: undefined,
+		selectedContactNumber: undefined,
+		steeringWheel: undefined
 	}
 }
 
@@ -63,19 +66,20 @@ const stepperReducer = createSlice({
 		},
 
 		setDefaultState: (state) => {
-			state.form.selectedTransport = ""
+			state.form.selectedTransport = undefined
 			state.form.selectedBrand = undefined
 			state.form.selectedMark = undefined
 			state.form.selectedManufacture = undefined
-			state.form.selectedCase = ""
-			state.form.selectedGeneration = ""
-			state.form.selectedEngine = ""
-			state.form.selectedGear = ""
-			state.form.selectedCondition = ""
-			state.form.selectedPrice = 0
-			state.form.selectedPicture = ""
-			state.form.selectedContactName = ""
-			state.form.selectedContactNumber = ""
+			state.form.selectedCase = undefined
+			state.form.selectedGeneration = undefined
+			state.form.selectedEngine = undefined
+			state.form.selectedGear = undefined
+			state.form.selectedCondition = undefined
+			state.form.selectedPrice = undefined
+			state.form.selectedPicture = undefined
+			state.form.selectedContactName = undefined
+			state.form.selectedContactNumber = undefined
+			state.form.steeringWheel = undefined
 		},
 		setFormSelectedTransport: (state, { payload }) => {
 			state.form.selectedTransport = payload
@@ -115,6 +119,9 @@ const stepperReducer = createSlice({
 		},
 		setFormSelectedContactNumber: (state, { payload }) => {
 			state.form.selectedContactNumber = payload
+		},
+		setFormSteeringWheel: (state, { payload }) => {
+			state.form.steeringWheel = payload
 		}
 	}
 })
@@ -139,7 +146,8 @@ export const {
 	setFormSelectedPrice,
 	setFormSelectedPicture,
 	setFormSelectedContactName,
-	setFormSelectedContactNumber
+	setFormSelectedContactNumber,
+	setFormSteeringWheel
 } = stepperReducer.actions
 
 export default stepperReducer.reducer

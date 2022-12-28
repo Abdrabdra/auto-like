@@ -1,4 +1,4 @@
-import { Box, useMediaQuery } from "@mui/material"
+import { Box, Stack, useMediaQuery } from "@mui/material"
 import { Outlet } from "react-router-dom"
 import { MainDrawer } from "../../ui/Drawer"
 import TopDrawer from "../../ui/Drawer/TopDrawer"
@@ -10,7 +10,10 @@ const MainLayout = () => {
 		<>
 			<TopDrawer />
 			<Box
-				sx={{ paddingTop: isMedium ? "125px" : "100px", paddingBottom: "85px" }}
+				sx={{
+					paddingTop: isMedium ? "125px" : "100px",
+					paddingBottom: "85px"
+				}}
 			>
 				<Outlet />
 			</Box>
