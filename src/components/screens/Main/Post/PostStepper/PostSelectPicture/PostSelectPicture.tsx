@@ -1,72 +1,69 @@
+import { Box, Stack } from "@mui/material"
+
+import { useDispatch } from "react-redux"
+
+import { RootState, useTypedSelector } from "@store/index"
 import {
-  Box,
-  Stack,
-} from "@mui/material";
+	incrementStep,
+	setFormSelectedPicture
+} from "@store/reducers/stepper/stepper.slice"
 
-import { useDispatch } from "react-redux";
-
-import { RootState, useTypedSelector } from "@store/index";
-import {
-  incrementStep,
-  setFormSelectedPicture,
-} from "@store/reducers/stepper/stepper.slice";
-
-import { Form, Formik } from "formik";
-import AbsoluteBox from "@components/modules/AbsoluteBox";
-import SubmitButton from "@components/ui/Button/SubmitButton";
-import UploadFile from "./compone/UploadFile";
+import { Form, Formik } from "formik"
+import AbsoluteBox from "@components/modules/AbsoluteBox"
+import SubmitButton from "@components/ui/Button/SubmitButton"
+import UploadFile from "./compone/UploadFile"
 
 const PostSelectPicture = () => {
-  const dispatch = useDispatch();
+	const dispatch = useDispatch()
 
-  const selectedPicture = useTypedSelector(
-    (state: RootState) => state.stepper.form.selectedPicture
-  );
+	const selectedPicture = useTypedSelector(
+		(state: RootState) => state.stepper.form.selectedPicture
+	)
 
-  return (
-    <Formik
-      initialValues={{
-        selectedPicture: selectedPicture,
-      }}
-      onSubmit={(values) => {
-        dispatch(setFormSelectedPicture(values.selectedPicture));
-        console.log(values.selectedPicture);
-        dispatch(incrementStep());
-      }}
-    >
-      {({ values, setFieldValue, isValid, handleChange }) => (
-        <Form>
-          <Stack spacing={1}>
-            <Stack
-              p={2}
-              sx={{ borderRadius: "10px", backgroundColor: "common.white" }}
-            >
-              <UploadFile
-                onFileLoaded={(imageFile: any) => {
-                  setFieldValue("selectedPicture", imageFile);
-                }}
-              />
-            </Stack>
-            <Box
-              component="img"
-              sx={{
-                height: 233,
-                width: 350,
-                borderRadius: "10px",
-              }}
-              alt="Transport Image"
-              src={values.selectedPicture}
-            />
-          </Stack>
-          <Box>
-            <AbsoluteBox>
-              <SubmitButton type="submit" />
-            </AbsoluteBox>
-          </Box>
-        </Form>
-      )}
-    </Formik>
-  );
-};
+	return (
+		<Formik
+			initialValues={{
+				selectedPicture: selectedPicture
+			}}
+			onSubmit={(values) => {
+				dispatch(setFormSelectedPicture(values.selectedPicture))
+				console.log(values.selectedPicture)
+				dispatch(incrementStep())
+			}}
+		>
+			{({ values, setFieldValue, isValid, handleChange }) => (
+				<Form>
+					<Stack spacing={1}>
+						<Stack
+							p={2}
+							sx={{ borderRadius: "10px", backgroundColor: "common.white" }}
+						>
+							<UploadFile
+								onFileLoaded={(imageFile: any) => {
+									setFieldValue("selectedPicture", imageFile)
+								}}
+							/>
+						</Stack>
+						<Box
+							component="img"
+							sx={{
+								height: 233,
+								width: 350,
+								borderRadius: "10px"
+							}}
+							alt="Transport Image"
+							src={values.selectedPicture}
+						/>
+					</Stack>
+					<Box>
+						<AbsoluteBox>
+							<SubmitButton type="submit" />
+						</AbsoluteBox>
+					</Box>
+				</Form>
+			)}
+		</Formik>
+	)
+}
 
-export default PostSelectPicture;
+export default PostSelectPicture

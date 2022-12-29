@@ -19,7 +19,7 @@ interface IInitState {
 		selectedCustomsClearance?: boolean // Растоможка - customsClearance
 		selectedCondition?: StatementEnum // состояние (новое, б/у) - state
 
-		selectedPrice?: number //
+		selectedPrice?: number // цена - price
 		selectedPicture?: any //
 		selectedContactName?: string //
 		selectedContactNumber?: string //
