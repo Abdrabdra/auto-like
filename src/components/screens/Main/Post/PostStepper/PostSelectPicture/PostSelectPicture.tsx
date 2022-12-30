@@ -1,4 +1,4 @@
-import { Box, Stack } from "@mui/material"
+import { Stack } from "@mui/material"
 
 import { useDispatch } from "react-redux"
 
@@ -9,9 +9,7 @@ import {
 } from "@store/reducers/stepper/stepper.slice"
 
 import { Form, Formik } from "formik"
-import AbsoluteBox from "@components/modules/AbsoluteBox"
-import SubmitButton from "@components/ui/Button/SubmitButton"
-import UploadFile from "./compone/UploadFile"
+import UploadFile from "./UploadFile"
 
 const PostSelectPicture = () => {
 	const dispatch = useDispatch()
@@ -25,41 +23,16 @@ const PostSelectPicture = () => {
 			initialValues={{
 				selectedPicture: selectedPicture
 			}}
-			onSubmit={(values) => {
-				dispatch(setFormSelectedPicture(values.selectedPicture))
-				console.log(values.selectedPicture)
-				dispatch(incrementStep())
-			}}
+			onSubmit={(values) => {}}
 		>
-			{({ values, setFieldValue, isValid, handleChange }) => (
+			{({}) => (
 				<Form>
-					<Stack spacing={1}>
-						<Stack
-							p={2}
-							sx={{ borderRadius: "10px", backgroundColor: "common.white" }}
-						>
-							<UploadFile
-								onFileLoaded={(imageFile: any) => {
-									setFieldValue("selectedPicture", imageFile)
-								}}
-							/>
-						</Stack>
-						<Box
-							component="img"
-							sx={{
-								height: 233,
-								width: 350,
-								borderRadius: "10px"
-							}}
-							alt="Transport Image"
-							src={values.selectedPicture}
-						/>
+					<Stack
+						p={2}
+						sx={{ borderRadius: "10px", backgroundColor: "common.white" }}
+					>
+						<UploadFile />
 					</Stack>
-					<Box>
-						<AbsoluteBox>
-							<SubmitButton type="submit" />
-						</AbsoluteBox>
-					</Box>
 				</Form>
 			)}
 		</Formik>

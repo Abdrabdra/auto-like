@@ -36,7 +36,7 @@ const whitelistPersistConfig = {
 
 const rootReducer = combineReducers({
 	auth: persistReducer(whitelistPersistConfig, authReducer),
-	stepper: stepperReducer,
+	stepper: persistReducer(whitelistPersistConfig, stepperReducer),
 
 	[announcementApi.reducerPath]: announcementApi.reducer,
 	[commentApi.reducerPath]: commentApi.reducer,
@@ -51,9 +51,10 @@ export const store = configureStore({
 
 	middleware: (getDefaultMiddleware) =>
 		getDefaultMiddleware({
-			serializableCheck: {
-				ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
-			}
+			serializableCheck: false
+			// serializableCheck: {
+			// 	ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
+			// }
 		}).concat(
 			announcementApi.middleware,
 			commentApi.middleware,

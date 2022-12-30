@@ -20,7 +20,7 @@ interface IInitState {
 		selectedCondition?: StatementEnum // состояние (новое, б/у) - state
 
 		selectedPrice?: number // цена - price
-		selectedPicture?: any //
+		selectedPicture: File[] //
 		selectedContactName?: string //
 		selectedContactNumber?: string //
 		steeringWheel?: WheelEnum // левоРуль(право) - steeringWheel
@@ -42,7 +42,7 @@ const initialState: IInitState = {
 		selectedGear: undefined,
 		selectedCondition: StatementEnum.BOO,
 		selectedPrice: undefined,
-		selectedPicture: undefined,
+		selectedPicture: [],
 		selectedContactName: undefined,
 		selectedContactNumber: undefined,
 		steeringWheel: undefined,
@@ -82,7 +82,7 @@ const stepperReducer = createSlice({
 			state.form.selectedGear = undefined
 			state.form.selectedCondition = StatementEnum.BOO
 			state.form.selectedPrice = undefined
-			state.form.selectedPicture = undefined
+			state.form.selectedPicture = []
 			state.form.selectedContactName = undefined
 			state.form.selectedContactNumber = undefined
 			state.form.steeringWheel = undefined

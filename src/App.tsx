@@ -45,7 +45,7 @@ function App() {
 						</React.Suspense>
 					}
 				/>
-				<Route path="*" element={<Navigate to={"/error"} />} />
+				{/* <Route path="*" element={<Navigate to={"/error"} />} /> */}
 			</Routes>
 		</>
 	)
