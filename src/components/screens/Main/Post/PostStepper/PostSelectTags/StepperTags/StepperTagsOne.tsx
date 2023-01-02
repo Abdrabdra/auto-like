@@ -1,5 +1,4 @@
-import { Checkbox, FormControlLabel, FormGroup, Stack } from "@mui/material"
-import { useTypedSelector } from "@store/index"
+import { Checkbox, FormControlLabel, FormGroup } from "@mui/material"
 import {
 	deleteFromFormTag,
 	setFormSelectedTags
@@ -10,29 +9,22 @@ import { IDescriptionTag } from "types/Marka/Marka"
 
 interface Props {
 	data: IDescriptionTag
+	initialChecked?: boolean
 }
 
-const StepperTagsOne: FC<Props> = ({ data }) => {
+const StepperTagsOne: FC<Props> = ({ data, initialChecked }) => {
 	const dispatch = useDispatch()
-	const [checked, setChecked] = useState(false)
-
-	const tags = useTypedSelector((state) => state.stepper.form.selectedTags)
-
-	console.log("Tags from Selector: ", tags)
+	const [checked, setChecked] = useState(
+		initialChecked ? initialChecked : false
+	)
 
 	const handleChange = (e: any) => {
 		const { checked } = e.target
 
-		console.log("CHECKED: ", checked)
-
 		if (checked === true) {
-			console.log("push")
-
 			setChecked(checked)
 			dispatch(setFormSelectedTags(data.id))
 		} else {
-			console.log("delete ")
-
 			setChecked(checked)
 			dispatch(deleteFromFormTag(data.id))
 		}
