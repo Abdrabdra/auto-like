@@ -22,6 +22,7 @@ interface IInitState {
 		selectedPrice?: number // цена - price
 		selectedPicture: File[] //
 		selectedTags: number[] //
+		selectedCity?: number // город - cityId
 
 		selectedContactName?: string //
 		selectedContactNumber?: string //
@@ -46,6 +47,7 @@ const initialState: IInitState = {
 		selectedPrice: undefined,
 		selectedPicture: [],
 		selectedTags: [],
+		selectedCity: undefined,
 
 		selectedContactName: undefined,
 		selectedContactNumber: undefined,
@@ -88,6 +90,7 @@ const stepperReducer = createSlice({
 			state.form.selectedPrice = undefined
 			state.form.selectedPicture = []
 			state.form.selectedTags = []
+			state.form.selectedCity = undefined
 
 			state.form.selectedContactName = undefined
 			state.form.selectedContactNumber = undefined
@@ -132,13 +135,15 @@ const stepperReducer = createSlice({
 		// forTag
 		setFormSelectedTags: (state, { payload }) => {
 			state.form.selectedTags.push(payload)
-
-			// state.form.selectedTags.push(payload)
 		},
 		deleteFromFormTag: (state, { payload }) => {
 			state.form.selectedTags = state.form.selectedTags.filter(
 				(row) => row !== payload
 			)
+		},
+
+		setFormSelectedCity: (state, { payload }) => {
+			state.form.selectedCity = payload
 		},
 
 		setFormSelectedContactName: (state, { payload }) => {
@@ -181,6 +186,8 @@ export const {
 
 	setFormSelectedTags,
 	deleteFromFormTag,
+
+	setFormSelectedCity,
 
 	setFormSelectedContactName,
 	setFormSelectedContactNumber,
