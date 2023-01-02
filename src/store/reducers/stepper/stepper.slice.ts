@@ -21,6 +21,8 @@ interface IInitState {
 
 		selectedPrice?: number // цена - price
 		selectedPicture: File[] //
+		selectedTags: number[] //
+
 		selectedContactName?: string //
 		selectedContactNumber?: string //
 		steeringWheel?: WheelEnum // левоРуль(право) - steeringWheel
@@ -43,6 +45,8 @@ const initialState: IInitState = {
 		selectedCondition: StatementEnum.BOO,
 		selectedPrice: undefined,
 		selectedPicture: [],
+		selectedTags: [],
+
 		selectedContactName: undefined,
 		selectedContactNumber: undefined,
 		steeringWheel: undefined,
@@ -83,6 +87,8 @@ const stepperReducer = createSlice({
 			state.form.selectedCondition = StatementEnum.BOO
 			state.form.selectedPrice = undefined
 			state.form.selectedPicture = []
+			state.form.selectedTags = []
+
 			state.form.selectedContactName = undefined
 			state.form.selectedContactNumber = undefined
 			state.form.steeringWheel = undefined
@@ -122,6 +128,19 @@ const stepperReducer = createSlice({
 		setFormSelectedPicture: (state, { payload }) => {
 			state.form.selectedPicture = payload
 		},
+
+		// forTag
+		setFormSelectedTags: (state, { payload }) => {
+			state.form.selectedTags.push(payload)
+
+			// state.form.selectedTags.push(payload)
+		},
+		deleteFromFormTag: (state, { payload }) => {
+			state.form.selectedTags = state.form.selectedTags.filter(
+				(row) => row !== payload
+			)
+		},
+
 		setFormSelectedContactName: (state, { payload }) => {
 			state.form.selectedContactName = payload
 		},
@@ -159,6 +178,10 @@ export const {
 	setFormSelectedCondition,
 	setFormSelectedPrice,
 	setFormSelectedPicture,
+
+	setFormSelectedTags,
+	deleteFromFormTag,
+
 	setFormSelectedContactName,
 	setFormSelectedContactNumber,
 	setFormSteeringWheel,

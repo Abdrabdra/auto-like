@@ -103,44 +103,6 @@ const PostSelectModification: React.FC<Props> = ({ forFilter }) => {
 				</AccordionDetails>
 			</Accordion>
 
-			{/* <Accordion
-				expanded={expanded === "panel3"}
-				onChange={handleChange("panel3")}
-			>
-				<AccordionSummary
-					expandIcon={<ExpandMoreIcon />}
-					aria-controls="panel2bh-content"
-					id="panel2bh-header"
-				>
-					<Typography sx={{ fontSize: "18px", fontWeight: 600 }}>
-						Коробка передач
-					</Typography>
-				</AccordionSummary>
-				<Divider variant="middle" />
-				<AccordionDetails>
-					<SelectGearForm expanded={expanded} />
-				</AccordionDetails>
-			</Accordion>
-
-			<Accordion
-				expanded={expanded === "panel4"}
-				onChange={handleChange("panel4")}
-			>
-				<AccordionSummary
-					expandIcon={<ExpandMoreIcon />}
-					aria-controls="panel2bh-content"
-					id="panel2bh-header"
-				>
-					<Typography sx={{ fontSize: "18px", fontWeight: 600 }}>
-						Модификации
-					</Typography>
-				</AccordionSummary>
-				<Divider variant="middle" />
-				<AccordionDetails>
-					<SelectGearForm expanded={expanded} />
-				</AccordionDetails>
-			</Accordion> */}
-
 			<Accordion
 				expanded={expanded === "panel5"}
 				onChange={handleChange("panel5")}

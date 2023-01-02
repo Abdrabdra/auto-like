@@ -10,3 +10,8 @@ export interface IGeneration {
 	createdFrom: number
 	createdTo: number
 }
+
+export interface IDescriptionTag {
+	id: number
+	title: string
+}

@@ -27,6 +27,7 @@ const PostSelectModification = React.lazy(
 const PostSelectCondition = React.lazy(() => import("./PostSelectCondition"))
 const PostSelectPrice = React.lazy(() => import("./PostSelectPrice"))
 const PostSelectPicture = React.lazy(() => import("./PostSelectPicture"))
+const PostSelectTags = React.lazy(() => import("./PostSelectTags"))
 const PostSelectContacts = React.lazy(() => import("./PostSelectContacts"))
 const PostPreview = React.lazy(() => import("./PostPreview"))
 const PostVerification = React.lazy(() => import("./PostVerification"))
@@ -99,7 +100,7 @@ const PostStepper = () => {
 							<PostSelectPicture />
 						) : activeStep === 10 ? (
 							// NEED TO DELETE OR ADD ANOTHER NEW COMPONENT
-							<PostSelectModification />
+							<PostSelectTags />
 						) : activeStep === 11 ? (
 							// NEED TO DELETE OR ADD ANOTHER NEW COMPONENT
 							<PostSelectModification />
