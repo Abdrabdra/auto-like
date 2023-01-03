@@ -4,6 +4,10 @@ import { DriveIUnitEnum, StatementEnum, WheelEnum } from "types/enums"
 interface IInitState {
 	step: number
 	stepTitle: string
+	error: {
+		status: number
+		data: any
+	} | null
 
 	form: {
 		selectedTransport?: string // вид объявления, машина, лодка, мото, запчасти
@@ -33,6 +37,7 @@ interface IInitState {
 const initialState: IInitState = {
 	step: 0,
 	stepTitle: "",
+	error: null,
 
 	form: {
 		selectedTransport: undefined,
@@ -97,7 +102,12 @@ const stepperReducer = createSlice({
 			state.form.steeringWheel = undefined
 			state.form.selectedMileage = undefined
 			state.form.selectedCustomsClearance = undefined
+			state.error = null
 		},
+		setStepperError: (state, { payload }) => {
+			state.error = payload
+		},
+
 		setFormSelectedTransport: (state, { payload }) => {
 			state.form.selectedTransport = payload
 		},
@@ -170,6 +180,7 @@ export const {
 	incrementStep,
 	decrementStep,
 	setStepTitle,
+	setStepperError,
 
 	setDefaultState,
 	setFormSelectedTransport,

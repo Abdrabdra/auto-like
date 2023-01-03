@@ -1,4 +1,4 @@
-import { Box } from "@mui/material"
+import { Box, CircularProgress } from "@mui/material"
 import { useDispatch } from "react-redux"
 
 import AbsoluteBox from "@components/modules/AbsoluteBox"
@@ -6,15 +6,21 @@ import SubmitButton from "@components/ui/Button/SubmitButton"
 import OneHomePreview from "@components/screens/Main/Home/OneHome/OneHomePreview"
 
 import { useTypedSelector } from "@store/index"
-import { incrementStep } from "@store/reducers/stepper/stepper.slice"
+import {
+	incrementStep,
+	setStepperError
+} from "@store/reducers/stepper/stepper.slice"
 import { useCreateAnnouncementMutation } from "@store/rtk-api/announcement-rtk/announcementEndpoints"
 
-import { ICreateAnnouncement } from "types/Announcement/Announcement.type"
 import { WheelEnum } from "types/enums"
+import { MainButton } from "@components/ui/Button"
+import { useEffect } from "react"
+import SuspenseLoader from "@components/modules/SuspenseLoader"
 
 const PostPreview = () => {
 	const dispatch = useDispatch()
-	const [create] = useCreateAnnouncementMutation()
+	const [create, { isLoading, isError, isSuccess, error, reset }] =
+		useCreateAnnouncementMutation()
 
 	const stepper = useTypedSelector((state) => state.stepper.form)
 
@@ -66,15 +72,48 @@ const PostPreview = () => {
 
 	const handleClick = () => {
 		create(formData)
+	}
+
+	useEffect(() => {
+		if (isError) {
+			handleError()
+			reset()
+		}
+	}, [isError])
+
+	useEffect(() => {
+		if (isSuccess) {
+			dispatch(setStepperError(null))
+			handleSuccess()
+			reset()
+		}
+	}, [isSuccess])
+
+	const handleError = () => {
+		dispatch(setStepperError(error))
+		dispatch(incrementStep())
+	}
+	const handleSuccess = () => {
 		dispatch(incrementStep())
 	}
 
 	return (
 		<Box>
 			<OneHomePreview data={data} />
+
+			{isLoading && <Box>ЗАГРУЗКА...</Box>}
+			{isSuccess && <Box>Успешно</Box>}
+
 			<Box>
 				<AbsoluteBox>
-					<SubmitButton onClick={handleClick} />
+					<MainButton
+						onClick={handleClick}
+						disabled={isLoading}
+						bgcolor="primary.main"
+					>
+						{isLoading && <CircularProgress sx={{ mr: "10px" }} />}
+						Подтвердить
+					</MainButton>
 				</AbsoluteBox>
 			</Box>
 		</Box>
