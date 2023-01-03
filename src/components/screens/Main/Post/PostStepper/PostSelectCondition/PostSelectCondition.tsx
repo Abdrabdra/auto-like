@@ -34,7 +34,9 @@ const PostSelectCondition = () => {
 	}
 
 	// Tab Functions
-	const [value, setValue] = React.useState(0)
+	const [value, setValue] = React.useState(
+		selectedCondition === StatementEnum.NEW ? 1 : 0
+	)
 
 	const handleChange = (event: React.SyntheticEvent, newValue: number) => {
 		setValue(newValue)
