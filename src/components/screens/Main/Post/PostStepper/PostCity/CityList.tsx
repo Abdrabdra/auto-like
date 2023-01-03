@@ -6,7 +6,6 @@ import { useTypedSelector } from "@store/index"
 import { useDispatch } from "react-redux"
 import {
 	incrementStep,
-	setFormSelectedBrand,
 	setFormSelectedCity
 } from "@store/reducers/stepper/stepper.slice"
 import BrandSkeleton from "../PostSelectBrand/BrandList/BrandSkeleton"
@@ -18,8 +17,8 @@ interface Props {
 
 const CityList: FC<Props> = ({ searchValue }) => {
 	const dispatch = useDispatch()
-	const selectedBrand = useTypedSelector(
-		(state) => state.stepper.form.selectedBrand
+	const selectedCity = useTypedSelector(
+		(state) => state.stepper.form.selectedCity
 	)
 
 	const queryParams = {
@@ -45,7 +44,7 @@ const CityList: FC<Props> = ({ searchValue }) => {
 						key={row.id}
 						data={row}
 						handleSelect={handleSelect}
-						selectedBrand={selectedBrand ? selectedBrand : undefined}
+						selectedBrand={selectedCity ? selectedCity : undefined}
 					/>
 				))
 			) : (

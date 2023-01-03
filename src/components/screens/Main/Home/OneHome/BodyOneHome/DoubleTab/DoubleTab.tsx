@@ -7,9 +7,10 @@ import { CommentsTab, DetailsTab } from "./Tabs"
 interface Props {
 	details: any
 	commentsCount: number
+	forPreview?: boolean
 }
 
-const DoubleTab: React.FC<Props> = ({ details, commentsCount }) => {
+const DoubleTab: React.FC<Props> = ({ details, commentsCount, forPreview }) => {
 	const [value, setValue] = React.useState(0)
 
 	const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -33,7 +34,7 @@ const DoubleTab: React.FC<Props> = ({ details, commentsCount }) => {
 					<DetailsTab details={details} />
 				</TabPanel>
 				<TabPanel value={value} index={1}>
-					<CommentsTab commentsCount={commentsCount} />
+					<CommentsTab commentsCount={commentsCount} forPreview={forPreview} />
 				</TabPanel>
 			</Box>
 		</Stack>

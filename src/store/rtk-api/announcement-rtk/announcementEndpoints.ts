@@ -1,6 +1,7 @@
 import announcementApi from "./announcementApi"
 import {
 	IAnnouncementsResponse,
+	ICreateAnnouncement,
 	ILikeAnnouncement
 } from "types/Announcement/Announcement.type"
 import { IOneAnnouncementResponse } from "types/Announcement/OneAnnouncement.type"
@@ -29,6 +30,14 @@ export const announcementEndpoints = announcementApi.injectEndpoints({
 				url: `/announcement/${id}`
 			}),
 			providesTags: ["announcements"]
+		}),
+		createAnnouncement: builder.mutation<any, FormData>({
+			query: (body) => ({
+				url: `/announcement`,
+				method: "POST",
+				body
+			}),
+			invalidatesTags: ["announcements"]
 		})
 	})
 })
@@ -36,5 +45,6 @@ export const announcementEndpoints = announcementApi.injectEndpoints({
 export const {
 	useGetAnnouncementsQuery,
 	useLikeAnnouncementMutation,
-	useGetOneAnnouncementQuery
+	useGetOneAnnouncementQuery,
+	useCreateAnnouncementMutation
 } = announcementEndpoints

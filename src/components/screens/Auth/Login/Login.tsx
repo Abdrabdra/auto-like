@@ -39,7 +39,7 @@ const Login: React.FC = () => {
 			// @ts-ignore
 			dispatch(login(values as ILogin))
 		},
-		validationSchema: loginSchema
+		// validationSchema: loginSchema
 	})
 
 	const { values, errors, handleChange, handleSubmit } = formik

@@ -13,7 +13,6 @@ import { useDispatch } from "react-redux"
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline"
 
 import "./UploadFile.modules.scss"
-import Delete from "@mui/icons-material/Delete"
 import PictureOne from "./PictureOne"
 
 const UploadFile = () => {

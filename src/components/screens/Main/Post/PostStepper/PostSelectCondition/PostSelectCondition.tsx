@@ -27,7 +27,7 @@ const PostSelectCondition = () => {
 		(state) => state.stepper.form.selectedCondition
 	)
 
-	const handleClick = (value: string) => {
+	const handleClick = () => {
 		setTimeout(() => {
 			dispatch(incrementStep())
 		}, 250)
@@ -40,6 +40,8 @@ const PostSelectCondition = () => {
 		setValue(newValue)
 		if (newValue === 1) {
 			dispatch(setFormSelectedCondition(StatementEnum.NEW))
+		} else {
+			dispatch(setFormSelectedCondition(StatementEnum.BOO))
 		}
 	}
 
@@ -66,8 +68,9 @@ const PostSelectCondition = () => {
 
 			<Box>
 				<AbsoluteBox>
-					{selectedMileage || selectedCondition ? (
-						<SubmitButton onClick={() => handleClick("Новая")} />
+					{selectedCondition === StatementEnum.NEW ||
+					(selectedCondition && selectedMileage) ? (
+						<SubmitButton onClick={() => handleClick()} />
 					) : null}
 				</AbsoluteBox>
 			</Box>

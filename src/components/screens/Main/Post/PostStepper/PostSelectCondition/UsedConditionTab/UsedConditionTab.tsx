@@ -4,6 +4,7 @@ import {
 	InputAdornment,
 	OutlinedInput,
 	Stack,
+	TextField,
 	Typography
 } from "@mui/material"
 import * as Yup from "yup"
@@ -13,7 +14,17 @@ import { useTypedSelector } from "@store/index"
 import { setFormSelectedMileage } from "@store/reducers/stepper/stepper.slice"
 import { useDispatch } from "react-redux"
 import ConditionBoxes from "./ConditionBoxes"
-import numberWithSpaces from "@utils/numberWithSpaces"
+import { NumericFormat } from "react-number-format"
+
+const Schema = Yup.object().shape({
+	selectedMileage: Yup.number()
+		.typeError("Введите числа")
+		.positive("Пробег не может иметь отрицательные числа")
+		.integer("Введите целое число")
+		.max(9999999999, "Должно быть меньше 10-ти чисел")
+		// .min(1, "Должно быть больше одного числа")
+		.required("Пробег обязателен")
+})
 
 const UsedConditionTab = () => {
 	const dispatch = useDispatch()
@@ -27,16 +38,11 @@ const UsedConditionTab = () => {
 	const handleMileageChange = (e: any) => {
 		const { value } = e.target
 
-		if (
-			(mileage === 0 || mileage === undefined || mileage === "") &&
-			Number(value) === 0
-		) {
-			setMileage("")
-		} else if (value >= 0) {
-			setMileage(value)
-			dispatch(setFormSelectedMileage(value))
-		}
+		setMileage(value)
+		dispatch(setFormSelectedMileage(String(value).replace(/\s/g, "")))
 	}
+
+	console.log(selectedMileage)
 
 	return (
 		<Stack spacing={1.25}>
@@ -50,28 +56,17 @@ const UsedConditionTab = () => {
 							padding: "14px 15px 14px 20px"
 						}}
 					>
-						<Typography>Пробег</Typography>
-						<OutlinedInput
-							placeholder="Поиск"
-							// type="number"
+						<Typography>Пробег (км)</Typography>
+
+						<NumericFormat
 							value={mileage}
 							onChange={(e) => handleMileageChange(e)}
-							endAdornment={
-								<InputAdornment position="end">
-									<Box p={2} sx={{ color: "common.black" }}>
-										km
-									</Box>
-								</InputAdornment>
-							}
-							sx={{
-								flex: 1,
-								paddingLeft: "18px",
-								backgroundColor: "common.white",
-								borderRadius: "10px",
-								input: {
-									paddingLeft: "0"
-								}
+							thousandSeparator=" "
+							isAllowed={(values) => {
+								const { value } = values
+								return Number(value) < 9999999999
 							}}
+							customInput={TextField}
 						/>
 					</Stack>
 				)}

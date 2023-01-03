@@ -17,20 +17,23 @@ import CommentsTabCreate from "./CommentsTabCreate"
 
 interface Props {
 	commentsCount: number
+	forPreview?: boolean
 }
 
-const CommentsTab: FC<Props> = ({ commentsCount }) => {
+const CommentsTab: FC<Props> = ({ commentsCount, forPreview }) => {
 	const { announceId } = useParams()
 
 	const queryParams = {
 		carId: announceId
 	}
 
-	const { data, isLoading, isSuccess } = useGetCommentsQuery(queryParams)
+	const { data, isLoading, isSuccess } = useGetCommentsQuery(queryParams, {
+		skip: forPreview ? true : false
+	})
 
 	return (
 		<Stack spacing={4}>
-			{commentsCount === 0 ? (
+			{commentsCount === 0 || forPreview === true ? (
 				<Stack
 					justifyContent="center"
 					alignItems="center"

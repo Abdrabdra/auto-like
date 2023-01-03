@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { StatementEnum, WheelEnum } from "types/enums"
+import { DriveIUnitEnum, StatementEnum, WheelEnum } from "types/enums"
 
 interface IInitState {
 	step: number
@@ -10,10 +10,10 @@ interface IInitState {
 		selectedBrand?: number // марка - markaId
 		selectedMark?: number // модель - modelId
 		selectedManufacture?: number // годВыпуска - year
-		selectedCase?: string // кузов - bodyTypeId
-		selectedGeneration?: string // поколение - generationId
+		selectedCase?: number // кузов - bodyTypeId
+		selectedGeneration?: number // поколение - generationId
 		selectedEngine?: string // двигатель (бензин, дизель) - transmissionId ?????????
-		selectedGear?: string // привод - driveUnit
+		selectedGear?: DriveIUnitEnum // привод - driveUnit
 
 		selectedMileage?: number // пробег - mileage
 		selectedCustomsClearance?: boolean // Растоможка - customsClearance

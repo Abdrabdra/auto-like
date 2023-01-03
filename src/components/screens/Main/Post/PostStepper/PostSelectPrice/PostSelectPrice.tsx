@@ -1,10 +1,4 @@
-import {
-	Box,
-	InputAdornment,
-	OutlinedInput,
-	Stack,
-	Typography
-} from "@mui/material"
+import { Box, Stack, TextField, Typography } from "@mui/material"
 
 import { useDispatch } from "react-redux"
 
@@ -18,13 +12,15 @@ import * as Yup from "yup"
 import { Form, Formik } from "formik"
 import AbsoluteBox from "@components/modules/AbsoluteBox"
 import SubmitButton from "@components/ui/Button/SubmitButton"
+import { NumericFormat } from "react-number-format"
 
 const Schema = Yup.object().shape({
 	selectedPrice: Yup.number()
 		.typeError("Введите числа")
 		.positive("Цена не может иметь отрицательные числа")
 		.integer("Введите целое число")
-		.min(1, "Должно быть больше одного числа")
+		.max(9999999999, "Должно быть меньше 10-ти чисел")
+		// .min(1, "Должно быть больше одного числа")
 		.required("Цена обязательна")
 })
 
@@ -48,7 +44,7 @@ const PostSelectPrice = () => {
 			}}
 			validationSchema={Schema}
 		>
-			{({ values, setFieldValue, isValid, handleChange, errors }) => (
+			{({ values, errors, handleChange, setFieldValue }) => (
 				<Form>
 					<Stack
 						spacing={1}
@@ -59,27 +55,18 @@ const PostSelectPrice = () => {
 						}}
 					>
 						<Typography>Цена</Typography>
-						<OutlinedInput
-							name={"selectedPrice"}
+
+						<NumericFormat
 							value={values.selectedPrice}
+							name={"selectedPrice"}
+							type="text"
 							onChange={handleChange}
-							placeholder="Поиск"
-							endAdornment={
-								<InputAdornment position="end">
-									<Box p={2} sx={{ color: "common.black" }}>
-										KZT
-									</Box>
-								</InputAdornment>
-							}
-							sx={{
-								flex: 1,
-								paddingLeft: "18px",
-								backgroundColor: "common.white",
-								borderRadius: "10px",
-								input: {
-									paddingLeft: "0"
-								}
+							thousandSeparator=" "
+							isAllowed={(values) => {
+								const { value } = values
+								return Number(value) < 9999999999
 							}}
+							customInput={TextField}
 						/>
 						{errors.selectedPrice && (
 							<Typography color={"error"}>{errors.selectedPrice}</Typography>

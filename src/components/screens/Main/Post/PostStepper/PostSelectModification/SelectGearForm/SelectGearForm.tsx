@@ -26,7 +26,7 @@ const SelectGearForm = () => {
 			<RadioGroup
 				value={value}
 				onChange={(event) => {
-					setValue(event.currentTarget.value)
+					setValue(event.currentTarget.value as DriveIUnitEnum)
 					dispatch(setFormSelectedGear(event.currentTarget.value))
 				}}
 			>
