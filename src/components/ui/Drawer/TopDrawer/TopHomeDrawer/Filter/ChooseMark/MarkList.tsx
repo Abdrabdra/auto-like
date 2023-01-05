@@ -24,7 +24,6 @@ const MarkList: FC<Props> = ({ handleChangeQuery, chosenValues }) => {
 
 	useEffect(() => {
 		handleChangeQuery({ marks: marks })
-		console.log("effect: ", marks)
 	}, [marks])
 
 	return (

@@ -14,6 +14,7 @@ import Filter from "./Filter"
 import { useDispatch } from "react-redux"
 import { setFilterReset } from "@store/reducers/filter/filter.slice"
 import { useTypedSelector } from "@store/index"
+import { MainButton } from "@components/ui/Button"
 
 const Transition = React.forwardRef(function Transition(
 	props: TransitionProps & {
@@ -35,6 +36,13 @@ const TopHomeDrawer = () => {
 	const handleClose = () => {
 		setOpen(false)
 	}
+
+	const handleFilterReset = () => {
+		dispatch(setFilterReset())
+		setOpen(false)
+	}
+
+	const val = useTypedSelector((state) => state.filter.values)
 
 	return (
 		<>
@@ -70,6 +78,11 @@ const TopHomeDrawer = () => {
 						<Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
 							Фильтры
 						</Typography>
+						<Stack>
+							<MainButton onClick={handleFilterReset} bgcolor="transparent">
+								Сбросить
+							</MainButton>
+						</Stack>
 					</Toolbar>
 				</AppBar>
 

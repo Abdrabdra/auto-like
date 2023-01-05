@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
+import { values } from "lodash-es"
 
 interface IInitState {
 	// состояние: нет в бэке
@@ -6,6 +7,11 @@ interface IInitState {
 	// models: number[] | null
 
 	// cities: number[] | null
+
+	helper: {
+		reset: boolean
+	}
+
 	values: {
 		limit: number
 		page: number
@@ -28,6 +34,10 @@ const initialState: IInitState = {
 	// marks: null,
 	// cities: null,
 
+	helper: {
+		reset: true
+	},
+
 	values: {
 		limit: 10,
 		page: 1,
@@ -49,10 +59,11 @@ const filterReducer = createSlice({
 	initialState,
 	reducers: {
 		setFilter: (state, { payload }) => {
-			console.log(payload)
 			state.values = { ...state.values, ...payload }
 		},
-		setFilterReset: () => initialState
+		setFilterReset: (state) => {
+			state.values = initialState.values
+		}
 	}
 })
 
