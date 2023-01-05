@@ -8,7 +8,7 @@ const Content = () => {
 			<Typography variant="h4" my={1}>
 				Объявления
 			</Typography>
-			<ContentList />
+			<ContentList withoutPagination />
 		</Box>
 	)
 }

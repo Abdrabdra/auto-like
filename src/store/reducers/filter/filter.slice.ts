@@ -7,6 +7,12 @@ interface IInitState {
 
 	// cities: number[] | null
 	values: {
+		limit: number
+		page: number
+
+		marks: number[]
+		models: number[]
+
 		yearTo: string
 		yearFrom: string
 		orderByPriceASC: string
@@ -23,6 +29,12 @@ const initialState: IInitState = {
 	// cities: null,
 
 	values: {
+		limit: 10,
+		page: 1,
+
+		marks: [],
+		models: [],
+
 		yearFrom: "",
 		yearTo: "",
 		orderByPriceASC: "",
@@ -37,7 +49,8 @@ const filterReducer = createSlice({
 	initialState,
 	reducers: {
 		setFilter: (state, { payload }) => {
-			state.values = payload
+			console.log(payload)
+			state.values = { ...state.values, ...payload }
 		},
 		setFilterReset: () => initialState
 	}

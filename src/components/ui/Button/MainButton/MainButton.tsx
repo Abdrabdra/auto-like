@@ -7,6 +7,7 @@ export type CustomButtonProps = {
 	bradius?: string
 	fsize?: string
 	color?: string
+	jc?: string
 } & ButtonProps
 
 const MainButton = styled((props: CustomButtonProps) => (
@@ -18,7 +19,8 @@ const MainButton = styled((props: CustomButtonProps) => (
 			backgroundColor: props.bgcolor ? props.bgcolor : "secondary.300",
 			borderRadius: props.bradius ? props.bradius : "10px",
 			fontSize: props.fsize ? props.fsize : "16px",
-			color: props.color ? props.color : "#FFF"
+			color: props.color ? props.color : "#FFF",
+			justifyContent: props.jc ? props.jc : "center"
 		}}
 	/>
 ))(({ theme }) => ({
@@ -26,7 +28,6 @@ const MainButton = styled((props: CustomButtonProps) => (
 	lineHeight: "20px",
 	fontWeight: 600,
 	textTransform: "capitalize",
-	justifyContent: "center",
 	alignItems: "center",
 	borderColor: "transparent",
 

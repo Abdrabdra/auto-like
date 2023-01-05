@@ -51,7 +51,7 @@ const MainDrawer = () => {
 						<OneHomeDrawer />
 					) : path === "/app/chat/one/:chatId" ? (
 						<OneChatDrawer />
-					) : path === "/app/home" || "/app/home/search" ? (
+					) : path === "/app/home" || path === "/app/home/search" ? (
 						<NavigationDrawer links={links} />
 					) : path === "/app/post" ? (
 						<></>

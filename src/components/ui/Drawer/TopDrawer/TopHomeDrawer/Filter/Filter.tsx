@@ -5,11 +5,13 @@ import { useNavigate } from "react-router-dom"
 
 import { setFilter } from "@store/reducers/filter/filter.slice"
 
+import ChooseMark from "./ChooseMark"
 import ChooseYear from "./ChooseYear"
 import ChoosePrice from "./ChoosePrice"
 
 import { MainButton } from "@components/ui/Button"
 import AbsoluteBox from "@components/modules/AbsoluteBox"
+import { useTypedSelector } from "@store/index"
 
 interface Props {
 	handleClose: () => void
@@ -19,7 +21,12 @@ const Filter: FC<Props> = ({ handleClose }) => {
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
 
+	const selectedMarks = useTypedSelector((state) => state.filter.values.marks)
+
 	const [filterValues, setFilterValues] = useState({
+		marks: selectedMarks,
+		models: [],
+
 		yearFrom: null,
 		yearTo: null,
 		priceFrom: null,
@@ -38,7 +45,7 @@ const Filter: FC<Props> = ({ handleClose }) => {
 	}
 
 	const handleFilterSubmit = () => {
-		dispatch(setFilter(filterValues))
+		dispatch(setFilter({ page: 1, ...filterValues }))
 		handleClose()
 		navigate("/app/home/search")
 	}
@@ -53,6 +60,10 @@ const Filter: FC<Props> = ({ handleClose }) => {
 
 			<Container>
 				<Stack spacing={2}>
+					<ChooseMark
+						handleChangeQuery={(value) => handleChangeQuery(value)}
+						chosenValues={filterValues.marks}
+					/>
 					<ChooseYear handleChangeQuery={(value) => handleChangeQuery(value)} />
 					<ChoosePrice
 						handleChangeQuery={(value) => handleChangeQuery(value)}

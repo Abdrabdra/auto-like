@@ -59,11 +59,11 @@ const ChoosePrice: FC<Props> = ({ handleChangeQuery }) => {
 		}
 		if (value === "ASC") {
 			setSelect(value)
-			setPriceOrder({ orderByPriceASC: true, orderByPriceDESC: false })
+			setPriceOrder({ orderByPriceASC: true, orderByPriceDESC: "" })
 		}
 		if (value === "DESC") {
 			setSelect(value)
-			setPriceOrder({ orderByPriceDESC: true, orderByPriceASC: false })
+			setPriceOrder({ orderByPriceDESC: true, orderByPriceASC: "" })
 		}
 	}
 
