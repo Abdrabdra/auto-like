@@ -8,6 +8,11 @@ export default function useCheckPath() {
 		return pathname?.pattern.path
 	}
 
+	if (matchPath({ path: "/app/home/search" }, location.pathname) !== null) {
+		const pathname = matchPath({ path: "/app/home/search" }, location.pathname)
+		return pathname?.pattern.path
+	}
+
 	if (matchPath({ path: "/app/post" }, location.pathname) !== null) {
 		const pathname = matchPath({ path: "/app/post" }, location.pathname)
 		return pathname?.pattern.path

@@ -5,6 +5,7 @@ export type CustomTextFieldProps = {
 	bgcolor?: string
 	bradius?: string
 	color?: string
+	bordercolor?: string
 } & TextFieldProps
 
 export const StyledMainInput = styled((props: CustomTextFieldProps) => (
@@ -17,7 +18,11 @@ export const StyledMainInput = styled((props: CustomTextFieldProps) => (
 			"& .MuiOutlinedInput-root": {
 				backgroundColor: props.bgcolor ? props.bgcolor : "common.white",
 				borderRadius: props.bradius ? props.bradius : "10px",
-				color: props.color ? props.color : "common.black"
+				color: props.color ? props.color : "common.black",
+
+				"& fieldset": {
+					borderColor: props.bordercolor ? props.bordercolor : "transparent"
+				}
 			}
 		}}
 	/>
@@ -28,9 +33,6 @@ export const StyledMainInput = styled((props: CustomTextFieldProps) => (
 		height: "50px",
 		border: "none",
 
-		"& fieldset": {
-			borderColor: "transparent"
-		},
 		"&:hover fieldset": {
 			borderColor: theme.palette.primary.main
 		},

@@ -16,11 +16,7 @@ import SelectWheelForm from "./SelectWheelForm"
 import { useDispatch } from "react-redux"
 import { incrementStep } from "@store/reducers/stepper/stepper.slice"
 
-interface Props {
-	forFilter?: boolean
-}
-
-const PostSelectModification: React.FC<Props> = ({ forFilter }) => {
+const PostSelectModification = () => {
 	const dispatch = useDispatch()
 	const [expanded, setExpanded] = React.useState<string | false>("panel1")
 

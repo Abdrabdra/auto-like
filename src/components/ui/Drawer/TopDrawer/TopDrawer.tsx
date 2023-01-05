@@ -49,7 +49,7 @@ const TopDrawer = () => {
 					) : path === "/app/home/one/:announceId" ||
 					  path === "/app/chat/one/:chatId" ? (
 						<TopOneHomeDrawer path={path} />
-					) : path === "/app/home" ? (
+					) : path === "/app/home" || path === "/app/home/search" ? (
 						<TopHomeDrawer />
 					) : path === "/app/post" ? (
 						<TopPostDrawer />
