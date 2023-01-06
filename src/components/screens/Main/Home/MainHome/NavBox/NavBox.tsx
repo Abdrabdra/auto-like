@@ -6,7 +6,7 @@ import HandymanIcon from "@mui/icons-material/Handyman"
 import AddIcon from "@mui/icons-material/Add"
 
 const boxes = [
-	{ title: "Автомобили", icon: DirectionsCarIcon, route: "home/search" },
+	{ title: "Автомобили", icon: DirectionsCarIcon, route: "home/cars" },
 	{ title: "Запчасти", icon: HandymanIcon, route: "home" },
 	{ title: "Подать", icon: AddIcon, route: "post" }
 ]

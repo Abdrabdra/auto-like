@@ -9,8 +9,8 @@ const OneHome = React.lazy(
 	() => import("@components/screens/Main/Home/OneHome")
 )
 
-const HomeSearch = React.lazy(
-	() => import("@components/screens/Main/Home/HomeSearch")
+const HomeCars = React.lazy(
+	() => import("@components/screens/Main/Home/HomeCars")
 )
 
 const HomePage = () => {
@@ -22,7 +22,7 @@ const HomePage = () => {
 				<Route path="one" element={<Navigate to="/" />} />
 				<Route path="one/:announceId" element={<OneHome />} />
 
-				<Route path="search" element={<HomeSearch />} />
+				<Route path="cars" element={<HomeCars />} />
 
 				<Route path="*" element={<MainHome />} />
 			</Route>

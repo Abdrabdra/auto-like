@@ -2,7 +2,7 @@ import { Box, Container, Typography } from "@mui/material"
 import { useState } from "react"
 import ContentList from "../MainHome/Announcement/Content/ContentList"
 
-const HomeSearch = () => {
+const HomeCars = () => {
 	const [counts, setCounts] = useState(0)
 
 	const getCounts = (value: number) => {
@@ -20,4 +20,4 @@ const HomeSearch = () => {
 	)
 }
 
-export default HomeSearch
+export default HomeCars

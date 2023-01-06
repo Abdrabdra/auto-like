@@ -47,7 +47,7 @@ const Filter: FC<Props> = ({ handleClose }) => {
 	const handleFilterSubmit = () => {
 		dispatch(setFilter({ page: 1, ...filterValues }))
 		handleClose()
-		navigate("/app/home/search")
+		navigate("/app/home/cars")
 	}
 
 	return (
