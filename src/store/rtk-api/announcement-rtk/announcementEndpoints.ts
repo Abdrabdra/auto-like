@@ -27,7 +27,7 @@ export const announcementEndpoints = announcementApi.injectEndpoints({
 		}),
 		getOneAnnouncement: builder.query<IOneAnnouncementResponse, string>({
 			query: (id) => ({
-				url: `/announcement/${id}`
+				url: `/announcement/one/${id}`
 			}),
 			providesTags: ["announcements"]
 		}),
