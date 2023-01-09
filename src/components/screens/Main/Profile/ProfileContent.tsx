@@ -8,11 +8,13 @@ import ProfileInfo from "./ProfileInfo"
 import ProfileSettings from "./ProfileSettings"
 import ProfileStatistics from "./ProfileStatistics"
 import { AppDispatch } from "@store/index"
+import { resetStepper } from "@store/reducers/stepper/stepper.slice"
 
 const ProfileContent = () => {
 	const dispatch = useDispatch<AppDispatch>()
 
 	const handleLogOut = () => {
+		dispatch(resetStepper())
 		dispatch(logout())
 	}
 

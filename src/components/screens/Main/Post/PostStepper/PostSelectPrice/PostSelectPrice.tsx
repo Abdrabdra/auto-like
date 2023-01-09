@@ -19,7 +19,7 @@ const Schema = Yup.object().shape({
 		.typeError("Введите числа")
 		.positive("Цена не может иметь отрицательные числа")
 		.integer("Введите целое число")
-		.max(9999999999, "Должно быть меньше 10-ти чисел")
+		.max(999999999, "Должно быть не больше 9-ти чисел")
 		// .min(1, "Должно быть больше одного числа")
 		.required("Цена обязательна")
 })
@@ -64,7 +64,7 @@ const PostSelectPrice = () => {
 							thousandSeparator=" "
 							isAllowed={(values) => {
 								const { value } = values
-								return Number(value) < 9999999999
+								return Number(value) < 999999999
 							}}
 							customInput={TextField}
 						/>

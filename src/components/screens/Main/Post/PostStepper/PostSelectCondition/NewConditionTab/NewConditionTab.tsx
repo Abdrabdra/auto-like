@@ -13,7 +13,7 @@ const Schema = Yup.object().shape({
 		.typeError("Введите числа")
 		.positive("Пробег не может иметь отрицательные числа")
 		.integer("Введите целое число")
-		.max(9999999999, "Должно быть меньше 10-ти чисел")
+		.max(999999, "Должно быть меньше 10-ти чисел")
 		// .min(1, "Должно быть больше одного числа")
 		.required("Пробег обязателен")
 })
@@ -60,7 +60,7 @@ const NewConditionTab = () => {
 							thousandSeparator=" "
 							isAllowed={(values) => {
 								const { value } = values
-								return Number(value) < 9999999999
+								return Number(value) < 999999
 							}}
 							customInput={TextField}
 						/>

@@ -81,6 +81,7 @@ const stepperReducer = createSlice({
 		decrementStep: (state) => {
 			state.step -= 1
 		},
+		resetStepper: () => initialState,
 
 		setDefaultState: (state) => {
 			state.form.selectedTransport = undefined
@@ -181,6 +182,7 @@ export const {
 	decrementStep,
 	setStepTitle,
 	setStepperError,
+	resetStepper,
 
 	setDefaultState,
 	setFormSelectedTransport,

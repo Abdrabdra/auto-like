@@ -1,7 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
+import { useDispatch } from "react-redux"
 import { AuthService } from "../../../service/auth/auth.service"
 import { ILogin } from "../../../types/ILogin"
 import { IRegistration } from "../../../types/IRegistration"
+import { resetStepper } from "../stepper/stepper.slice"
 
 export const login = createAsyncThunk(
 	"auth/login",
@@ -32,11 +34,10 @@ export const logout = createAsyncThunk<any>(
 	"auth/logout",
 	async function (_, { rejectWithValue }) {
 		try {
-			const response = await AuthService.logout()
+			// const response = await AuthService.logout()
 			localStorage.removeItem("access_token")
 
-			console.log(response.data)
-			return response.data
+			return null
 		} catch (e) {
 			return rejectWithValue(e)
 		}
