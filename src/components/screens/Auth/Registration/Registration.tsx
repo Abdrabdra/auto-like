@@ -20,7 +20,7 @@ import AuthBg from "@assets/images/Auth/auth_bg.png"
 import { useTypedSelector } from "../../../../store"
 import { StyledNewInput } from "../../../ui/Input"
 import { ActionsEnum } from "../../../../store/enum"
-import { loginSchema } from "../../../../utils/schema/validation"
+import { LoginSchema } from "@utils/schema/validation"
 
 const Registration: React.FC = () => {
 	const navigate = useNavigate()
@@ -42,7 +42,7 @@ const Registration: React.FC = () => {
 			// @ts-ignore
 			dispatch(registration(values as IRegistration))
 		},
-		validationSchema: loginSchema
+		validationSchema: LoginSchema
 	})
 
 	const { values, errors, handleChange, handleSubmit } = formik
