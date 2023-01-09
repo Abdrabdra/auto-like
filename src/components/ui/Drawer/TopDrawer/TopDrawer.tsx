@@ -2,6 +2,8 @@ import { useEffect, useState } from "react"
 import { AppBar, Box, Container, useMediaQuery } from "@mui/material"
 import { Route, Routes, useLocation } from "react-router-dom"
 
+import { useTypedSelector } from "@store/index"
+
 import TopOneHomeDrawer from "./TopOneHomeDrawer"
 import TopHomeDrawer from "./TopHomeDrawer"
 import useCheckPath from "../DrawerUtils/CheckPath"
@@ -12,6 +14,8 @@ import TopGoBackDrawer from "./TopGoBackDrawer"
 
 const TopDrawer = () => {
 	const location = useLocation()
+	const { isAuth } = useTypedSelector((state) => state.auth)
+
 	const [path, setPath] = useState<String | null>(null)
 
 	const matchedPath: string | null | undefined = useCheckPath()
@@ -52,7 +56,11 @@ const TopDrawer = () => {
 					) : path === "/app/home" || path === "/app/home/search" ? (
 						<TopHomeDrawer />
 					) : path === "/app/post" ? (
-						<TopPostDrawer />
+						isAuth ? (
+							<TopPostDrawer />
+						) : (
+							<TopLogoDrawer />
+						)
 					) : path === "back" ? (
 						<TopGoBackDrawer />
 					) : (

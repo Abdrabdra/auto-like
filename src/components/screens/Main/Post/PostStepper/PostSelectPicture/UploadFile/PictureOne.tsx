@@ -11,7 +11,7 @@ const PictureOne: FC<Props> = ({ image }) => {
 	return (
 		<Box
 			component="img"
-			src={URL.createObjectURL(new Blob(blob, { type: "application/zip" }))}
+			src={URL.createObjectURL(new Blob(blob, { type: "application/image" }))}
 			sx={{
 				width: "100%",
 				height: "170px",

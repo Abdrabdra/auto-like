@@ -60,7 +60,7 @@ const NewConditionTab = () => {
 							thousandSeparator=" "
 							isAllowed={(values) => {
 								const { value } = values
-								return Number(value) < 999999
+								return Number(value) <= 999999
 							}}
 							customInput={TextField}
 						/>

@@ -25,7 +25,13 @@ const UploadFile = () => {
 	const [selectedFile, setSelectedFile] = useState<File[]>(selectedImages)
 
 	const handleChange = (e: any) => {
-		setSelectedFile([...selectedFile, e.target.files[0]])
+		const input = e.target
+
+		if (!input.files?.length) {
+			return
+		}
+
+		setSelectedFile([...selectedFile, input.files[0]])
 	}
 
 	const handleAddImageClick = () => {

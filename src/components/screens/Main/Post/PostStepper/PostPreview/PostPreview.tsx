@@ -5,7 +5,7 @@ import AbsoluteBox from "@components/modules/AbsoluteBox"
 import SubmitButton from "@components/ui/Button/SubmitButton"
 import OneHomePreview from "@components/screens/Main/Home/OneHome/OneHomePreview"
 
-import { useTypedSelector } from "@store/index"
+import { RootState, useTypedSelector } from "@store/index"
 import {
 	incrementStep,
 	setStepperError
@@ -22,7 +22,7 @@ const PostPreview = () => {
 	const [create, { isLoading, isError, isSuccess, error, reset }] =
 		useCreateAnnouncementMutation()
 
-	const stepper = useTypedSelector((state) => state.stepper.form)
+	const stepper = useTypedSelector((state: RootState) => state.stepper.form)
 
 	const data = {
 		model: stepper.selectedMark,

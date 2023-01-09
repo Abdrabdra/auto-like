@@ -15,3 +15,9 @@ export interface IDescriptionTag {
 	id: number
 	title: string
 }
+
+export interface IGetCityResponse {
+	id: number
+	title: string
+	cities: IDescriptionTag[]
+}

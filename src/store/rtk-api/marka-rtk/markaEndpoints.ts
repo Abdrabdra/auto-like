@@ -4,7 +4,7 @@ import {
 	IGetDescriptionResponse,
 	IGetMarkaResponse
 } from "types/Marka/MarkaResponse"
-import { IGeneration, IMarka } from "types/Marka/Marka"
+import { IGeneration, IGetCityResponse, IMarka } from "types/Marka/Marka"
 
 export const markaEndpoints = markaApi.injectEndpoints({
 	endpoints: (builder) => ({
@@ -52,6 +52,15 @@ export const markaEndpoints = markaApi.injectEndpoints({
 				}
 			},
 			providesTags: ["description"]
+		}),
+
+		getCity: builder.query<IGetCityResponse[], string>({
+			query: (arg) => {
+				return {
+					url: `/region`
+				}
+			},
+			providesTags: ["description"]
 		})
 		// likeAnnouncement: builder.mutation<string, ILikeAnnouncement>({
 		// 	query: (body) => ({
@@ -69,5 +78,7 @@ export const {
 	useGetModelQuery,
 	useGetBodyQuery,
 	useGetGenerationQuery,
-	useGetDescriptionsQuery
+	useGetDescriptionsQuery,
+
+	useGetCityQuery
 } = markaEndpoints

@@ -9,13 +9,16 @@ import ProfileSettings from "./ProfileSettings"
 import ProfileStatistics from "./ProfileStatistics"
 import { AppDispatch } from "@store/index"
 import { resetStepper } from "@store/reducers/stepper/stepper.slice"
+import { useNavigate } from "react-router-dom"
 
 const ProfileContent = () => {
 	const dispatch = useDispatch<AppDispatch>()
+	const navigate = useNavigate()
 
 	const handleLogOut = () => {
 		dispatch(resetStepper())
 		dispatch(logout())
+		navigate("/app")
 	}
 
 	return (

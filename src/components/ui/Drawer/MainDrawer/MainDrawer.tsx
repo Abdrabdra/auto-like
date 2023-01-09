@@ -14,6 +14,7 @@ import NavigationDrawer from "./NavigationDrawer"
 import OneHomeDrawer from "./OneHomeDrawer"
 import useCheckPath from "../DrawerUtils/CheckPath"
 import OneChatDrawer from "./OneChatDrawer"
+import { useTypedSelector } from "@store/index"
 
 const links = [
 	{ id: 1, route: "home", icon: HomeRoundedIcon, text: "Главная" },
@@ -25,6 +26,8 @@ const links = [
 
 const MainDrawer = () => {
 	const location = useLocation()
+	const { isAuth } = useTypedSelector((state) => state.auth)
+
 	const [path, setPath] = useState<String | null>(null)
 
 	const matchedPath = useCheckPath()
@@ -54,7 +57,9 @@ const MainDrawer = () => {
 					) : path === "/app/home" || path === "/app/home/search" ? (
 						<NavigationDrawer links={links} />
 					) : path === "/app/post" ? (
-						<></>
+						isAuth ? null : (
+							<NavigationDrawer links={links} />
+						)
 					) : (
 						<></>
 					)}

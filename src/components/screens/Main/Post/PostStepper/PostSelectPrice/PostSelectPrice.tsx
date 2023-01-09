@@ -64,7 +64,7 @@ const PostSelectPrice = () => {
 							thousandSeparator=" "
 							isAllowed={(values) => {
 								const { value } = values
-								return Number(value) < 999999999
+								return Number(value) <= 999999999
 							}}
 							customInput={TextField}
 						/>
