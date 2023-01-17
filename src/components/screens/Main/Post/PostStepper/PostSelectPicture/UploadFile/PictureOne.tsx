@@ -14,7 +14,7 @@ const PictureOne: FC<Props> = ({ image }) => {
 			src={URL.createObjectURL(new Blob(blob, { type: "application/image" }))}
 			sx={{
 				width: "100%",
-				height: "170px",
+				height: "250px",
 				borderRadius: "10px",
 				backgroundColor: "secondary.200",
 				backgroundRepeat: "no-repeat",

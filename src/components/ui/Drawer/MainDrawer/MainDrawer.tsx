@@ -51,7 +51,8 @@ const MainDrawer = () => {
 			>
 				<Container>
 					{path === "/app/home/one/:announceId" ? (
-						<OneHomeDrawer />
+						// <OneHomeDrawer />
+						<></>
 					) : path === "/app/chat/one/:chatId" ? (
 						<OneChatDrawer />
 					) : path === "/app/home" || path === "/app/home/search" ? (

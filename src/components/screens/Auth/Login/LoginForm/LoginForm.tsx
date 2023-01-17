@@ -42,53 +42,65 @@ const LoginForm = () => {
 	}
 
 	return (
-		<form onSubmit={handleSubmit}>
-			<Stack>
-				<StyledMainInput
-					label="Номер телефона"
-					bgcolor="secondary.600"
-					ref={inputRef}
-					name="phone"
-					value={phone}
-					onChange={handleChange}
-					placeholder="+7 (_ _ _) _ _ _ - _ _ - _ _"
-				/>
-				{errors.phone && <Typography>{errors.phone}</Typography>}
-			</Stack>
-			<Stack>
-				<StyledMainInput
-					label="Пароль"
-					bgcolor="secondary.600"
-					id="my-input"
-					aria-describedby="my-helper-text"
-					name="password"
-					type="password"
-					value={password}
-					onChange={handleChange}
-					placeholder="Введите пароль"
-				/>
-				{errors.password && (
-					<Typography sx={{ color: "error.main" }}>
-						{errors.password}
-					</Typography>
-				)}
-			</Stack>
-			<MainButton
-				disabled={status === ActionsEnum.LOADING}
-				startIcon={
-					status === ActionsEnum.LOADING && (
-						<CircularProgress sx={{ color: "#FFF" }} />
-					)
-				}
-				type="submit"
-			>
-				Войти
-			</MainButton>
+		<form
+			onSubmit={handleSubmit}
+			style={{ display: "flex", justifyContent: "center" }}
+		>
+			<Stack spacing={3} sx={{ width: "500px" }}>
+				<Stack spacing={2}>
+					<Stack>
+						<StyledMainInput
+							label="Номер телефона"
+							bgcolor="secondary.600"
+							ref={inputRef}
+							name="phone"
+							value={phone}
+							onChange={handleChange}
+							placeholder="+7 (_ _ _) _ _ _ - _ _ - _ _"
+						/>
+						{errors.phone && <Typography>{errors.phone}</Typography>}
+					</Stack>
+					<Stack>
+						<StyledMainInput
+							label="Пароль"
+							bgcolor="secondary.600"
+							id="my-input"
+							aria-describedby="my-helper-text"
+							name="password"
+							type="password"
+							value={password}
+							onChange={handleChange}
+							placeholder="Введите пароль"
+						/>
+						{errors.password && (
+							<Typography sx={{ color: "error.main" }}>
+								{errors.password}
+							</Typography>
+						)}
+					</Stack>
+				</Stack>
 
-			<Typography>
-				У вас нет аккаунта?{" "}
-				<MainButton onClick={() => handleClick()}>Регистрируйтесь</MainButton>
-			</Typography>
+				<Stack spacing={1}>
+					<MainButton
+						disabled={status === ActionsEnum.LOADING}
+						startIcon={
+							status === ActionsEnum.LOADING && (
+								<CircularProgress sx={{ color: "#FFF" }} />
+							)
+						}
+						type="submit"
+					>
+						Войти
+					</MainButton>
+
+					<Stack>
+						<Typography>У вас нет аккаунта? </Typography>
+						<MainButton onClick={() => handleClick()}>
+							Регистрируйтесь
+						</MainButton>
+					</Stack>
+				</Stack>
+			</Stack>
 		</form>
 	)
 }

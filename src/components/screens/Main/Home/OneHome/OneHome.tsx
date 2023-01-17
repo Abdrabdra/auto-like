@@ -9,6 +9,7 @@ import {
 	TagBox,
 	TitleBox
 } from "./BodyOneHome"
+import ButtonsBox from "./BodyOneHome/ButtonsBox"
 import OptionBox from "./BodyOneHome/OptionBox"
 import SimilarBox from "./BodyOneHome/SimilarBox"
 import OneHomeSkeleton from "./OneHomeSkeleton"
@@ -46,7 +47,7 @@ const OneHome = () => {
 					<OneHomeSkeleton />
 				) : data ? (
 					<Stack spacing={2}>
-						<ImageBox />
+						<ImageBox images={data.a.images} />
 						<TagBox />
 						<TitleBox
 							title={`${data.a.marka.title} ${data.a.model.title}`}
@@ -59,6 +60,7 @@ const OneHome = () => {
 						<Description description={data.a.description} />
 						<OptionBox />
 						<SimilarBox />
+						<ButtonsBox phone={data.a.author.user} />
 					</Stack>
 				) : null}
 			</Container>

@@ -42,7 +42,7 @@ const ContentList: FC<Props> = ({
 
 	return (
 		<Stack spacing={1.5}>
-			{isLoading || isFetching ? (
+			{isLoading ? (
 				<ContentSkeleton />
 			) : isSuccess ? (
 				data.count === 0 ? (

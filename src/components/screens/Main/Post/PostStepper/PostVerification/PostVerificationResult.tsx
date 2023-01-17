@@ -34,7 +34,7 @@ const PostVerificationResult: FC<Props> = ({ error }) => {
 				{error ? "Ошибка при отправке Объявлений" : "Объявление на проверке"}
 			</Typography>
 			<Typography sx={{ fontSize: "12px", fontWeight: 500, color: "grey.800" }}>
-				{error ? `${error.data.message}` : "Объявление на проверке"}
+				{error ? `${error.data?.message}` : "Объявление на проверке"}
 			</Typography>
 
 			<Box>

@@ -22,6 +22,8 @@ const UploadFile = () => {
 		(state) => state.stepper.form.selectedPicture
 	)
 
+	console.log("SELECTED: ", selectedImages)
+
 	const [selectedFile, setSelectedFile] = useState<File[]>(selectedImages)
 
 	const handleChange = (e: any) => {
@@ -30,6 +32,9 @@ const UploadFile = () => {
 		if (!input.files?.length) {
 			return
 		}
+
+		console.log("INTPUT:", input)
+		console.log("INTPUT:", input.files)
 
 		setSelectedFile([...selectedFile, input.files[0]])
 	}

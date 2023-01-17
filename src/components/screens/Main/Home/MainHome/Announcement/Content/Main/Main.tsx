@@ -9,6 +9,7 @@ import LikeButton from "./LikeButton"
 import Tags from "./Tags"
 
 import { IAnnouncement } from "types/Announcement/Announcement.type"
+import { $image_api } from "api"
 
 interface Props {
 	car: IAnnouncement
@@ -76,7 +77,21 @@ const Main: FC<Props> = ({ car }) => {
 						{countImages}
 					</Typography>
 				</Stack>
-				{avatar && <img src={avatar} alt="Car avatar" />}
+				{avatar && (
+					<Box
+						component="img"
+						src={`${$image_api}${avatar}`}
+						sx={{
+							backgroundRepeat: "no-repeat",
+							objectFit: "cover",
+							objectPosition: "center",
+
+							borderRadius: "10px",
+							width: "120px",
+							height: "110px"
+						}}
+					/>
+				)}
 			</Box>
 			<Stack justifyContent="center" sx={{ flex: "1" }}>
 				<Box

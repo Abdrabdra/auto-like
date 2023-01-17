@@ -67,8 +67,9 @@ const PostPreview = () => {
 	formData.append("volume", String(3.5))
 	formData.append("year", String(stepper.selectedManufacture))
 
-	// @ts-ignore
-	formData.append("file", stepper.selectedPicture)
+	for (let i = 0; i < stepper.selectedPicture.length; i++) {
+		formData.append("file", stepper.selectedPicture[i])
+	}
 
 	const handleClick = () => {
 		create(formData)

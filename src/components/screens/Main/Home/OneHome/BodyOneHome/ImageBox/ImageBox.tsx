@@ -5,6 +5,8 @@ import "swiper/css"
 import { RootState, useTypedSelector } from "@store/index"
 import { FC } from "react"
 import ImageBoxOne from "./ImageBoxOne"
+import { $image_api } from "api"
+import { IOneImage } from "types/Announcement/OneAnnouncement.type"
 
 const banners = [
 	{
@@ -22,11 +24,12 @@ const banners = [
 ]
 
 interface Props {
+	images?: IOneImage[]
 	forPreview?: boolean
 }
 
-const ImageBox: FC<Props> = ({ forPreview }) => {
-	const images = useTypedSelector(
+const ImageBox: FC<Props> = ({ images, forPreview }) => {
+	const selectedImages = useTypedSelector(
 		(state: RootState) => state.stepper.form.selectedPicture
 	)
 
@@ -34,19 +37,24 @@ const ImageBox: FC<Props> = ({ forPreview }) => {
 		<Box sx={{ backgroundColor: "grey.0" }}>
 			<Swiper spaceBetween={50} slidesPerView={1} loop={true}>
 				{forPreview
-					? images.map((row, index) => (
+					? selectedImages.map((row, index) => (
 							<SwiperSlide key={index}>
 								<ImageBoxOne image={row} />
 							</SwiperSlide>
 					  ))
-					: [1, 2, 3].map((row, index) => (
+					: images?.map((row, index) => (
 							<SwiperSlide key={index}>
 								<Box
+									component={"img"}
+									src={`${$image_api}${row.image}`}
 									sx={{
 										width: "100%",
 										height: "200px",
 										borderRadius: "20px",
-										backgroundColor: "secondary.200"
+										backgroundColor: "secondary.200",
+										backgroundRepeat: "no-repeat",
+										objectFit: "cover",
+										objectPosition: "center"
 									}}
 								/>
 							</SwiperSlide>

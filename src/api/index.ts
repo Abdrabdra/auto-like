@@ -1,7 +1,7 @@
 import axios from "axios"
 
-// export const DEV_API = "http://165.22.199.16/"
-export const DEV_API = "http://localhost:3000/"
+export const DEV_API = "http://165.22.199.16/"
+// export const DEV_API = "http://localhost:3000/"
 // export const PROD_API = "https://";
 
 export const $api = axios.create({
@@ -17,4 +17,4 @@ $api.interceptors.request.use((config) => {
 	}
 })
 
-export const $image_api = "http://localhost:3000/"
+export const $image_api = "https://autolike.ams3.digitaloceanspaces.com/"
