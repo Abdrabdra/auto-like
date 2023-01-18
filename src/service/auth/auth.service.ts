@@ -16,7 +16,7 @@ export class AuthService {
 	}
 
 	static async refresh(): Promise<AxiosResponse<ILoginResponse>> {
-		return $api.get<ILoginResponse>(`${DEV_API}auth/refresh`)
+		return $api.get<ILoginResponse>(`auth/refresh`)
 	}
 
 	static async logout(): Promise<AxiosResponse<ILoginResponse>> {

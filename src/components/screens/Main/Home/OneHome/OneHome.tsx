@@ -48,11 +48,13 @@ const OneHome = () => {
 				) : data ? (
 					<Stack spacing={2}>
 						<ImageBox images={data.a.images} />
-						<TagBox />
-						<TitleBox
-							title={`${data.a.marka.title} ${data.a.model.title}`}
-							price={data.a.price}
-						/>
+						<Stack direction="row" justifyContent="space-between" alignItems="center">
+							<TitleBox
+								title={`${data.a.marka.title} ${data.a.model.title}`}
+								price={data.a.price}
+							/>
+							<TagBox likesCount={data.count.likesCount} />
+						</Stack>
 						<DoubleTab
 							commentsCount={data.count.commentsCount}
 							details={details}

@@ -17,6 +17,9 @@ const initialState: IInitState = {
 const authReducer = createSlice({
 	name: "auth",
 	reducers: {
+		setAuth: (state, { payload }) => {
+			state.isAuth = payload
+		},
 		setStatus: (state, { payload }) => {
 			//debugger
 			state.status = payload
@@ -46,6 +49,6 @@ const authReducer = createSlice({
 	}
 })
 
-export const { setStatus } = authReducer.actions
+export const { setAuth, setStatus } = authReducer.actions
 
 export default authReducer.reducer
