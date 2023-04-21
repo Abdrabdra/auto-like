@@ -12,7 +12,7 @@ export const markaEndpoints = markaApi.injectEndpoints({
 			query: (arg) => {
 				return {
 					url: `/marka`,
-					params: { ...arg }
+					params: { ...arg, limit: 100 }
 				}
 			},
 			providesTags: ["marka"]
@@ -21,7 +21,7 @@ export const markaEndpoints = markaApi.injectEndpoints({
 			query: (arg) => {
 				return {
 					url: `/model`,
-					params: { ...arg }
+					params: { ...arg, limit: 100 }
 				}
 			},
 			providesTags: ["model"]
