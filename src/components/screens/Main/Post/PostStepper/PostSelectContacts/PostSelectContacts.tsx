@@ -5,8 +5,8 @@ import { useDispatch } from "react-redux"
 import { RootState, useTypedSelector } from "@store/index"
 import {
 	incrementStep,
-	setFormSelectedContactName,
-	setFormSelectedContactNumber
+	setFormSelectedContactNumber,
+	setFormSelectedDescription
 } from "@store/reducers/stepper/stepper.slice"
 
 import { Form, Formik } from "formik"
@@ -17,20 +17,18 @@ import * as Yup from "yup"
 const phoneRegExp =
 	/^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)?$/
 const Schema = Yup.object().shape({
-	selectedContactName: Yup.string()
-		.typeError("Введите буквы")
-		.required("Имя обязательна"),
+	selectedDescription: Yup.string().typeError("Введите буквы"),
 
 	selectedContactNumber: Yup.string()
 		.matches(phoneRegExp, "Номер не валидный")
-		.required("Имя обязательна")
+		.required("Номер обязательно")
 })
 
 const PostSelectContacts = () => {
 	const dispatch = useDispatch()
 
-	const selectedContactName = useTypedSelector(
-		(state: RootState) => state.stepper.form.selectedContactName
+	const selectedDescription = useTypedSelector(
+		(state: RootState) => state.stepper.form.selectedDescription
 	)
 	const selectedContactNumber = useTypedSelector(
 		(state: RootState) => state.stepper.form.selectedContactNumber
@@ -39,12 +37,12 @@ const PostSelectContacts = () => {
 	return (
 		<Formik
 			initialValues={{
-				selectedContactName: selectedContactName,
+				selectedDescription: selectedDescription,
 				selectedContactNumber: selectedContactNumber
 			}}
 			onSubmit={(values) => {
 				setTimeout(() => {
-					dispatch(setFormSelectedContactName(values.selectedContactName))
+					dispatch(setFormSelectedDescription(values.selectedDescription))
 					dispatch(setFormSelectedContactNumber(values.selectedContactNumber))
 					dispatch(incrementStep())
 				}, 250)
@@ -62,12 +60,13 @@ const PostSelectContacts = () => {
 								padding: "14px 15px 14px 20px"
 							}}
 						>
-							<Typography>Имя</Typography>
+							<Typography>Описание</Typography>
 							<OutlinedInput
-								name={"selectedContactName"}
-								value={values.selectedContactName}
+								name={"selectedDescription"}
+								value={values.selectedDescription}
 								onChange={handleChange}
-								placeholder="Имя"
+								placeholder="Описание"
+								multiline
 								sx={{
 									flex: 1,
 									paddingLeft: "18px",
@@ -78,11 +77,11 @@ const PostSelectContacts = () => {
 									}
 								}}
 							/>
-							{errors.selectedContactName && (
+							{/* {errors.selectedDescription && (
 								<Typography sx={{ color: "red" }}>
-									{errors.selectedContactName}
+									{errors.selectedDescription}
 								</Typography>
-							)}
+							)} */}
 						</Stack>
 						<Stack
 							spacing={1}

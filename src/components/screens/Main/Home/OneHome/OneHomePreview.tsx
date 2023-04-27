@@ -36,7 +36,7 @@ interface Props {
 const OneHomePreview: FC<any> = ({ data }) => {
 	const details = {
 		city: data.details.city ? data.details.city : "",
-		generation: "Поколение",
+		generation: data.details?.generation,
 		body: data?.details.body ? data.details.body : "",
 		volume: data?.details.volume ? data.details.volume : "",
 		mileage: data?.details.mileage ? data.details.mileage : "",
@@ -45,12 +45,14 @@ const OneHomePreview: FC<any> = ({ data }) => {
 		steeringWheel: data?.details.steeringWheel
 			? data.details.steeringWheel
 			: "",
-		color: "Цвет",
+		color: data.details?.color,
 		customsClearance: data?.details.customsClearance
 			? data?.details.customsClearance
 			: "",
 		state: data?.details.state ? data.details.state : ""
 	}
+
+	console.log("data: ", data)
 
 	return (
 		<Box>
@@ -60,7 +62,7 @@ const OneHomePreview: FC<any> = ({ data }) => {
 					<TagBox />
 					<TitleBox title={`${data.marka} ${data.model}`} price={data.price} />
 					<DoubleTab forPreview commentsCount={99} details={details} />
-					<Description description={`${data.marka} ${data.model}`} />
+					<Description description={`${data.description}`} />
 					<OptionBox />
 				</Stack>
 			</Container>

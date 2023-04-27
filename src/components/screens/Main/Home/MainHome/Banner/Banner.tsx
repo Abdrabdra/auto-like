@@ -17,13 +17,13 @@ const banners = [
 		img: bannerImg
 	},
 	{
-		title: "Buy Jer запустился",
-		text: "Покупайте недвижимость через наше приложение BuyJer.kz",
+		title: "Avto Like запустился",
+		text: "Покупайте автомобили через наше приложение Avto-Like.kz",
 		img: bannerImg
 	},
 	{
-		title: "MarketPlace запустился",
-		text: "Покупайте все что угодно через наше приложение MarketPlace.kz",
+		title: "Avto Like запустился",
+		text: "Покупайте автомобили через наше приложение Avto-Like.kz",
 		img: bannerImg
 	}
 ]

@@ -7,9 +7,9 @@ const DetailsTab = ({ details }: any) => {
 		{ id: 0, title: "Город", value: details.city },
 		{ id: 1, title: "Поколение", value: details.generation },
 		{ id: 2, title: "Кузов", value: details.body },
-		{ id: 3, title: "Объем двигателя", value: details.volume },
+		// { id: 3, title: "Объем двигателя", value: details.volume },
 		{ id: 4, title: "Пробег", value: details.mileage },
-		{ id: 5, title: "Коробка передач", value: details.transmission },
+		// { id: 5, title: "Коробка передач", value: details.transmission },
 		{ id: 6, title: "Привод", value: details.driveUnit },
 		{ id: 7, title: "Руль", value: details.steeringWheel },
 		{ id: 8, title: "Цвет", value: details.color },
@@ -68,7 +68,7 @@ const DetailsTab = ({ details }: any) => {
 									: row.value}
 							</Typography>
 						</Box>
-						{stateData.length !== row.id + 1 && <Divider />}
+						<Divider />
 					</Stack>
 				))}
 			</Stack>

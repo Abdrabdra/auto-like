@@ -9,3 +9,12 @@ export const LoginSchema = yup.object().shape({
 		.matches(phoneRegExp, "Не правильный формат номера телефона"),
 	password: yup.string().required("Введите пароль")
 })
+
+export const RegistrationSchema = yup.object().shape({
+	regPhone: yup
+		.string()
+		.required("Введите номер телефона")
+		.matches(phoneRegExp, "Не правильный формат номера телефона"),
+	regPassword: yup.string().required("Введите пароль"),
+	regName: yup.string().required("Введите имя")
+})

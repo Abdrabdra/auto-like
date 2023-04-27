@@ -28,9 +28,10 @@ interface IInitState {
 		selectedTags: number[] //
 		selectedCity?: number // город - cityId
 
-		selectedContactName?: string //
+		selectedDescription?: string // description
 		selectedContactNumber?: string //
 		steeringWheel?: WheelEnum // левоРуль(право) - steeringWheel
+		selectedColor?: string
 	}
 }
 
@@ -54,11 +55,12 @@ const initialState: IInitState = {
 		selectedTags: [],
 		selectedCity: undefined,
 
-		selectedContactName: undefined,
+		selectedDescription: undefined,
 		selectedContactNumber: undefined,
 		steeringWheel: undefined,
 		selectedMileage: undefined,
-		selectedCustomsClearance: undefined
+		selectedCustomsClearance: undefined,
+		selectedColor: undefined
 	}
 }
 
@@ -98,7 +100,7 @@ const stepperReducer = createSlice({
 			state.form.selectedTags = []
 			state.form.selectedCity = undefined
 
-			state.form.selectedContactName = undefined
+			state.form.selectedDescription = undefined
 			state.form.selectedContactNumber = undefined
 			state.form.steeringWheel = undefined
 			state.form.selectedMileage = undefined
@@ -157,8 +159,8 @@ const stepperReducer = createSlice({
 			state.form.selectedCity = payload
 		},
 
-		setFormSelectedContactName: (state, { payload }) => {
-			state.form.selectedContactName = payload
+		setFormSelectedDescription: (state, { payload }) => {
+			state.form.selectedDescription = payload
 		},
 		setFormSelectedContactNumber: (state, { payload }) => {
 			state.form.selectedContactNumber = payload
@@ -171,6 +173,9 @@ const stepperReducer = createSlice({
 		},
 		setFormSelectedCustomsClearance: (state, { payload }) => {
 			state.form.selectedCustomsClearance = payload
+		},
+		setFormSelectedColor: (state, { payload }) => {
+			state.form.selectedColor = payload
 		}
 	}
 })
@@ -202,11 +207,12 @@ export const {
 
 	setFormSelectedCity,
 
-	setFormSelectedContactName,
+	setFormSelectedDescription,
 	setFormSelectedContactNumber,
 	setFormSteeringWheel,
 	setFormSelectedMileage,
-	setFormSelectedCustomsClearance
+	setFormSelectedCustomsClearance,
+	setFormSelectedColor
 } = stepperReducer.actions
 
 export default stepperReducer.reducer

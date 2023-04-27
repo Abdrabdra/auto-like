@@ -28,7 +28,7 @@ const PostPreview = () => {
 		model: stepper.selectedMark,
 		marka: stepper.selectedBrand,
 		price: stepper.selectedPrice,
-		description: "Описание",
+		description: stepper.selectedDescription,
 
 		details: {
 			city: stepper.selectedCity,
@@ -39,18 +39,18 @@ const PostPreview = () => {
 			transmission: 1, // тут из за бэка не могу взять трансмишшн
 			driveUnit: stepper.selectedGear,
 			steeringWheel: stepper.steeringWheel,
-			color: "Цвет",
+			color: stepper.selectedColor,
 			customsClearance: stepper.selectedCustomsClearance,
 			state: stepper.selectedCondition
 		}
 	}
+
 
 	const formData = new FormData()
 
 	formData.append("bodyTypeId", String(stepper.selectedCase))
 	formData.append("cityId", String(stepper.selectedCity))
 	formData.append("customsClearance", String(stepper.selectedCustomsClearance))
-	formData.append("description", "Описание не задано")
 	formData.append("driveUnit", String(stepper.selectedGear))
 	formData.append("generationId", String(stepper.selectedGeneration))
 	formData.append("markaId", String(stepper.selectedBrand))
@@ -66,6 +66,10 @@ const PostPreview = () => {
 	formData.append("transmissionId", String(1))
 	formData.append("volume", String(3.5))
 	formData.append("year", String(stepper.selectedManufacture))
+
+	formData.append("phone", String(stepper.selectedContactNumber))
+	formData.append("description", String(stepper.selectedDescription))
+	formData.append("color", String(stepper.selectedColor))
 
 	for (let i = 0; i < stepper.selectedPicture.length; i++) {
 		formData.append("file", stepper.selectedPicture[i])

@@ -16,7 +16,7 @@ import { ILogin } from "types/ILogin"
 const LoginForm = () => {
 	const navigate = useNavigate()
 	const dispatch = useDispatch<AppDispatch>()
-	const { status } = useTypedSelector((state: RootState) => state.auth)
+	const { status, error } = useTypedSelector((state: RootState) => state.auth)
 
 	const formik = useFormik({
 		initialValues: {
@@ -58,7 +58,9 @@ const LoginForm = () => {
 							onChange={handleChange}
 							placeholder="+7 (_ _ _) _ _ _ - _ _ - _ _"
 						/>
-						{errors.phone && <Typography>{errors.phone}</Typography>}
+						{errors.phone && (
+							<Typography color="error">{errors.phone}</Typography>
+						)}
 					</Stack>
 					<Stack>
 						<StyledMainInput
@@ -73,21 +75,21 @@ const LoginForm = () => {
 							placeholder="Введите пароль"
 						/>
 						{errors.password && (
-							<Typography sx={{ color: "error.main" }}>
-								{errors.password}
-							</Typography>
+							<Typography color="error">{errors.password}</Typography>
 						)}
 					</Stack>
 				</Stack>
 
 				<Stack spacing={1}>
+					{error && <Typography color="error">{error}</Typography>}
+
 					<MainButton
-						disabled={status === ActionsEnum.LOADING}
-						startIcon={
-							status === ActionsEnum.LOADING && (
-								<CircularProgress sx={{ color: "#FFF" }} />
-							)
-						}
+						// disabled={status === ActionsEnum.LOADING}
+						// startIcon={
+						// 	status === ActionsEnum.LOADING && (
+						// 		<CircularProgress sx={{ color: "#FFF" }} />
+						// 	)
+						// }
 						type="submit"
 					>
 						Войти
