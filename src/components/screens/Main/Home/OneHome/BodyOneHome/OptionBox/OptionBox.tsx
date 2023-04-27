@@ -1,12 +1,16 @@
 import { Box, Stack, Typography } from "@mui/material"
+import { FC } from "react"
 
-const data = [
-	{ id: 0, value: "Литые диски" },
-	{ id: 1, value: "Ксенон" },
-	{ id: 2, value: "Кожа" }
-]
+interface IData {
+	id?: number
+	title?: string
+}
 
-const OptionBox = () => {
+interface Props {
+	data?: IData[]
+}
+
+const OptionBox: FC<Props> = ({ data }) => {
 	return (
 		<Stack
 			spacing={1}
@@ -26,7 +30,7 @@ const OptionBox = () => {
 				Опции и характеристики
 			</Typography>
 			<Stack direction={"row"} sx={{ flexWrap: "wrap", gap: "8px" }}>
-				{data.map((row) => (
+				{data?.map((row) => (
 					<Box
 						key={row.id}
 						sx={{
@@ -47,7 +51,7 @@ const OptionBox = () => {
 								lineHeight: "14.7px"
 							}}
 						>
-							{row.value}
+							{row.title}
 						</Typography>
 					</Box>
 				))}

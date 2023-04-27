@@ -1,4 +1,5 @@
 import { Box, Container, Stack } from "@mui/material"
+import { useTypedSelector } from "@store/index"
 import { FC } from "react"
 
 import {
@@ -52,7 +53,7 @@ const OneHomePreview: FC<any> = ({ data }) => {
 		state: data?.details.state ? data.details.state : ""
 	}
 
-	console.log("data: ", data)
+	const tagsData = useTypedSelector((state) => state.stepper.form.selectedTags)
 
 	return (
 		<Box>
@@ -63,7 +64,7 @@ const OneHomePreview: FC<any> = ({ data }) => {
 					<TitleBox title={`${data.marka} ${data.model}`} price={data.price} />
 					<DoubleTab forPreview commentsCount={99} details={details} />
 					<Description description={`${data.description}`} />
-					<OptionBox />
+					<OptionBox data={tagsData} />
 				</Stack>
 			</Container>
 		</Box>

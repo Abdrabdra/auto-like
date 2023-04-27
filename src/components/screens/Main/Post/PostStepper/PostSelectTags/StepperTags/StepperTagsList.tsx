@@ -13,12 +13,14 @@ interface Props {
 const StepperTagsList: FC<Props> = ({ data }) => {
 	const tags = useTypedSelector((state) => state.stepper.form.selectedTags)
 
+	const withIdTags = tags.map((row) => row.id)
+
 	return (
 		<Stack spacing={1}>
 			{data.map((row) => (
 				<StepperTagsOne
 					data={row}
-					initialChecked={tags.includes(row.id) ? true : false}
+					initialChecked={withIdTags.includes(row.id) ? true : false}
 				/>
 			))}
 		</Stack>

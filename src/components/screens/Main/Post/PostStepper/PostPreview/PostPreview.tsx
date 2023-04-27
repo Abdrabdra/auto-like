@@ -47,21 +47,24 @@ const PostPreview = () => {
 
 	const formData = new FormData()
 
-	formData.append("bodyTypeId", String(stepper.selectedCase))
-	formData.append("cityId", String(stepper.selectedCity))
+	formData.append("bodyTypeId", String(stepper.selectedCase?.id))
+	formData.append("cityId", String(stepper.selectedCity?.id))
 	formData.append("customsClearance", String(stepper.selectedCustomsClearance))
 	formData.append("driveUnit", String(stepper.selectedGear))
-	formData.append("generationId", String(stepper.selectedGeneration))
-	formData.append("markaId", String(stepper.selectedBrand))
+	formData.append("generationId", String(stepper.selectedGeneration?.id))
+	formData.append("markaId", String(stepper.selectedBrand?.id))
 	formData.append("mileage", String(stepper.selectedMileage).replace(/\s/g, ""))
-	formData.append("modelId", String(stepper.selectedMark))
+	formData.append("modelId", String(stepper.selectedMark?.id))
 	formData.append("price", String(stepper.selectedPrice).replace(/\s/g, ""))
 	formData.append("state", String(stepper.selectedCondition))
 	formData.append(
 		"steeringWheel",
 		String(stepper?.steeringWheel ? stepper.steeringWheel : WheelEnum.LEFT)
 	)
-	formData.append("tags", String(stepper.selectedTags.join()))
+	formData.append(
+		"tags",
+		String(stepper.selectedTags.map((row) => row.id).join())
+	)
 	formData.append("transmissionId", String(1))
 	formData.append("volume", String(3.5))
 	formData.append("year", String(stepper.selectedManufacture))

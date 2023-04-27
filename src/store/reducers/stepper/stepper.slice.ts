@@ -1,6 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { DriveIUnitEnum, StatementEnum, WheelEnum } from "types/enums"
 
+interface ITitle {
+	id?: number
+	title?: string
+}
+
 interface IInitState {
 	step: number
 	stepTitle: string
@@ -25,7 +30,7 @@ interface IInitState {
 
 		selectedPrice?: number // цена - price
 		selectedPicture: File[] //
-		selectedTags: number[] //
+		selectedTags: ITitle[] //
 		selectedCity?: { id?: number; title?: string } // город - cityId
 
 		selectedDescription?: string // description
@@ -132,7 +137,7 @@ const stepperReducer = createSlice({
 		},
 		deleteFromFormTag: (state, { payload }) => {
 			state.form.selectedTags = state.form.selectedTags.filter(
-				(row) => row !== payload
+				(row) => row.id !== payload
 			)
 		},
 

@@ -23,7 +23,7 @@ const StepperTagsOne: FC<Props> = ({ data, initialChecked }) => {
 
 		if (checked === true) {
 			setChecked(checked)
-			dispatch(setFormSelectedTags(data.id))
+			dispatch(setFormSelectedTags({ id: data.id, title: data.title }))
 		} else {
 			setChecked(checked)
 			dispatch(deleteFromFormTag(data.id))
