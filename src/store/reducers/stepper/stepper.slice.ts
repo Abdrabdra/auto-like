@@ -11,11 +11,11 @@ interface IInitState {
 
 	form: {
 		selectedTransport?: string // вид объявления, машина, лодка, мото, запчасти
-		selectedBrand?: number // марка - markaId
-		selectedMark?: number // модель - modelId
+		selectedBrand?: { id?: number; title?: string } // марка - markaId
+		selectedMark?: { id?: number; title?: string } // модель - modelId
 		selectedManufacture?: number // годВыпуска - year
-		selectedCase?: number // кузов - bodyTypeId
-		selectedGeneration?: number // поколение - generationId
+		selectedCase?: { id?: number; title?: string } // кузов - bodyTypeId
+		selectedGeneration?: { id?: number; title?: string } // поколение - generationId
 		selectedEngine?: string // двигатель (бензин, дизель) - transmissionId ?????????
 		selectedGear?: DriveIUnitEnum // привод - driveUnit
 
@@ -26,7 +26,7 @@ interface IInitState {
 		selectedPrice?: number // цена - price
 		selectedPicture: File[] //
 		selectedTags: number[] //
-		selectedCity?: number // город - cityId
+		selectedCity?: { id?: number; title?: string } // город - cityId
 
 		selectedDescription?: string // description
 		selectedContactNumber?: string //
@@ -42,18 +42,18 @@ const initialState: IInitState = {
 
 	form: {
 		selectedTransport: undefined,
-		selectedBrand: undefined,
-		selectedMark: undefined,
+		selectedBrand: { id: undefined, title: undefined },
+		selectedMark: { id: undefined, title: undefined },
 		selectedManufacture: undefined,
-		selectedCase: undefined,
-		selectedGeneration: undefined,
+		selectedCase: { id: undefined, title: undefined },
+		selectedGeneration: { id: undefined, title: undefined },
 		selectedEngine: undefined,
 		selectedGear: undefined,
 		selectedCondition: StatementEnum.BOO,
 		selectedPrice: undefined,
 		selectedPicture: [],
 		selectedTags: [],
-		selectedCity: undefined,
+		selectedCity: { id: undefined, title: undefined },
 
 		selectedDescription: undefined,
 		selectedContactNumber: undefined,
@@ -86,26 +86,7 @@ const stepperReducer = createSlice({
 		resetStepper: () => initialState,
 
 		setDefaultState: (state) => {
-			state.form.selectedTransport = undefined
-			state.form.selectedBrand = undefined
-			state.form.selectedMark = undefined
-			state.form.selectedManufacture = undefined
-			state.form.selectedCase = undefined
-			state.form.selectedGeneration = undefined
-			state.form.selectedEngine = undefined
-			state.form.selectedGear = undefined
-			state.form.selectedCondition = StatementEnum.BOO
-			state.form.selectedPrice = undefined
-			state.form.selectedPicture = []
-			state.form.selectedTags = []
-			state.form.selectedCity = undefined
-
-			state.form.selectedDescription = undefined
-			state.form.selectedContactNumber = undefined
-			state.form.steeringWheel = undefined
-			state.form.selectedMileage = undefined
-			state.form.selectedCustomsClearance = undefined
-			state.error = null
+			state = initialState
 		},
 		setStepperError: (state, { payload }) => {
 			state.error = payload

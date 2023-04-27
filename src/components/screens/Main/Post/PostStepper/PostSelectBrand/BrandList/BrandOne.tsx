@@ -6,8 +6,8 @@ import { IGeneration, IMarka } from "types/Marka/Marka"
 
 interface Props {
 	data: IMarka
-	handleSelect: (id: number) => void
-	selectedBrand?: number | string
+	handleSelect: (id: number, title: string) => void
+	selectedBrand?: { id?: number; title?: string }
 	generationData?: IGeneration
 }
 
@@ -21,13 +21,14 @@ const BrandOne: FC<Props> = ({
 
 	return (
 		<Button
-			onClick={() => handleSelect(id)}
+			onClick={() => handleSelect(id, title)}
 			fullWidth
 			variant="contained"
 			sx={{
 				borderRadius: "10px",
 				padding: "14px 15px 14px 20px",
-				backgroundColor: selectedBrand === id ? "primary.main" : "common.white"
+				backgroundColor:
+					selectedBrand?.id === id ? "primary.main" : "common.white"
 			}}
 		>
 			<Stack

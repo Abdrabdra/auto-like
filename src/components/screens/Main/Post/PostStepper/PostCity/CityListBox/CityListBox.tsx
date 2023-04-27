@@ -20,9 +20,9 @@ const CityListBox: FC<Props> = ({ cityData }) => {
 		(state) => state.stepper.form.selectedCity
 	)
 
-	const handleSelect = (id: number) => {
+	const handleSelect = (id: number, title: string) => {
 		setTimeout(() => {
-			dispatch(setFormSelectedCity(id))
+			dispatch(setFormSelectedCity({ id: id, title: title }))
 			dispatch(incrementStep())
 		}, 250)
 	}

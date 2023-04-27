@@ -17,6 +17,8 @@ const DetailsTab = ({ details }: any) => {
 		{ id: 10, title: "Состояние", value: details.state }
 	]
 
+	console.log("stateData: ", stateData)
+
 	return (
 		<Box
 			sx={{

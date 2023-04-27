@@ -20,14 +20,14 @@ const GenerationList = () => {
 	)
 
 	const queryParams = {
-		modelId: selectedMark ? selectedMark : undefined
+		modelId: selectedMark?.id ? selectedMark.id : undefined
 	}
 
 	const { data, isLoading, isSuccess } = useGetGenerationQuery(queryParams)
 
-	const handleSelect = (id: number) => {
+	const handleSelect = (id: number, title: string) => {
 		setTimeout(() => {
-			dispatch(setFormSelectedGeneration(id))
+			dispatch(setFormSelectedGeneration({ id: id, title: title }))
 			dispatch(incrementStep())
 		}, 250)
 	}

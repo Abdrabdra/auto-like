@@ -27,9 +27,9 @@ const BrandList: FC<Props> = ({ searchValue }) => {
 
 	const { data, isLoading, isSuccess } = useGetMarkaQuery(queryParams)
 
-	const handleSelect = (id: number) => {
+	const handleSelect = (id: number, title: string) => {
 		setTimeout(() => {
-			dispatch(setFormSelectedBrand(id))
+			dispatch(setFormSelectedBrand({ id: id, title: title }))
 			dispatch(incrementStep())
 		}, 250)
 	}

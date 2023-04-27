@@ -25,16 +25,16 @@ const ModelList: FC<Props> = ({ searchValue }) => {
 
 	const queryParams = {
 		title: searchValue ? searchValue : undefined,
-		markaId: selectedBrand
+		markaId: selectedBrand?.id
 	}
 
 	const { data, isLoading, isSuccess } = useGetModelQuery(queryParams, {
 		refetchOnMountOrArgChange: true
 	})
 
-	const handleSelect = (id: number) => {
+	const handleSelect = (id: number, title: string) => {
 		setTimeout(() => {
-			dispatch(setFormSelectedMark(id))
+			dispatch(setFormSelectedMark({ id: id, title: title }))
 			dispatch(incrementStep())
 		}, 250)
 	}

@@ -25,15 +25,15 @@ const PostPreview = () => {
 	const stepper = useTypedSelector((state: RootState) => state.stepper.form)
 
 	const data = {
-		model: stepper.selectedMark,
-		marka: stepper.selectedBrand,
+		model: stepper.selectedMark?.title,
+		marka: stepper.selectedBrand?.title,
 		price: stepper.selectedPrice,
 		description: stepper.selectedDescription,
 
 		details: {
-			city: stepper.selectedCity,
-			generation: stepper.selectedGeneration,
-			body: stepper.selectedCase,
+			city: stepper.selectedCity?.title,
+			generation: stepper.selectedGeneration?.title,
+			body: stepper.selectedCase?.title,
 			volume: stepper.selectedEngine,
 			mileage: stepper.selectedMileage,
 			transmission: 1, // тут из за бэка не могу взять трансмишшн
@@ -44,7 +44,6 @@ const PostPreview = () => {
 			state: stepper.selectedCondition
 		}
 	}
-
 
 	const formData = new FormData()
 

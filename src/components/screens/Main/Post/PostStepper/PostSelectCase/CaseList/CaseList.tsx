@@ -14,9 +14,9 @@ const CaseList = () => {
 	const selectedCase = useTypedSelector(
 		(state) => state.stepper.form.selectedCase
 	)
-	const handleSelect = (id: number) => {
+	const handleSelect = (id: number, title: string) => {
 		setTimeout(() => {
-			dispatch(setFormSelectedCase(id))
+			dispatch(setFormSelectedCase({id: id, title: title}))
 			dispatch(incrementStep())
 		}, 250)
 	}
