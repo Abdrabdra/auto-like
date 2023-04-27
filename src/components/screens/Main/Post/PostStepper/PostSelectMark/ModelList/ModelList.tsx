@@ -19,15 +19,18 @@ interface Props {
 
 const ModelList: FC<Props> = ({ searchValue }) => {
 	const dispatch = useDispatch()
-	const selectedMark = useTypedSelector(
-		(state) => state.stepper.form.selectedMark
+	const { selectedMark, selectedBrand } = useTypedSelector(
+		(state) => state.stepper.form
 	)
 
 	const queryParams = {
-		title: searchValue ? searchValue : undefined
+		title: searchValue ? searchValue : undefined,
+		markaId: selectedBrand
 	}
 
-	const { data, isLoading, isSuccess } = useGetModelQuery(queryParams)
+	const { data, isLoading, isSuccess } = useGetModelQuery(queryParams, {
+		refetchOnMountOrArgChange: true
+	})
 
 	const handleSelect = (id: number) => {
 		setTimeout(() => {
