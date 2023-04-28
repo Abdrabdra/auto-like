@@ -1,27 +1,15 @@
-import { Box } from "@mui/material"
+import { FC, useState } from "react"
+import { Box, Button, Stack } from "@mui/material"
 import { Swiper, SwiperSlide } from "swiper/react"
 
 import "swiper/css"
-import { RootState, useTypedSelector } from "@store/index"
-import { FC } from "react"
-import ImageBoxOne from "./ImageBoxOne"
-import { $image_api } from "api"
-import { IOneImage } from "types/Announcement/OneAnnouncement.type"
 
-const banners = [
-	{
-		title: "Avto Like запустился",
-		text: "Покупайте автомобили через наше приложение Avto-Like.kz"
-	},
-	{
-		title: "Buy Jer запустился",
-		text: "Покупайте недвижимость через наше приложение BuyJer.kz"
-	},
-	{
-		title: "MarketPlace запустился",
-		text: "Покупайте все что угодно через наше приложение MarketPlace.kz"
-	}
-]
+import { $image_api } from "api"
+import { RootState, useTypedSelector } from "@store/index"
+
+import ImageBoxOne from "./ImageBoxOne"
+import ImageBoxModal from "./ImageBoxModal"
+import { IOneImage } from "types/Announcement/OneAnnouncement.type"
 
 interface Props {
 	images?: IOneImage[]
@@ -44,19 +32,7 @@ const ImageBox: FC<Props> = ({ images, forPreview }) => {
 					  ))
 					: images?.map((row, index) => (
 							<SwiperSlide key={index}>
-								<Box
-									component={"img"}
-									src={`${$image_api}${row.image}`}
-									sx={{
-										width: "100%",
-										height: "200px",
-										borderRadius: "20px",
-										backgroundColor: "secondary.200",
-										backgroundRepeat: "no-repeat",
-										objectFit: "cover",
-										objectPosition: "center"
-									}}
-								/>
+								<ImageBoxModal data={images} image={row} />
 							</SwiperSlide>
 					  ))}
 			</Swiper>

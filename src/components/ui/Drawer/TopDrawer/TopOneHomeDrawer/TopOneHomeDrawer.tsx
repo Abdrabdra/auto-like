@@ -1,56 +1,80 @@
 import {
-  Avatar,
-  Box,
-  Button,
-  Divider,
-  Icon,
-  Stack,
-  Typography,
-} from "@mui/material";
-import ShareIcon from "@mui/icons-material/Share";
+	Avatar,
+	Box,
+	Button,
+	Divider,
+	Icon,
+	Stack,
+	Typography
+} from "@mui/material"
+import ShareIcon from "@mui/icons-material/Share"
 
-import GoBackButton from "../../../Button/GoBackButton";
+import GoBackButton from "../../../Button/GoBackButton"
+import {
+	matchPath,
+	useLocation,
+	useNavigate,
+	useParams
+} from "react-router-dom"
+import { useEffect, useState } from "react"
+import useCheckPath from "../../DrawerUtils/CheckPath"
 
-const TopOneHomeDrawer = ({ path }: any) => (
-  <Stack
-    direction="row"
-    justifyContent={
-      path === "/app/chat/one/:chatId" ? "flex-start" : "space-between"
-    }
-    alignItems={"center"}
-    spacing={1.75}
-    sx={{ width: "100%" }}
-  >
-    <GoBackButton forPost={false} />
-    {path === "/app/home/one/:announceId" ? (
-      <Button
-        sx={{
-          minWidth: "50px",
-          width: "50px",
-          height: "50px",
-          borderRadius: "12px",
-        }}
-      >
-        <Icon component={ShareIcon} />
-      </Button>
-    ) : path === "/app/chat/one/:chatId" ? (
-      <>
-        <Divider
-          variant="middle"
-          orientation="vertical"
-          sx={{ width: "1px", height: "26px", backgroundColor: "grey.800" }}
-        />
-        <Stack direction={"row"} spacing={2} alignItems="center">
-          <Avatar sx={{ width: 32, height: 32, marginLeft: "8px" }}></Avatar>
-          <Typography sx={{ fontWeight: 600, fontSize: "16px" }}>
-            Акжол
-          </Typography>
-        </Stack>
-      </>
-    ) : (
-      <Box />
-    )}
-  </Stack>
-);
+const TopOneHomeDrawer = ({ path }: any) => {
+	const location = useLocation()
 
-export default TopOneHomeDrawer;
+	const pathname = matchPath(
+		{ path: "/app/home/one/:announceId" },
+		location.pathname
+	)
+
+	const handleCopy = () => {
+		navigator.clipboard.writeText(
+			`http://avtolike.kz/app/home/one/${pathname?.params?.announceId}`
+		)
+	}
+
+	return (
+		<Stack
+			direction="row"
+			justifyContent={
+				path === "/app/chat/one/:chatId" ? "flex-start" : "space-between"
+			}
+			alignItems={"center"}
+			spacing={1.75}
+			sx={{ width: "100%" }}
+		>
+			<GoBackButton forPost={false} />
+			{path === "/app/home/one/:announceId" ? (
+				<Button
+					onClick={handleCopy}
+					sx={{
+						minWidth: "50px",
+						width: "50px",
+						height: "50px",
+						borderRadius: "12px"
+					}}
+				>
+					<Icon component={ShareIcon} />
+				</Button>
+			) : path === "/app/chat/one/:chatId" ? (
+				<>
+					<Divider
+						variant="middle"
+						orientation="vertical"
+						sx={{ width: "1px", height: "26px", backgroundColor: "grey.800" }}
+					/>
+					<Stack direction={"row"} spacing={2} alignItems="center">
+						<Avatar sx={{ width: 32, height: 32, marginLeft: "8px" }}></Avatar>
+						<Typography sx={{ fontWeight: 600, fontSize: "16px" }}>
+							Акжол
+						</Typography>
+					</Stack>
+				</>
+			) : (
+				<Box />
+			)}
+		</Stack>
+	)
+}
+
+export default TopOneHomeDrawer

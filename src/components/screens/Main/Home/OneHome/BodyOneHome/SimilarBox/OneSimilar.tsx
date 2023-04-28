@@ -1,9 +1,25 @@
 import { Box, IconButton, Stack, Typography } from "@mui/material"
-import ArrowForwardIosRoundedIcon from '@mui/icons-material/ArrowForwardIosRounded';
+import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded"
+import { FC } from "react"
+import { IAnnouncement } from "types/Announcement/Announcement.type"
+import numberWithSpaces from "@utils/numberWithSpaces"
+import { $image_api } from "api"
+import { useNavigate } from "react-router-dom"
 
-const OneSimilar = () => {
+interface Props {
+	data: IAnnouncement
+}
+
+const OneSimilar: FC<Props> = ({ data }) => {
+	const navigate = useNavigate()
+
+	const handleNavigate = () => {
+		navigate(`/app/home/one/${data.id}`)
+	}
+
 	return (
 		<Stack
+			onClick={handleNavigate}
 			sx={{
 				width: "166px",
 				backgroundColor: "common.white",
@@ -12,11 +28,17 @@ const OneSimilar = () => {
 			}}
 		>
 			<Box
+				component={"img"}
+				src={`${$image_api}${data.avatar}`}
 				sx={{
+					width: "100%",
 					height: "110px",
-					backgroundColor: "black",
 					borderRadius: "10px",
-					marginBottom: "8px"
+					marginBottom: "8px",
+					backgroundColor: "secondary.200",
+					backgroundRepeat: "no-repeat",
+					objectFit: "cover",
+					objectPosition: "center"
 				}}
 			/>
 			<Typography
@@ -28,7 +50,7 @@ const OneSimilar = () => {
 					marginBottom: "3px"
 				}}
 			>
-				2022г.
+				{data.year}г.
 			</Typography>
 			<Typography
 				sx={{
@@ -38,7 +60,7 @@ const OneSimilar = () => {
 					marginBottom: "5px"
 				}}
 			>
-				Lexus LC 500
+				{`${data.marka} ${data.model}`}
 			</Typography>
 			<Typography
 				sx={{
@@ -49,7 +71,7 @@ const OneSimilar = () => {
 					marginBottom: "12px"
 				}}
 			>
-				21 000 000 KZT
+				{numberWithSpaces(data.price)} KZT
 			</Typography>
 			<Stack direction={"row"} justifyContent={"space-between"}>
 				<Typography
@@ -67,7 +89,7 @@ const OneSimilar = () => {
 					sx={{
 						width: "24px",
 						height: "24px",
-						backgroundColor: "secondary.300",
+						backgroundColor: "secondary.300"
 					}}
 				>
 					<ArrowForwardIosRoundedIcon sx={{ fontSize: "13px" }} />

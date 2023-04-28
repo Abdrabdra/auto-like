@@ -46,7 +46,12 @@ const Main: FC<Props> = ({ car }) => {
 	}
 
 	return (
-		<Stack direction="row" spacing={1} sx={{ padding: "4px 8px 8px 4px" }}>
+		<Stack
+			onClick={handleNavigate}
+			direction="row"
+			spacing={1}
+			sx={{ padding: "4px 8px 8px 4px" }}
+		>
 			<Box
 				sx={{
 					backgroundColor: "secondary.200",
@@ -102,7 +107,7 @@ const Main: FC<Props> = ({ car }) => {
 					}}
 				>
 					<Stack>
-						<Typography onClick={handleNavigate} variant="h6">
+						<Typography variant="h6">
 							{marka} {model}
 						</Typography>
 						<Typography variant="h6" color="primary">

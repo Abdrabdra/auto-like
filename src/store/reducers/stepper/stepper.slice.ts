@@ -90,8 +90,11 @@ const stepperReducer = createSlice({
 		},
 		resetStepper: () => initialState,
 
-		setDefaultState: (state) => {
-			state = initialState
+		setDefaultState: (state)=> {
+			state.error = initialState.error
+			state.form = initialState.form
+			state.step = initialState.step
+			state.stepTitle = initialState.stepTitle
 		},
 		setStepperError: (state, { payload }) => {
 			state.error = payload

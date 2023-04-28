@@ -2,17 +2,17 @@ import AbsoluteBox from "@components/modules/AbsoluteBox"
 import { MainButton } from "@components/ui/Button"
 import { Stack } from "@mui/material"
 import { FC } from "react"
+import { useNavigate } from "react-router-dom"
 
 interface Props {
-	phone: {
-		id: number
-		phone: string
-	}
+	phone: string
 }
 
 const ButtonsBox: FC<Props> = ({ phone }) => {
-	const handleClick = () => {
-		alert(`Номер Телефона: ${phone.phone}`)
+	const navigate = useNavigate()
+
+	const handleNavigate = () => {
+		navigate("/app/chat")
 	}
 
 	return (
@@ -24,6 +24,7 @@ const ButtonsBox: FC<Props> = ({ phone }) => {
 				sx={{ flex: 1, marginBottom: "12px" }}
 			>
 				<MainButton
+					onClick={handleNavigate}
 					sx={{
 						flex: "1",
 						height: "50px",
@@ -34,12 +35,8 @@ const ButtonsBox: FC<Props> = ({ phone }) => {
 				>
 					Написать
 				</MainButton>
-				<a
-					href={`tel:${phone.phone}}`}
-					style={{ flex: "1", textDecoration: "none" }}
-				>
+				<a href={`tel:${phone}}`} style={{ flex: "1", textDecoration: "none" }}>
 					<MainButton
-						onClick={handleClick}
 						sx={{
 							height: "50px",
 							color: "common.white",

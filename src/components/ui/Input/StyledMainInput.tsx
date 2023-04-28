@@ -32,6 +32,7 @@ export const StyledMainInput = styled((props: CustomTextFieldProps) => (
 	"& .MuiOutlinedInput-root": {
 		height: "50px",
 		border: "none",
+		fontSize: "17px",
 
 		"&:hover fieldset": {
 			borderColor: theme.palette.primary.main

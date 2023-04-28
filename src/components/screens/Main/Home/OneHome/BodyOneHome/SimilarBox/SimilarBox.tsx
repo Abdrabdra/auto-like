@@ -4,24 +4,26 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import "swiper/css"
 
 import OneSimilar from "./OneSimilar"
+import { FC } from "react"
+import { useGetAnnouncementsQuery } from "@store/rtk-api/announcement-rtk/announcementEndpoints"
 
-const data = [
-	{
-		value: "asdf"
-	},
-	{
-		value: "asdf"
-	},
-	{
-		value: "asdf"
-	}
-]
+interface Props {
+	markaId: number
+	modelId: number
+}
 
-const SimilarBox = () => {
+const SimilarBox: FC<Props> = ({ markaId, modelId }) => {
 	const is380 = useMediaQuery("(min-width: 380px)")
 	const is450 = useMediaQuery("(min-width: 450px)")
 	const is550 = useMediaQuery("(min-width: 550px)")
 	const is650 = useMediaQuery("(min-width: 650px)")
+
+	const queryParams = {
+		marks: markaId,
+		// models: modelId
+	}
+
+	const { data } = useGetAnnouncementsQuery(queryParams)
 
 	return (
 		<Stack spacing={1}>
@@ -39,9 +41,9 @@ const SimilarBox = () => {
 				spaceBetween={12}
 				className="SimilarSwiper"
 			>
-				{data.map((row, index) => (
+				{data?.data.map((row, index) => (
 					<SwiperSlide key={index}>
-						<OneSimilar />
+						<OneSimilar data={row} />
 					</SwiperSlide>
 				))}
 			</Swiper>

@@ -9,6 +9,7 @@ import { store, persistor } from "./store"
 import ThemeProvider from "./utils/theme"
 
 import "./assets/styles/style.scss"
+import ScrollToTop from "@utils/ScrollToTop"
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)
 
@@ -17,6 +18,7 @@ root.render(
 		<BrowserRouter>
 			<ThemeProvider>
 				<PersistGate loading={null} persistor={persistor}>
+					<ScrollToTop />
 					<App />
 				</PersistGate>
 			</ThemeProvider>

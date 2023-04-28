@@ -29,6 +29,7 @@ const PostPreview = () => {
 		marka: stepper.selectedBrand?.title,
 		price: stepper.selectedPrice,
 		description: stepper.selectedDescription,
+		phone: stepper.selectedContactNumber,
 
 		details: {
 			city: stepper.selectedCity?.title,

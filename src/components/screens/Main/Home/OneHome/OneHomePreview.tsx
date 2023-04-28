@@ -61,7 +61,11 @@ const OneHomePreview: FC<any> = ({ data }) => {
 				<Stack spacing={2}>
 					<ImageBox forPreview />
 					<TagBox />
-					<TitleBox title={`${data.marka} ${data.model}`} price={data.price} />
+					<TitleBox
+						title={`${data.marka} ${data.model}`}
+						price={data.price}
+						phone={data.phone}
+					/>
 					<DoubleTab forPreview commentsCount={99} details={details} />
 					<Description description={`${data.description}`} />
 					<OptionBox data={tagsData} />

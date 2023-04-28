@@ -54,7 +54,6 @@ const authReducer = createSlice({
 			})
 
 			.addCase(logout.fulfilled, () => {
-				console.log("FROM SKA")
 				return initialState
 			})
 	}

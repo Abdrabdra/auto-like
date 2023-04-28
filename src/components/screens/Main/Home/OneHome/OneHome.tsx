@@ -23,21 +23,17 @@ const OneHome = () => {
 
 	// need to fix generation, transmission, color. Waiting changes from back
 	const details = data && {
-		city: data.a.city.title ? data.a.city.title : "",
-		generation: "Поколение",
-		body: data.a.body.title ? data.a.body.title : "",
-		volume: data.a.about?.volume ? data.a.about.volume : "",
-		mileage: data.a.about?.mileage ? data.a.about.mileage : "",
-		transmission: "Коробка Передач",
-		driveUnit: data.a.about?.driveUnit ? data.a.about.driveUnit : "",
-		steeringWheel: data.a.about?.steeringWheel
-			? data.a.about.steeringWheel
-			: "",
-		color: "Цвет",
-		customsClearance: data.a.about?.customsClearance
-			? data.a.about.customsClearance
-			: "",
-		state: data.a.about?.state ? data.a.about.state : ""
+		city: data?.a.city.title,
+		generation: data?.a.generation.title,
+		body: data?.a.body.title,
+		volume: data?.a.about?.volume,
+		mileage: data?.a.about?.mileage,
+		// transmission: "Коробка Передач",
+		driveUnit: data?.a.about?.driveUnit,
+		steeringWheel: data?.a.about?.steeringWheel,
+		color: data?.a.about.color,
+		customsClearance: data?.a.about?.customsClearance,
+		state: data?.a.about?.state
 	}
 
 	return (
@@ -48,7 +44,11 @@ const OneHome = () => {
 				) : data ? (
 					<Stack spacing={2}>
 						<ImageBox images={data.a.images} />
-						<Stack direction="row" justifyContent="space-between" alignItems="center">
+						<Stack
+							direction="row"
+							justifyContent="space-between"
+							alignItems="center"
+						>
 							<TitleBox
 								title={`${data.a.marka.title} ${data.a.model.title}`}
 								price={data.a.price}
@@ -60,9 +60,9 @@ const OneHome = () => {
 							details={details}
 						/>
 						<Description description={data.a.description} />
-						<OptionBox />
-						<SimilarBox />
-						<ButtonsBox phone={data.a.author.user} />
+						<OptionBox data={data.a.tags} />
+						<SimilarBox markaId={data.a.marka.id} modelId={data.a.model.id} />
+						<ButtonsBox phone={data.a.about.phone} />
 					</Stack>
 				) : null}
 			</Container>

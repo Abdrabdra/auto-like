@@ -37,6 +37,7 @@ const PostVerification = React.lazy(() => import("./PostVerification"))
 const PostStepper = () => {
 	const dispatch = useDispatch()
 
+	const isAuth = useTypedSelector((state) => state.auth.isAuth)
 	const activeStep = useTypedSelector((state: RootState) => state.stepper.step)
 
 	// const isStepOptional = (step: number) => {
