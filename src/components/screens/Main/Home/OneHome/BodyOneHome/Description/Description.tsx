@@ -10,7 +10,7 @@ const Description: FC<Props> = ({ description }) => {
 		<Stack
 			spacing={1}
 			sx={{
-				height: "130px",
+				// height: "130px",
 				backgroundColor: "common.white",
 				borderRadius: "12px",
 				padding: "16px"
