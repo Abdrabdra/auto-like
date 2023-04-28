@@ -6,7 +6,16 @@ import ImageIcon from "@mui/icons-material/Image"
 import FavoriteIcon from "@mui/icons-material/Favorite"
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight"
 
-const ProfileInfo = () => {
+import { IUserMe } from "types/IUser"
+import { FC } from "react"
+import { IAnnouncementsResponse } from "types/Announcement/Announcement.type"
+
+interface Props {
+	data?: IUserMe
+	announceData?: IAnnouncementsResponse
+}
+
+const ProfileInfo: FC<Props> = ({ data, announceData }) => {
 	return (
 		<Link
 			to="/app/profile/edit"
@@ -27,18 +36,18 @@ const ProfileInfo = () => {
 					</Avatar>
 					<Stack>
 						<Typography sx={{ fontSize: "20px", fontWeight: 500 }}>
-							Инкар Еркимбеков
+							Пользователь
 						</Typography>
 						<Typography sx={{ color: "secondary.900", fontWeight: 600 }}>
-							+ 7 707 188 18 35
+							{data?.phone}
 						</Typography>
 					</Stack>
 				</Stack>
 				<Stack direction="row" spacing={0.8}>
-					<Typography sx={{ color: "secondary.900", fontWeight: 600 }}>
+					{/* <Typography sx={{ color: "secondary.900", fontWeight: 600 }}>
 						C Avto-Like с{" "}
 					</Typography>
-					<Typography sx={{ fontWeight: 600 }}>2022г. 24 ноября</Typography>
+					<Typography sx={{ fontWeight: 600 }}>2022г. 24 ноября</Typography> */}
 				</Stack>
 				<Stack direction="row" justifyContent="space-between">
 					<Stack direction={"row"} spacing={1}>
@@ -57,7 +66,9 @@ const ProfileInfo = () => {
 							<IconButton color="primary" sx={{ padding: 0 }}>
 								<ImageIcon />
 							</IconButton>
-							<Typography sx={{ fontWeight: 600 }}>16 постов</Typography>
+							<Typography sx={{ fontWeight: 600 }}>
+								{announceData?.count} постов
+							</Typography>
 						</Stack>
 						<Stack
 							direction="row"
@@ -74,7 +85,7 @@ const ProfileInfo = () => {
 							<IconButton color="primary" sx={{ padding: 0 }}>
 								<FavoriteIcon />
 							</IconButton>
-							<Typography sx={{ fontWeight: 600 }}>3 345 лайков</Typography>
+							<Typography sx={{ fontWeight: 600 }}> лайков</Typography>
 						</Stack>
 					</Stack>
 					<IconButton color="primary" sx={{ backgroundColor: "secondary.300" }}>

@@ -1,19 +1,28 @@
-import { Box, Container, Stack, Typography } from "@mui/material";
-import LikeButtons from "./LikeButtons";
+import { Box, Container, Stack, Typography } from "@mui/material"
+import { toMonthName } from "@utils/toMonthName"
+import { FC } from "react"
+import { IAnnouncement } from "types/Announcement/Announcement.type"
+import LikeButtons from "./LikeButtons"
 
-const LikeFooter = () => {
-  return (
-    <Box>
-      <Container>
-        <Stack justifyContent="space-between" sx={{ flex: "1" }}>
-          <LikeButtons />
-          <Typography sx={{ color: "grey.800", fontSize: "12px" }}>
-            13 часов назад
-          </Typography>
-        </Stack>
-      </Container>
-    </Box>
-  );
-};
+interface Props {
+	data: IAnnouncement
+}
 
-export default LikeFooter;
+const LikeFooter: FC<Props> = ({ data }) => {
+	const date = new Date(data.createdAt)
+
+	return (
+		<Box>
+			<Container>
+				<Stack justifyContent="space-between" sx={{ flex: "1" }}>
+					<LikeButtons data={data} />
+					<Typography sx={{ color: "grey.800", fontSize: "12px" }}>
+						{date.getDate()} {toMonthName(date)} {date.getFullYear()}
+					</Typography>
+				</Stack>
+			</Container>
+		</Box>
+	)
+}
+
+export default LikeFooter

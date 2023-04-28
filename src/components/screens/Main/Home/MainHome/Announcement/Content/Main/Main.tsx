@@ -46,13 +46,9 @@ const Main: FC<Props> = ({ car }) => {
 	}
 
 	return (
-		<Stack
-			onClick={handleNavigate}
-			direction="row"
-			spacing={1}
-			sx={{ padding: "4px 8px 8px 4px" }}
-		>
+		<Stack direction="row" spacing={1} sx={{ padding: "4px 8px 8px 4px" }}>
 			<Box
+				onClick={handleNavigate}
 				sx={{
 					backgroundColor: "secondary.200",
 					borderRadius: "10px",
@@ -99,14 +95,12 @@ const Main: FC<Props> = ({ car }) => {
 				)}
 			</Box>
 			<Stack justifyContent="center" sx={{ flex: "1" }}>
-				<Box
-					sx={{
-						display: "flex",
-						justifyContent: "space-between",
-						alignItems: "start"
-					}}
+				<Stack
+					direction={"row"}
+					justifyContent="space-between"
+					alignItems="start"
 				>
-					<Stack>
+					<Stack onClick={handleNavigate} sx={{ flex: 1 }}>
 						<Typography variant="h6">
 							{marka} {model}
 						</Typography>
@@ -121,7 +115,7 @@ const Main: FC<Props> = ({ car }) => {
 						</Typography>
 					</Stack>
 					<LikeButton profilelike={profilelike} id={id} />
-				</Box>
+				</Stack>
 				<Tags tags={tags} />
 			</Stack>
 		</Stack>

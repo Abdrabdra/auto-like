@@ -17,6 +17,15 @@ export const announcementEndpoints = announcementApi.injectEndpoints({
 			},
 			providesTags: ["announcements"]
 		}),
+		getAdminAnnouncements: builder.query<IAnnouncementsResponse, object>({
+			query: (arg) => {
+				return {
+					url: `/announcement/admin`,
+					params: { ...arg, limit: 100 }
+				}
+			},
+			providesTags: ["announcements"]
+		}),
 		likeAnnouncement: builder.mutation<string, ILikeAnnouncement>({
 			query: (body) => ({
 				url: `/like`,
@@ -44,6 +53,7 @@ export const announcementEndpoints = announcementApi.injectEndpoints({
 
 export const {
 	useGetAnnouncementsQuery,
+	useGetAdminAnnouncementsQuery,
 	useLikeAnnouncementMutation,
 	useGetOneAnnouncementQuery,
 	useCreateAnnouncementMutation

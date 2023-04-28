@@ -10,6 +10,8 @@ import ProfileStatistics from "./ProfileStatistics"
 import { AppDispatch } from "@store/index"
 import { resetStepper } from "@store/reducers/stepper/stepper.slice"
 import { useNavigate } from "react-router-dom"
+import { useGetUserMeQuery } from "@store/rtk-api/user-rtk/userEndpoints"
+import { useGetAdminAnnouncementsQuery } from "@store/rtk-api/announcement-rtk/announcementEndpoints"
 
 const ProfileContent = () => {
 	const dispatch = useDispatch<AppDispatch>()
@@ -21,16 +23,24 @@ const ProfileContent = () => {
 		navigate("/app")
 	}
 
+	const { data } = useGetUserMeQuery("")
+	const { data: announceData } = useGetAdminAnnouncementsQuery(
+		{
+			profileId: data ? data.id : ""
+		},
+		{ skip: data?.id ? false : true }
+	)
+
 	return (
 		<Stack spacing={2.5}>
-			<ProfileInfo />
+			<ProfileInfo data={data} announceData={announceData} />
 
 			<Stack direction="row" spacing={2.5}>
 				<ProfileStatistics />
 				<ProfileSettings />
 			</Stack>
 
-			<ProfileAnnouncements />
+			<ProfileAnnouncements data={announceData} />
 
 			<Button onClick={handleLogOut} variant="outlined" color="error">
 				Выйти

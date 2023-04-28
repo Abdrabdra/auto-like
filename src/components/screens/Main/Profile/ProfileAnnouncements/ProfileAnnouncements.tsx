@@ -3,23 +3,14 @@ import { Box, Divider, IconButton, Stack, Typography } from "@mui/material"
 
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight"
 import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight"
+import { IAnnouncementsResponse } from "types/Announcement/Announcement.type"
+import { FC } from "react"
 
-const data = [
-	{
-		id: 0,
-		title: "Lexus LF LC 500",
-		views: 200,
-		messages: 12
-	},
-	{
-		id: 1,
-		title: "Lexus LF LC 500",
-		views: 200,
-		messages: 12
-	}
-]
+interface Props {
+	data?: IAnnouncementsResponse
+}
 
-const ProfileAnnouncements = () => (
+const ProfileAnnouncements: FC<Props> = ({ data }) => (
 	<Link
 		to="/app/profile/announcements"
 		style={{ color: "#000", textDecoration: "none" }}
@@ -45,7 +36,7 @@ const ProfileAnnouncements = () => (
 				</IconButton>
 			</Stack>
 			<Stack spacing={1.5}>
-				{data.map((row) => (
+				{data?.data.slice(0, 2).map((row) => (
 					<Stack
 						key={row.id}
 						direction="row"
@@ -84,7 +75,7 @@ const ProfileAnnouncements = () => (
 											overflow: "hidden"
 										}}
 									>
-										{row.title}
+										{(row.marka, " ", row.model)}
 									</Typography>
 								</Box>
 								<Stack direction="row" spacing={0.5}>
@@ -121,7 +112,7 @@ const ProfileAnnouncements = () => (
 												overflow: "hidden"
 											}}
 										>
-											+{row.messages} сообщений
+											+сообщений
 										</Typography>
 									</Box>
 								</Stack>
