@@ -53,7 +53,10 @@ const OneHome = () => {
 								title={`${data.a.marka.title} ${data.a.model.title}`}
 								price={data.a.price}
 							/>
-							<TagBox likesCount={data.count.likesCount} />
+							<TagBox
+								isLike={data?.isLike}
+								likesCount={data.count.likesCount}
+							/>
 						</Stack>
 						<DoubleTab
 							commentsCount={data.count.commentsCount}

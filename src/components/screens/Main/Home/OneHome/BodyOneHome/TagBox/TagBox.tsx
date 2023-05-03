@@ -12,10 +12,11 @@ import { useDispatch } from "react-redux"
 import { setAuth } from "@store/reducers/auth/auth.slice"
 
 interface Props {
+	isLike?: boolean
 	likesCount?: number
 }
 
-const TagBox: FC<Props> = ({ likesCount }) => {
+const TagBox: FC<Props> = ({ likesCount, isLike }) => {
 	const [like, setLike] = useState(Number(likesCount))
 	const isAuth = useTypedSelector((state) => state.auth.isAuth)
 	const [likeAnnouncement] = useLikeAnnouncementMutation()

@@ -46,6 +46,7 @@ export interface IOneAnnouncementResponse {
 		commentsCount: number
 		likesCount: number
 	}
+	isLike: boolean
 }
 
 interface IOneTitle {
