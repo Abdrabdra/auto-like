@@ -35,7 +35,7 @@ const ButtonsBox: FC<Props> = ({ phone }) => {
 				>
 					Написать
 				</MainButton>
-				<a href={`tel:${phone}}`} style={{ flex: "1", textDecoration: "none" }}>
+				<a href={`tel:${phone}`} style={{ flex: "1", textDecoration: "none" }}>
 					<MainButton
 						sx={{
 							height: "50px",
