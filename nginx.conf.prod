@@ -1,7 +1,10 @@
 server {
      listen 80;
      server_name 167.99.132.142 avtolike.kz;
-
+     location ~ /.well-known/acme-challenge {
+            allow all;
+            root /var/www/html;
+     }
 
      location / {
             proxy_pass http://client:3000;
