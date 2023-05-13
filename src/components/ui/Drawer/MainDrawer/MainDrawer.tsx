@@ -13,7 +13,6 @@ import "./MainDrawer.style.scss"
 import NavigationDrawer from "./NavigationDrawer"
 import OneHomeDrawer from "./OneHomeDrawer"
 import useCheckPath from "../DrawerUtils/CheckPath"
-import OneChatDrawer from "./OneChatDrawer"
 import { useTypedSelector } from "@store/index"
 
 const links = [
@@ -53,8 +52,6 @@ const MainDrawer = () => {
 					{path === "/app/home/one/:announceId" ? (
 						// <OneHomeDrawer />
 						<></>
-					) : path === "/app/chat/one/:chatId" ? (
-						<OneChatDrawer />
 					) : path === "/app/home" || path === "/app/home/search" ? (
 						<NavigationDrawer links={links} />
 					) : path === "/app/post" ? (

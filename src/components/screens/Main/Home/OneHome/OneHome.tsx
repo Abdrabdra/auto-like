@@ -65,7 +65,10 @@ const OneHome = () => {
 						<Description description={data.a.description} />
 						<OptionBox data={data.a.tags} />
 						<SimilarBox markaId={data.a.marka.id} modelId={data.a.model.id} />
-						<ButtonsBox phone={data.a.about.phone} />
+						<ButtonsBox
+							profileId={data.a.author.id}
+							phone={data.a.about.phone}
+						/>
 					</Stack>
 				) : null}
 			</Container>

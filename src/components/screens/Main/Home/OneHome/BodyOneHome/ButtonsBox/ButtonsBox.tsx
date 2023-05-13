@@ -6,13 +6,14 @@ import { useNavigate } from "react-router-dom"
 
 interface Props {
 	phone: string
+	profileId: number
 }
 
-const ButtonsBox: FC<Props> = ({ phone }) => {
+const ButtonsBox: FC<Props> = ({ phone, profileId }) => {
 	const navigate = useNavigate()
 
 	const handleNavigate = () => {
-		navigate("/app/chat")
+		navigate(`/app/chat/one/${profileId}`)
 	}
 
 	return (

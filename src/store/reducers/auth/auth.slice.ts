@@ -6,12 +6,14 @@ interface IInitState {
 	isAuth: boolean
 	error: null | string
 	status: ActionsEnum
+	userId?: string
 }
 
 const initialState: IInitState = {
 	isAuth: false,
 	error: null,
-	status: ActionsEnum.IDLE
+	status: ActionsEnum.IDLE,
+	userId: undefined
 }
 
 const authReducer = createSlice({
@@ -19,6 +21,9 @@ const authReducer = createSlice({
 	reducers: {
 		setAuth: (state, { payload }) => {
 			state.isAuth = payload
+		},
+		setUserId: (state, { payload }) => {
+			state.userId = payload
 		},
 		setStatus: (state, { payload }) => {
 			//debugger
@@ -59,6 +64,6 @@ const authReducer = createSlice({
 	}
 })
 
-export const { setAuth, setStatus } = authReducer.actions
+export const { setAuth, setStatus, setUserId } = authReducer.actions
 
 export default authReducer.reducer

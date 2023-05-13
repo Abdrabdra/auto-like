@@ -60,6 +60,7 @@ const UsedConditionTab = () => {
 								return Number(value) <= 999999
 							}}
 							customInput={TextField}
+							style={{ fontSize: "17px" }}
 						/>
 					</Stack>
 				)}

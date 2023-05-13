@@ -11,6 +11,7 @@ const MainLayout = () => {
 			<TopDrawer />
 			<Box
 				sx={{
+					minHeight: "100%",
 					paddingTop: isMedium ? "125px" : "100px",
 					paddingBottom: "85px"
 				}}

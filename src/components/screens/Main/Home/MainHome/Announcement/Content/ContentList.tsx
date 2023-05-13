@@ -8,12 +8,14 @@ import Main from "./Main/Main"
 import ContentSkeleton from "./ContentSkeleton"
 import InfoStats from "@components/modules/InfoStat/InfoStat"
 import ContentListPagination from "./ContentListPagination"
+import { Status } from "types/enums"
 
 interface Props {
 	forArchive?: boolean
-	forMyAnnouncements?: boolean
+	forMyAnnouncements?: Status
 	getCounts?: (value: number) => void
 	withoutPagination?: boolean
+	withoutFilter?: boolean
 }
 
 const ContentList: FC<Props> = ({
@@ -23,12 +25,20 @@ const ContentList: FC<Props> = ({
 	withoutPagination
 }) => {
 	const filterValues = useTypedSelector((state) => state.filter.values)
-	const queryWithFilterParams = {
-		...filterValues
+	const queryWithFilterParams = { ...filterValues }
+
+	const userId = useTypedSelector((state) => state.auth.userId)
+
+	const getParams = () => {
+		if (forMyAnnouncements) {
+			return { status: forMyAnnouncements, profileId: userId }
+		}
+
+		return queryWithFilterParams
 	}
 
 	const { data, isLoading, isFetching, isSuccess } = useGetAnnouncementsQuery(
-		queryWithFilterParams,
+		getParams(),
 		{
 			refetchOnMountOrArgChange: true
 		}

@@ -93,7 +93,7 @@ const GREY = {
 	400: "#D5D4D0",
 	500: "#E5E7EB", // PostPage -> PostStepperHead background
 	600: "#817E77",
-	700: "#5B5954",
+	700: "#F1F2F2", //chatPage bg
 	800: "#878787", // navbar Color
 	900: "#1B1C13"
 }

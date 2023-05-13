@@ -5,7 +5,13 @@ import Registration from "../../components/screens/Auth/Registration"
 
 const AuthPage = () => {
 	return (
-		<Box sx={{ backgroundColor: "common.white", height: "100%" }}>
+		<Box
+			sx={{
+				backgroundColor: "common.white",
+				minHeight: "100%",
+				paddingBottom: "50px"
+			}}
+		>
 			<Routes>
 				<Route path="/">
 					<Route index element={<Navigate to="login" />} />

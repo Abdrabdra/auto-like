@@ -1,4 +1,4 @@
-import { IUserMe } from "types/IUser"
+import { IChatMessages, IChatRoom, IUserMe } from "types/IUser"
 import { IGetOneProfile, IGetProfiles, IProfiles, IRole } from "./user.type"
 import userApi from "./userApi"
 
@@ -31,6 +31,33 @@ export const userEndpoints = userApi.injectEndpoints({
 				url: `/profile/user/${userId}`
 			}),
 			providesTags: ["user"]
+		}),
+
+		getChatRooms: builder.query<IChatRoom[], string>({
+			query: () => ({
+				url: `/chat/room`
+			}),
+			providesTags: ["user"]
+		}),
+		getOneChatMessages: builder.query<
+			IChatMessages[],
+			{ roomId?: string | number }
+		>({
+			query: (arg) => ({
+				url: `/chat/message/${arg.roomId}`,
+				params: {
+					limit: 100
+				}
+			}),
+			providesTags: ["user"]
+		}),
+		createChatRoom: builder.mutation<{ id: number }, { profileId: string }>({
+			query: (body) => ({
+				url: `/chat/room`,
+				method: "POST",
+				body
+			}),
+			invalidatesTags: ["user"]
 		})
 	})
 })
@@ -39,5 +66,9 @@ export const {
 	useGetUserMeQuery,
 	useGetOneProfileQuery,
 	useGetRoleQuery,
-	useGetProfilesQuery
+	useGetProfilesQuery,
+
+	useGetChatRoomsQuery,
+	useGetOneChatMessagesQuery,
+	useCreateChatRoomMutation
 } = userEndpoints

@@ -1,30 +1,51 @@
-import { useEffect, useRef, useState } from "react"
-import { Box, Container } from "@mui/material"
-import axios from "axios"
+import React, { useEffect, useRef, useState } from "react"
+import { Box, Button, Container } from "@mui/material"
+import { useSocket } from "@hooks/useSocket"
+import OneChatDrawer from "./OneChatDrawer"
+import { useTypedSelector } from "@store/index"
+import ChatOneMessages from "./ChatOneMessages"
+import {
+	useCreateChatRoomMutation,
+	useGetOneChatMessagesQuery
+} from "@store/rtk-api/user-rtk/userEndpoints"
+import { useParams } from "react-router-dom"
+import { IChatMessages } from "types/IUser"
 
-const ChatOne = () => {
-	const [messages, setMessages] = useState([])
-	const [value, setValue] = useState("")
-	const socket = useRef()
+type Props = {
+	messages: IChatMessages[]
+	chatId: number
+	handleSetNewMessages: (value: IChatMessages) => void
+}
 
-	// useEffect(() => {
-	// 	socket.current = new WebSocket("ws://localhost:3000")
-
-	// 	socket.current.onopen = () => {}
-
-	// 	socket.current.onmessage = () => {}
-	// }, [])
-
-	// const sendMessage = async () => {
-	// 	await axios.post("http://localhost:3000/new-messages", {
-	// 		messages: value,
-	// 		id: Date.now()
-	// 	})
-	// }
+const ChatOne: React.FC<Props> = ({
+	messages,
+	chatId,
+	handleSetNewMessages
+}) => {
+	const userId = useTypedSelector((state) => state.auth.userId)
+	const socket = useSocket()
+	socket.connect()
+	useEffect(() => {
+		socket.emit("join-room", chatId)
+	}, [])
+	const handleSendMessage = (text: string) => {
+		socket.emit("add-message", {
+			text: text,
+			userId: userId,
+			roomId: chatId
+		})
+	}
+	socket.once("messageAdded", (data: IChatMessages) => {
+		handleSetNewMessages(data)
+		console.log("data: ", data)
+	})
 
 	return (
 		<Box>
-			<Container>ChatOne</Container>
+			<Container>
+				{messages && <ChatOneMessages messages={messages} />}
+			</Container>
+			<OneChatDrawer handleSendMessage={handleSendMessage} />
 		</Box>
 	)
 }

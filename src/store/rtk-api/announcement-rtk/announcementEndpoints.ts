@@ -8,10 +8,10 @@ import { IOneAnnouncementResponse } from "types/Announcement/OneAnnouncement.typ
 
 export const announcementEndpoints = announcementApi.injectEndpoints({
 	endpoints: (builder) => ({
-		getAnnouncements: builder.query<IAnnouncementsResponse, object>({
+		getAnnouncements: builder.query<IAnnouncementsResponse, any>({
 			query: (arg) => {
 				return {
-					url: `/announcement`,
+					url: arg.profileId ? `/announcement/admin` : `/announcement`,
 					params: { ...arg }
 				}
 			},

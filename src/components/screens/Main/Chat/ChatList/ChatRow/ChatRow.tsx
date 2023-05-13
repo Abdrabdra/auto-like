@@ -1,16 +1,23 @@
 import { Avatar, Box, Divider, Stack, Typography } from "@mui/material"
+import { useTypedSelector } from "@store/index"
 import { FC } from "react"
 import { useNavigate } from "react-router-dom"
+import { IChatRoom } from "types/IUser"
 
 interface Props {
-	data: { id: number; car: string; name: string }
+	data: IChatRoom
 }
 
 const ChatRow: FC<Props> = ({ data }) => {
 	const navigate = useNavigate()
+	const userId = useTypedSelector((state) => state.auth.userId)
+	const user = userId && data.users.filter((row) => row.id !== Number(userId))
+
 	const handleClick = () => {
-		navigate(`/app/chat/one/${data.id}`)
+		user && navigate(`/app/chat/one/${user[0].profile.id}`)
 	}
+
+	const date = new Date(data.updatedAt)
 
 	return (
 		<Stack spacing={1}>
@@ -23,16 +30,20 @@ const ChatRow: FC<Props> = ({ data }) => {
 					<Avatar sx={{ width: 65, height: 65 }}></Avatar>
 					<Stack>
 						<Typography sx={{ fontSize: "12px", fontWeight: 500 }}>
-							{data.car}
+							{user && user[0].profile.firstName}
 						</Typography>
 						<Typography sx={{ fontSize: "18px", fontWeight: 600 }}>
-							{data.name}
+							{user && user[0].profile.firstName}
 						</Typography>
 					</Stack>
 				</Stack>
 				<Box>
 					<Typography sx={{ color: "secondary.900", fontSize: "12px" }}>
-						14:20
+						{date.getDay() +
+							"." +
+							(date.getMonth() + 1) +
+							"." +
+							date.getFullYear()}
 					</Typography>
 				</Box>
 			</Stack>

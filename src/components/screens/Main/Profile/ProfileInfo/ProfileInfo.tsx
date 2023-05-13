@@ -85,7 +85,7 @@ const ProfileInfo: FC<Props> = ({ data, announceData }) => {
 							<IconButton color="primary" sx={{ padding: 0 }}>
 								<FavoriteIcon />
 							</IconButton>
-							<Typography sx={{ fontWeight: 600 }}> лайков</Typography>
+							<Typography sx={{ fontWeight: 600 }}>0 лайков</Typography>
 						</Stack>
 					</Stack>
 					<IconButton color="primary" sx={{ backgroundColor: "secondary.300" }}>
