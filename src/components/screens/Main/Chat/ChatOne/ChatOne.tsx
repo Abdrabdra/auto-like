@@ -4,47 +4,47 @@ import { useSocket } from "@hooks/useSocket"
 import OneChatDrawer from "./OneChatDrawer"
 import { useTypedSelector } from "@store/index"
 import ChatOneMessages from "./ChatOneMessages"
-import {
-	useCreateChatRoomMutation,
-	useGetOneChatMessagesQuery
-} from "@store/rtk-api/user-rtk/userEndpoints"
-import { useParams } from "react-router-dom"
-import { IChatMessages } from "types/IUser"
+import { IChatMessages, ICreateChatRoom } from "types/IUser"
+import ChatOneTopDrawer from "./ChatOneTopDrawer"
 
 type Props = {
 	messages: IChatMessages[]
-	chatId: number
+	chatData: ICreateChatRoom
 	handleSetNewMessages: (value: IChatMessages) => void
 }
 
 const ChatOne: React.FC<Props> = ({
 	messages,
-	chatId,
+	chatData,
 	handleSetNewMessages
 }) => {
-	const userId = useTypedSelector((state) => state.auth.userId)
 	const socket = useSocket()
 	socket.connect()
 	useEffect(() => {
-		socket.emit("join-room", chatId)
+		socket.emit("join-room", chatData.id)
 	}, [])
 	const handleSendMessage = (text: string) => {
 		socket.emit("add-message", {
 			text: text,
 			userId: userId,
-			roomId: chatId
+			roomId: chatData.id
 		})
 	}
 	socket.once("messageAdded", (data: IChatMessages) => {
 		handleSetNewMessages(data)
-		console.log("data: ", data)
 	})
+
+	const userId = useTypedSelector((state) => state.auth.userId)
+	const secondUser = chatData.users.filter((row) => row.id !== Number(userId))
 
 	return (
 		<Box>
+			<ChatOneTopDrawer name={secondUser[0].profile.firstName} />
+
 			<Container>
 				{messages && <ChatOneMessages messages={messages} />}
 			</Container>
+
 			<OneChatDrawer handleSendMessage={handleSendMessage} />
 		</Box>
 	)

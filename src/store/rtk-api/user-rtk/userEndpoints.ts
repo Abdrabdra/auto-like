@@ -1,4 +1,4 @@
-import { IChatMessages, IChatRoom, IUserMe } from "types/IUser"
+import { IChatMessages, IChatRoom, ICreateChatRoom, IUserMe } from "types/IUser"
 import { IGetOneProfile, IGetProfiles, IProfiles, IRole } from "./user.type"
 import userApi from "./userApi"
 
@@ -51,7 +51,7 @@ export const userEndpoints = userApi.injectEndpoints({
 			}),
 			providesTags: ["user"]
 		}),
-		createChatRoom: builder.mutation<{ id: number }, { profileId: string }>({
+		createChatRoom: builder.mutation<ICreateChatRoom, {profileId: string}>({
 			query: (body) => ({
 				url: `/chat/room`,
 				method: "POST",

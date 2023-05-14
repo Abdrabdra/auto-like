@@ -25,7 +25,7 @@ const TopDrawer = () => {
 
 	const isMedium = useMediaQuery("(min-width:1200px)")
 
-	return (
+	return path === "/app/chat/one/:chatId" ? null : (
 		<AppBar
 			position="fixed"
 			color="primary"
@@ -50,8 +50,7 @@ const TopDrawer = () => {
 				>
 					{isMedium ? (
 						<TopMediumDrawer />
-					) : path === "/app/home/one/:announceId" ||
-					  path === "/app/chat/one/:chatId" ? (
+					) : path === "/app/home/one/:announceId" ? (
 						<TopOneHomeDrawer path={path} />
 					) : path === "/app/home" || path === "/app/home/search" ? (
 						<TopHomeDrawer />

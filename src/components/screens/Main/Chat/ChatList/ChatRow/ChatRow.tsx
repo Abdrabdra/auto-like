@@ -13,6 +13,9 @@ const ChatRow: FC<Props> = ({ data }) => {
 	const userId = useTypedSelector((state) => state.auth.userId)
 	const user = userId && data.users.filter((row) => row.id !== Number(userId))
 
+	console.log("userId: ", userId)
+	console.log("user: ", user)
+
 	const handleClick = () => {
 		user && navigate(`/app/chat/one/${user[0].profile.id}`)
 	}

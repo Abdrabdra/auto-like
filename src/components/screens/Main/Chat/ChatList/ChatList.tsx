@@ -1,3 +1,4 @@
+import ViewHeightBox from "@components/modules/ViewHeightBox"
 import { Box, Container, Stack } from "@mui/material"
 import { useGetChatRoomsQuery } from "@store/rtk-api/user-rtk/userEndpoints"
 import ChatRow from "./ChatRow"
@@ -9,8 +10,13 @@ const ChatList = () => {
 		<Box>
 			<Container>
 				<Stack spacing={1}>
-					{isSuccess &&
-						data.map((row, index) => <ChatRow data={row} key={index} />)}
+					{data?.length === 0 ? (
+						<ViewHeightBox text={"Нет сообщений"} />
+					) : (
+						data?.map(
+							(row, index) => row.id && <ChatRow data={row} key={index} />
+						)
+					)}
 				</Stack>
 			</Container>
 		</Box>

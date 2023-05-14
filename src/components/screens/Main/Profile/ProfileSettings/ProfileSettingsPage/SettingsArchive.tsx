@@ -10,7 +10,7 @@ const SettingsArchive = () => {
 					Архив лайков
 				</Typography>
 
-				<ContentList forArchive />
+				<ContentList />
 			</Stack>
 		</Container>
 	)

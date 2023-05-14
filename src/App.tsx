@@ -16,6 +16,7 @@ const Error = React.lazy(() => import("./pages/ErrorPage"))
 function App() {
 	const { isAuth } = useTypedSelector((state) => state.auth)
 	const dispatch = useDispatch<AppDispatch>()
+	const { data, refetch, isSuccess } = useGetUserMeQuery("")
 
 	const token = localStorage.getItem("access_token")
 
@@ -30,14 +31,15 @@ function App() {
 			dispatch(setAuth(false))
 			localStorage.removeItem("access_token")
 		}
+
+		refetch()
 	}, [isAuth])
 
-	const { data } = useGetUserMeQuery("")
 	React.useEffect(() => {
 		if (data) {
 			dispatch(setUserId(data.id))
 		}
-	}, [data])
+	}, [data, isSuccess])
 
 	return (
 		<>

@@ -35,3 +35,11 @@ export interface IChatMessages {
 	updatedAt: string
 	user: IChatRoomUser
 }
+
+export interface ICreateChatRoom {
+	combination: number
+	createAt: string
+	id: number
+	updatedAt: string
+	users: IChatRoomUser[]
+}

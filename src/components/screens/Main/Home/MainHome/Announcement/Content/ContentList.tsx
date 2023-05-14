@@ -11,15 +11,14 @@ import ContentListPagination from "./ContentListPagination"
 import { Status } from "types/enums"
 
 interface Props {
-	forArchive?: boolean
+	withoutParams?: boolean
 	forMyAnnouncements?: Status
 	getCounts?: (value: number) => void
 	withoutPagination?: boolean
-	withoutFilter?: boolean
 }
 
 const ContentList: FC<Props> = ({
-	forArchive,
+	withoutParams,
 	forMyAnnouncements,
 	getCounts,
 	withoutPagination
@@ -32,6 +31,9 @@ const ContentList: FC<Props> = ({
 	const getParams = () => {
 		if (forMyAnnouncements) {
 			return { status: forMyAnnouncements, profileId: userId }
+		}
+		if (withoutParams) {
+			return {}
 		}
 
 		return queryWithFilterParams
