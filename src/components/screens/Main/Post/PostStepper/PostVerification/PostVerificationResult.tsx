@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { Box, Stack, Typography } from "@mui/material"
 
 import {
+	incrementStep,
 	resetStep,
 	setDefaultState
 } from "@store/reducers/stepper/stepper.slice"
@@ -23,9 +24,14 @@ const PostVerificationResult: FC<Props> = ({ error }) => {
 	const navigate = useNavigate()
 
 	const handleClick = () => {
-		dispatch(setDefaultState())
-		navigate("/app/home")
-		dispatch(resetStep())
+		if (error) {
+			dispatch(setDefaultState())
+			navigate("/app/home")
+			dispatch(resetStep())
+			return
+		}
+
+		return dispatch(incrementStep())
 	}
 
 	return (

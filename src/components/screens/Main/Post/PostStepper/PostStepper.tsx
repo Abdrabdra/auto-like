@@ -11,6 +11,7 @@ import {
 } from "@store/reducers/stepper/stepper.slice"
 
 import { STEP_TITLES } from "./PostStepper.constants"
+import PostServices from "./PostServices"
 
 const PostStepperHead = React.lazy(() => import("./PostStepperHead"))
 const PostSelectTransport = React.lazy(() => import("./PostSelectTransport"))
@@ -112,9 +113,9 @@ const PostStepper = () => {
 						) : activeStep === 14 ? (
 							<PostVerification />
 						) : activeStep === 15 ? (
-							<Box>15</Box>
+							<PostServices />
 						) : (
-							<Box>Almas EVR</Box>
+							<Box>AvtoLike</Box>
 						)}
 					</React.Suspense>
 				</Box>
