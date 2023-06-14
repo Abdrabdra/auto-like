@@ -12,6 +12,7 @@ import ChoosePrice from "./ChoosePrice"
 import { MainButton } from "@components/ui/Button"
 import AbsoluteBox from "@components/modules/AbsoluteBox"
 import { useTypedSelector } from "@store/index"
+import ChooseModel from "./ChooseModel"
 
 interface Props {
 	handleClose: () => void
@@ -63,6 +64,10 @@ const Filter: FC<Props> = ({ handleClose }) => {
 					<ChooseMark
 						handleChangeQuery={(value) => handleChangeQuery(value)}
 						chosenValues={filterValues.marks}
+					/>
+					<ChooseModel
+						handleChangeQuery={(value) => handleChangeQuery(value)}
+						chosenValues={filterValues.models}
 					/>
 					<ChooseYear handleChangeQuery={(value) => handleChangeQuery(value)} />
 					<ChoosePrice
