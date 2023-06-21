@@ -1,7 +1,14 @@
 import { Container, Stack, Typography } from "@mui/material"
 import React from "react"
+import { useNavigate } from "react-router-dom"
 
 const Footer = () => {
+	const navigate = useNavigate()
+
+	const handleClick = () => {
+		navigate("/app/info")
+	}
+
 	return (
 		<Stack
 			sx={{
@@ -12,26 +19,19 @@ const Footer = () => {
 			}}
 		>
 			<Container>
-				<div>
-					<a
-						style={{ textDecoration: "none" }}
-						target={"_blank"}
-						href="https://docs.google.com/document/d/1MNV57Ls7nlvWIJdUwmKuPj-5Y8NaNgTb"
-					>
-						<Typography
-							variant="caption"
-							sx={{
-								color: "common.white",
-								cursor: "pointer",
-								"&:hover": {
-									color: "primary.main"
-								}
-							}}
-						>
-							Политика конфиденциальности
-						</Typography>
-					</a>
-				</div>
+				<Typography
+					onClick={handleClick}
+					variant="caption"
+					sx={{
+						color: "common.white",
+						cursor: "pointer",
+						"&:hover": {
+							color: "primary.main"
+						}
+					}}
+				>
+					Политика конфиденциальности
+				</Typography>
 			</Container>
 		</Stack>
 	)

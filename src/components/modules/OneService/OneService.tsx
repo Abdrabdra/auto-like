@@ -16,6 +16,7 @@ const OneService: React.FC<{
 	return (
 		<Stack
 			spacing={1.5}
+			// alignItems="center"
 			sx={{
 				border: "1px solid",
 				borderColor: "grey.800",
@@ -45,9 +46,15 @@ const OneService: React.FC<{
 				{numberWithSpaces(price)} KZT
 			</Typography>
 
-			<MainButton bgcolor="primary.main" onClick={handleOnClick}>
-				Выбрать
-			</MainButton>
+			<div style={{ alignSelf: "center" }}>
+				<MainButton
+					sx={{ width: "auto" }}
+					bgcolor="primary.main"
+					onClick={handleOnClick}
+				>
+					Выбрать
+				</MainButton>
+			</div>
 		</Stack>
 	)
 }

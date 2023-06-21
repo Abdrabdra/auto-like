@@ -39,7 +39,7 @@ const ChatOne: React.FC<Props> = ({
 
 	return (
 		<Box>
-			<ChatOneTopDrawer name={secondUser[0].profile.firstName} />
+			<ChatOneTopDrawer name={secondUser[0]?.profile?.firstName} />
 
 			<Container>
 				{messages && <ChatOneMessages messages={messages} />}

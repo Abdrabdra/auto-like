@@ -27,13 +27,30 @@ const PostServices = () => {
 
 			<OneService
 				title={"Турбо"}
-				services={["Рекламу на 7 дней", "Много лайков", "Продвижение"]}
+				services={["Выше бесплатных", "Рекламу на 7 дней", "Продвижение"]}
 				price={549}
 				handleClick={handleClick}
 			/>
 			<OneService
+				title={"Горячие"}
+				services={[
+					"Выделяющийся фон",
+					"Выше бесплатных",
+					"Рекламу на 14 дней",
+					"Продвижение"
+				]}
+				price={1249}
+				handleClick={handleClick}
+			/>
+			<OneService
 				title={"VIP"}
-				services={["Рекламу на 7 дней", "Много лайков", "Продвижение"]}
+				services={[
+					"Отдельный VIP блок",
+					"Золотой фон",
+					"Выше бесплатных",
+					"Рекламу на 30 дней",
+					"Продвижение"
+				]}
 				price={1990}
 				handleClick={handleClick}
 			/>

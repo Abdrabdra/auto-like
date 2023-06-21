@@ -10,6 +10,7 @@ const LikePage = React.lazy(() => import("./LikePage"))
 const PostPage = React.lazy(() => import("./PostPage"))
 const ChatPage = React.lazy(() => import("./ChatPage"))
 const ProfilePage = React.lazy(() => import("./ProfilePage"))
+const InfoPage = React.lazy(() => import("./InfoPage"))
 
 const MainPage = () => {
 	return (
@@ -55,6 +56,15 @@ const MainPage = () => {
 						element={
 							<React.Suspense fallback={<SuspenseLoader />}>
 								<ProfilePage />
+							</React.Suspense>
+						}
+					/>
+
+					<Route
+						path="info/*"
+						element={
+							<React.Suspense fallback={<SuspenseLoader />}>
+								<InfoPage />
 							</React.Suspense>
 						}
 					/>
