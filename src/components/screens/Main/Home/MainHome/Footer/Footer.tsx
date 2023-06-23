@@ -19,19 +19,34 @@ const Footer = () => {
 			}}
 		>
 			<Container>
-				<Typography
-					onClick={handleClick}
-					variant="caption"
-					sx={{
-						color: "common.white",
-						cursor: "pointer",
-						"&:hover": {
-							color: "primary.main"
-						}
-					}}
-				>
-					Политика конфиденциальности
-				</Typography>
+				<Stack>
+					<Typography
+						onClick={handleClick}
+						variant="caption"
+						sx={{
+							color: "common.white",
+							cursor: "pointer",
+							"&:hover": {
+								color: "primary.main"
+							}
+						}}
+					>
+						Политика конфиденциальности
+					</Typography>
+					<Typography
+						onClick={() => navigate("/app/info/requisites")}
+						variant="caption"
+						sx={{
+							color: "common.white",
+							cursor: "pointer",
+							"&:hover": {
+								color: "primary.main"
+							}
+						}}
+					>
+						Реквизиты
+					</Typography>
+				</Stack>
 			</Container>
 		</Stack>
 	)
