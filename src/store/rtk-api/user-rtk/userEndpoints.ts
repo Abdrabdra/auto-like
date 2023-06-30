@@ -1,3 +1,4 @@
+import { ISmsCheck } from "types/ISms"
 import { IChatMessages, IChatRoom, ICreateChatRoom, IUserMe } from "types/IUser"
 import { IGetOneProfile, IGetProfiles, IProfiles, IRole } from "./user.type"
 import userApi from "./userApi"
@@ -51,13 +52,31 @@ export const userEndpoints = userApi.injectEndpoints({
 			}),
 			providesTags: ["user"]
 		}),
-		createChatRoom: builder.mutation<ICreateChatRoom, {profileId: string}>({
+		createChatRoom: builder.mutation<ICreateChatRoom, { profileId: string }>({
 			query: (body) => ({
 				url: `/chat/room`,
 				method: "POST",
 				body
 			}),
 			invalidatesTags: ["user"]
+		}),
+
+		// SMS
+		sendSms: builder.mutation<any, { phone: string }>({
+			query: (body) => ({
+				url: `/sms/send-code`,
+				method: "POST",
+				body
+			}),
+			invalidatesTags: ["sms"]
+		}),
+		checkSms: builder.mutation<ISmsCheck, { phone: string; code: number }>({
+			query: (body) => ({
+				url: `/sms/check`,
+				method: "POST",
+				body
+			}),
+			invalidatesTags: ["sms"]
 		})
 	})
 })
@@ -70,5 +89,9 @@ export const {
 
 	useGetChatRoomsQuery,
 	useGetOneChatMessagesQuery,
-	useCreateChatRoomMutation
+	useCreateChatRoomMutation,
+
+	// SMS
+	useSendSmsMutation,
+	useCheckSmsMutation
 } = userEndpoints
