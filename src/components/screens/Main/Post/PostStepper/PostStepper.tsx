@@ -12,6 +12,8 @@ import {
 
 import { STEP_TITLES } from "./PostStepper.constants"
 import PostServices from "./PostServices"
+import { useMediaQuery } from "@mui/material"
+import GoBackButton from "@components/ui/Button/GoBackButton"
 
 const PostStepperHead = React.lazy(() => import("./PostStepperHead"))
 const PostSelectTransport = React.lazy(() => import("./PostSelectTransport"))
@@ -61,8 +63,22 @@ const PostStepper = () => {
 		dispatch(setStepTitle(STEP_TITLES[activeStep]))
 	}, [activeStep])
 
+	const isMedium = useMediaQuery("(min-width:1200px)")
+
 	return (
-		<Stack>
+		<Stack spacing={2}>
+			{isMedium && (
+				<Box
+					sx={{
+						backgroundColor: "secondary.200",
+						width: "max-content",
+						borderRadius: "12px"
+					}}
+				>
+					<GoBackButton forPost={true} />
+				</Box>
+			)}
+			
 			<Box sx={{ width: "100%" }}>
 				<Stepper
 					activeStep={activeStep}

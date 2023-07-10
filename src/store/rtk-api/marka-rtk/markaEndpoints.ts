@@ -36,11 +36,14 @@ export const markaEndpoints = markaApi.injectEndpoints({
 		}),
 		getGeneration: builder.query<
 			IGeneration[],
-			{ modelId: number | undefined }
+			{ modelId: number | undefined; year?: number }
 		>({
 			query: (arg) => {
 				return {
-					url: `/generation/${arg?.modelId}`
+					url: `/generation/${arg?.modelId}`,
+					params: {
+						year: arg.year
+					}
 				}
 			},
 			providesTags: ["model"]

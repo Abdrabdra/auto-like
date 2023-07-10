@@ -18,9 +18,13 @@ const GenerationList = () => {
 	const selectedMark = useTypedSelector(
 		(state) => state.stepper.form.selectedMark
 	)
+	const selectedYear = useTypedSelector(
+		(state) => state.stepper.form.selectedManufacture
+	)
 
 	const queryParams = {
-		modelId: selectedMark?.id ? selectedMark.id : undefined
+		modelId: selectedMark?.id ? selectedMark.id : undefined,
+		year: selectedYear ? selectedYear : undefined
 	}
 
 	const { data, isLoading, isSuccess } = useGetGenerationQuery(queryParams)
