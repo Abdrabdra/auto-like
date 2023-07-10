@@ -59,16 +59,15 @@ const MainPage = () => {
 							</React.Suspense>
 						}
 					/>
-
-					<Route
-						path="info/*"
-						element={
-							<React.Suspense fallback={<SuspenseLoader />}>
-								<InfoPage />
-							</React.Suspense>
-						}
-					/>
 				</Route>
+				<Route
+					path="info/*"
+					element={
+						<React.Suspense fallback={<SuspenseLoader />}>
+							<InfoPage />
+						</React.Suspense>
+					}
+				/>
 			</Route>
 		</Routes>
 	)
