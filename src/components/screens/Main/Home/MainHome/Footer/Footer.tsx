@@ -12,6 +12,7 @@ const Footer = () => {
 	return (
 		<Stack
 			sx={{
+				alignContent: "flex-end",
 				backgroundColor: "secondary.200",
 				padding: "20px",
 				marginBottom: "-85px",
@@ -33,6 +34,21 @@ const Footer = () => {
 					>
 						Политика конфиденциальности
 					</Typography>
+
+					<Typography
+						onClick={() => navigate("/app/info/agreement")}
+						variant="caption"
+						sx={{
+							color: "common.white",
+							cursor: "pointer",
+							"&:hover": {
+								color: "primary.main"
+							}
+						}}
+					>
+						Пользовательское соглашение
+					</Typography>
+
 					<Typography
 						onClick={() => navigate("/app/info/requisites")}
 						variant="caption"

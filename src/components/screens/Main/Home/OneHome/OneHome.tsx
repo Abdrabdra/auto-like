@@ -1,6 +1,7 @@
 import { Box, Container, Stack } from "@mui/material"
 import { useGetOneAnnouncementQuery } from "@store/rtk-api/announcement-rtk/announcementEndpoints"
 import { useParams } from "react-router-dom"
+import Footer from "../MainHome/Footer"
 
 import {
 	Description,
@@ -72,6 +73,9 @@ const OneHome = () => {
 					</Stack>
 				) : null}
 			</Container>
+			<Stack pt={5}>
+				<Footer />
+			</Stack>
 		</Box>
 	)
 }
