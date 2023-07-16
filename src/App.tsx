@@ -57,7 +57,7 @@ function App() {
 					path="/auth/*"
 					element={
 						<React.Suspense fallback={<SuspenseLoader />}>
-							{isAuth ? <Navigate to="/app" /> : <Auth />}
+							<Auth />
 						</React.Suspense>
 					}
 				/>

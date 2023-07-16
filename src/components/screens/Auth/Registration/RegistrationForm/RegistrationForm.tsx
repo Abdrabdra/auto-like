@@ -7,6 +7,8 @@ import {
 	Button,
 	CircularProgress,
 	Container,
+	FormControlLabel,
+	FormGroup,
 	Stack,
 	Step,
 	StepLabel,
@@ -25,6 +27,7 @@ import { IRegistration } from "types/IRegistration"
 import { Stepper } from "@mui/material"
 import React from "react"
 import Verification from "./Verification"
+import { Checkbox } from "@mui/material"
 
 const steps = ["Select campaign settings", "Create an ad group", "Create an ad"]
 
@@ -50,7 +53,7 @@ const RegistrationForm = () => {
 		validationSchema: RegistrationSchema
 	})
 
-	const { values, errors, handleChange, handleSubmit } = formik
+	const { values, errors, handleChange, handleSubmit, setFieldValue } = formik
 	const { regName, regPhone, regPassword } = values
 
 	const inputRef = useRef<HTMLInputElement>(null)
@@ -72,6 +75,13 @@ const RegistrationForm = () => {
 
 	const handleReset = () => {
 		setActiveStep(0)
+	}
+
+	//checkbox
+	const [checked, setChecked] = React.useState(true)
+
+	const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		setChecked(event.target.checked)
 	}
 
 	return (
@@ -141,6 +151,39 @@ const RegistrationForm = () => {
 											</Typography>
 										)}
 									</Stack>
+
+									<Stack>
+										<FormGroup>
+											<Stack direction={"row"}>
+												<FormControlLabel
+													control={
+														<Checkbox
+															required
+															checked={checked}
+															onChange={handleCheckboxChange}
+															defaultChecked
+														/>
+													}
+													label="Принимаю"
+												/>
+												<Typography
+													onClick={() => navigate("/app/info/agreement")}
+													variant="caption"
+													sx={{
+														fontSize: "14px",
+														alignSelf: "center",
+														cursor: "pointer",
+														textDecoration: "underline",
+														"&:hover": {
+															color: "primary.main"
+														}
+													}}
+												>
+													Пользовательское соглашение
+												</Typography>
+											</Stack>
+										</FormGroup>
+									</Stack>
 								</Stack>
 
 								<Stack spacing={1}>
@@ -154,7 +197,9 @@ const RegistrationForm = () => {
 										</Typography>
 									)}
 
-									<MainButton type="submit">Регистрироваться</MainButton>
+									<MainButton disabled={!checked} type="submit">
+										Регистрироваться
+									</MainButton>
 
 									<Stack>
 										<Typography>У вас уже есть аккаунт? </Typography>

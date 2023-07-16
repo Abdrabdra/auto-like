@@ -1,8 +1,12 @@
-export function generateArrayOfYears(from: number): number[] {
+export function generateArrayOfYears(
+	from: number,
+	to: number | null
+): number[] {
 	let years: number[] = []
-	let to = new Date().getFullYear()
 
-	for (var i = to; i >= from; i--) {
+	let toValue = to ? to : new Date().getFullYear()
+
+	for (var i = toValue; i >= from; i--) {
 		years.push(i)
 	}
 

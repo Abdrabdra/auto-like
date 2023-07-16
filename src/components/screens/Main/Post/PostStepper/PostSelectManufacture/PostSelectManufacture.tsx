@@ -12,6 +12,10 @@ import { generateArrayOfYears } from "@utils/generateArrayOfYears"
 
 const PostSelectManufacture = () => {
 	const dispatch = useDispatch()
+	const selectedGeneration = useTypedSelector(
+		(state: RootState) => state.stepper.form.selectedGeneration
+	)
+
 	const selectedManufacture = useTypedSelector(
 		(state: RootState) => state.stepper.form.selectedManufacture
 	)
@@ -26,39 +30,43 @@ const PostSelectManufacture = () => {
 	return (
 		<Stack spacing={1.8}>
 			<Stack spacing={1.25}>
-				{generateArrayOfYears(1950).map((row, index) => (
-					<Button
-						key={index}
-						onClick={() => handleClick(row)}
-						fullWidth
-						variant="contained"
-						sx={{
-							borderRadius: "10px",
-							padding: "14px 15px 14px 20px",
-							backgroundColor:
-								selectedManufacture === row ? "primary.main" : "common.white"
-						}}
-					>
-						<Stack
-							direction="row"
-							justifyContent="space-between"
+				{selectedGeneration.from &&
+					generateArrayOfYears(
+						selectedGeneration?.from,
+						selectedGeneration.to
+					).map((row, index) => (
+						<Button
+							key={index}
+							onClick={() => handleClick(row)}
+							fullWidth
+							variant="contained"
 							sx={{
-								flex: "1"
+								borderRadius: "10px",
+								padding: "14px 15px 14px 20px",
+								backgroundColor:
+									selectedManufacture === row ? "primary.main" : "common.white"
 							}}
 						>
-							<Typography
+							<Stack
+								direction="row"
+								justifyContent="space-between"
 								sx={{
-									color: "common.black",
-									fontSize: "18px",
-									fontWeight: 600
+									flex: "1"
 								}}
 							>
-								{row}
-							</Typography>
-							<KeyboardArrowRightIcon sx={{ color: "common.black" }} />
-						</Stack>
-					</Button>
-				))}
+								<Typography
+									sx={{
+										color: "common.black",
+										fontSize: "18px",
+										fontWeight: 600
+									}}
+								>
+									{row}
+								</Typography>
+								<KeyboardArrowRightIcon sx={{ color: "common.black" }} />
+							</Stack>
+						</Button>
+					))}
 			</Stack>
 		</Stack>
 	)

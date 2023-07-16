@@ -20,7 +20,12 @@ interface IInitState {
 		selectedMark?: { id?: number; title?: string } // модель - modelId
 		selectedManufacture?: number // годВыпуска - year
 		selectedCase?: { id?: number; title?: string } // кузов - bodyTypeId
-		selectedGeneration?: { id?: number; title?: string } // поколение - generationId
+		selectedGeneration: {
+			id?: number
+			title?: string
+			from: null | number
+			to: null | number
+		} // поколение - generationId
 		selectedEngine?: string // двигатель (бензин, дизель) - transmissionId ?????????
 		selectedGear?: DriveIUnitEnum // привод - driveUnit
 
@@ -51,7 +56,12 @@ const initialState: IInitState = {
 		selectedMark: { id: undefined, title: undefined },
 		selectedManufacture: undefined,
 		selectedCase: { id: undefined, title: undefined },
-		selectedGeneration: { id: undefined, title: undefined },
+		selectedGeneration: {
+			id: undefined,
+			title: undefined,
+			from: null,
+			to: null
+		},
 		selectedEngine: undefined,
 		selectedGear: undefined,
 		selectedCondition: StatementEnum.BOO,
@@ -90,7 +100,7 @@ const stepperReducer = createSlice({
 		},
 		resetStepper: () => initialState,
 
-		setDefaultState: (state)=> {
+		setDefaultState: (state) => {
 			state.error = initialState.error
 			state.form = initialState.form
 			state.step = initialState.step

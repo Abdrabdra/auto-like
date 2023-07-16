@@ -5,8 +5,18 @@ import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight"
 import { IGeneration, IMarka } from "types/Marka/Marka"
 
 interface Props {
-	data: IMarka
-	handleSelect: (id: number, title: string) => void
+	data: {
+		id: number
+		title: string
+		createdFrom?: number | null
+		createdTo?: number | null
+	}
+	handleSelect: (
+		id: number,
+		title: string,
+		from?: null | number,
+		to?: null | number
+	) => void
 	selectedBrand?: { id?: number; title?: string }
 	generationData?: IGeneration
 }
@@ -21,7 +31,9 @@ const BrandOne: FC<Props> = ({
 
 	return (
 		<Button
-			onClick={() => handleSelect(id, title)}
+			onClick={() =>
+				handleSelect(id, title, data?.createdFrom, data?.createdTo)
+			}
 			fullWidth
 			variant="contained"
 			sx={{

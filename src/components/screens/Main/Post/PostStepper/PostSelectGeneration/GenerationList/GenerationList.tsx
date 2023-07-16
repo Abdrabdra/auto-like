@@ -23,15 +23,21 @@ const GenerationList = () => {
 	)
 
 	const queryParams = {
-		modelId: selectedMark?.id ? selectedMark.id : undefined,
-		year: selectedYear ? selectedYear : undefined
+		modelId: selectedMark?.id ? selectedMark.id : undefined
 	}
 
 	const { data, isLoading, isSuccess } = useGetGenerationQuery(queryParams)
 
-	const handleSelect = (id: number, title: string) => {
+	const handleSelect = (
+		id: number,
+		title: string,
+		from?: number | null,
+		to?: number | null
+	) => {
 		setTimeout(() => {
-			dispatch(setFormSelectedGeneration({ id: id, title: title }))
+			dispatch(
+				setFormSelectedGeneration({ id: id, title: title, from: from, to: to })
+			)
 			dispatch(incrementStep())
 		}, 250)
 	}
@@ -47,7 +53,6 @@ const GenerationList = () => {
 						data={row}
 						handleSelect={handleSelect}
 						selectedBrand={selectedGeneration ? selectedGeneration : undefined}
-						generationData={row}
 					/>
 				))
 			) : (

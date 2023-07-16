@@ -37,6 +37,12 @@ const LoginForm = () => {
 		if (inputRef.current) inputRef.current.focus()
 	}, [])
 
+	useEffect(() => {
+		if (status === ActionsEnum.SUCCESS) {
+			navigate("/")
+		}
+	}, [status])
+
 	const handleClick = () => {
 		navigate(`/auth/registration`)
 	}

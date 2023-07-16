@@ -78,7 +78,7 @@ const PostStepper = () => {
 					<GoBackButton forPost={true} />
 				</Box>
 			)}
-			
+
 			<Box sx={{ width: "100%" }}>
 				<Stepper
 					activeStep={activeStep}
@@ -105,11 +105,11 @@ const PostStepper = () => {
 						) : activeStep === 2 ? (
 							<PostSelectMark />
 						) : activeStep === 3 ? (
-							<PostSelectManufacture />
+							<PostSelectGeneration />
 						) : activeStep === 4 ? (
 							<PostSelectCase />
 						) : activeStep === 5 ? (
-							<PostSelectGeneration />
+							<PostSelectManufacture />
 						) : activeStep === 6 ? (
 							<PostSelectModification />
 						) : activeStep === 7 ? (

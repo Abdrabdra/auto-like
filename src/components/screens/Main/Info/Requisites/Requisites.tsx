@@ -16,7 +16,7 @@ const Requisites = () => {
 						Адрес: Республика Казахстан, 050060, город г. Алматы, Ауэзовский
 						район, ул. Жандосова, д.42. 207 офис
 					</Typography>
-					<Typography component={"div"}>БИН/ИИН: 981141000668</Typography>
+					<Typography component={"div"}>БИН/ИИН: 220940020359</Typography>
 					<Typography component={"div"}>
 						Номер счета: KZ738562203125279205
 					</Typography>
