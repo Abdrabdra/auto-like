@@ -10,7 +10,7 @@ const Agreement = () => {
 		>
 			<Container>
 				<Stack spacing={1}>
-					<Typography variant="h5">Политика конфиденциальности</Typography>
+					<Typography variant="h5">Пользовательское соглашение</Typography>
 
 					<Typography>
 						1. Данное соглашение регулирует взаимоотношения, возникающие между

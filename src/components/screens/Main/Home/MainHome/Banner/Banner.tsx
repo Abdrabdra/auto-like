@@ -13,17 +13,17 @@ import bannerImg from "../../../../../../_mockup/banner/banner1.png"
 const banners = [
 	{
 		title: "Avto Like запустился",
-		text: "Покупайте автомобили через наше приложение Avto-Like.kz",
+		text: "Продавайте автомобили через наше приложение AvtoLike",
 		img: bannerImg
 	},
 	{
 		title: "Avto Like запустился",
-		text: "Покупайте автомобили через наше приложение Avto-Like.kz",
+		text: "Продавайте автомобили через наше приложение AvtoLike",
 		img: bannerImg
 	},
 	{
 		title: "Avto Like запустился",
-		text: "Покупайте автомобили через наше приложение Avto-Like.kz",
+		text: "Продавайте автомобили через наше приложение AvtoLike",
 		img: bannerImg
 	}
 ]
