@@ -50,6 +50,20 @@ const Footer = () => {
 					</Typography>
 
 					<Typography
+						onClick={() => navigate("/app/info/refund")}
+						variant="caption"
+						sx={{
+							color: "common.white",
+							cursor: "pointer",
+							"&:hover": {
+								color: "primary.main"
+							}
+						}}
+					>
+						Политика возврата
+					</Typography>
+
+					<Typography
 						onClick={() => navigate("/app/info/requisites")}
 						variant="caption"
 						sx={{
