@@ -6,7 +6,7 @@ server {
             root /var/www/html;
      }
 
-     return 301 https://avtolike.kz$request_uri;
+     
 
 }
 server {
